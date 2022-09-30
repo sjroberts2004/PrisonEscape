@@ -5,7 +5,8 @@ using UnityEngine;
 public class MovementScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    float movementSpeed;
+    public Vector3 position;
+    public float movementSpeed;
 
 
     // Start is called before the first frame update
@@ -17,10 +18,21 @@ public class MovementScript : MonoBehaviour
     }
 
     // Update is called once per frame
+
+
     void Update()
     {
-       
+      if (Input.GetKey("right"))
+      {
+          position.x = position.x+movementSpeed;
 
+       }
+       if (Input.GetKey("left"))
+       {
+           position.x = position.x+(movementSpeed*-1);
 
+        }
+        transform.position = position;
     }
-}
+
+  }
