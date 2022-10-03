@@ -22,16 +22,15 @@ public class MovementScript : MonoBehaviour
 
     void Update()
     {
-      if (Input.GetKey("right"))
-      {
+      if(Input.GetKey("right")){
           position.x = position.x+movementSpeed;
-
-       }
-       if (Input.GetKey("left"))
-       {
-           position.x = position.x+(movementSpeed*-1);
-
         }
+      else if(position.x-1 >= -3.5 && Input.GetKey("left")){
+        position.x = position.x+(movementSpeed*-1);
+      }
+
+
+
         transform.position = position;
     }
 
