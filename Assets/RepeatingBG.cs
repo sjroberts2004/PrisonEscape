@@ -22,9 +22,9 @@ public class RepeatingBG : MonoBehaviour
     void Update()
     {
         if (player.GetComponent<Rigidbody2D>().position.x >= 
-            rb.position.x + (width * 0.6)) {
+            rb.position.x + width) {
 
-            Vector2 vector = new Vector2(width * 1.5f, 0);
+            Vector2 vector = new Vector2(width * 2f, 0);
             transform.position = (Vector2)transform.position + vector;
         
         }
