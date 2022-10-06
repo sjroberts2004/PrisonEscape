@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
   m_Name: Character
   m_EditorClassIdentifier: 
-  character_name: 
-  description: 
-  max_HP: 0
-  base_attack: 0
-  defense: 0
-  accuracy: 0
+  character_name: Puffy
+  description: Testing.
+  max_HP: 10
+  base_attack: 5
+  defense: 5
+  accuracy: 95
   icon: {fileID: 0}
-  character_sprite: {fileID: 0}
+  character_sprite: {fileID: 21300000, guid: 2cc83eb4a76e8ea479956484c3786f05, type: 3}
