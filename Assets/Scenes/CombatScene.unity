@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a60d1d053e08c49834c17770d432e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1424220013}
-  player: {fileID: 1498505887}
+  enemylead: {fileID: 1424220013}
+  playerlead: {fileID: 1498505887}
 --- !u!4 &292357226
 Transform:
   m_ObjectHideFlags: 0
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 1424220015}
   - component: {fileID: 1424220014}
   m_Layer: 0
-  m_Name: Enemy Diver
+  m_Name: Enemy Crab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -536,8 +536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93dfa2c224441bf4dbb149b599430910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  ATK: 5
+  HP: 40
+  ATK: 4
   DEF: 0
   ACC: 0
   enemy: 1
@@ -583,7 +583,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6be37d710a46d114ba7aa67cd4d61328, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4dfde2dd9615c9f4a80a6eb42c20e151, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -603,7 +603,7 @@ Transform:
   m_GameObject: {fileID: 1424220013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: 0.5, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
