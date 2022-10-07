@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    [SerializeField] GameObject dialogueBox;
+    [SerializeField] Text dialogueText;
+
+    public void ShowDialogue(string dialogue) {
+        dialogueBox.SetActive(true);
+        dialogueText.text = dialogue;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

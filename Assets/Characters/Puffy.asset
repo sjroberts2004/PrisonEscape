@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
-  m_Name: Character
+  m_Name: Puffy
   m_EditorClassIdentifier: 
   character_name: Puffy
   description: Testing.

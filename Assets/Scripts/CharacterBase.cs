@@ -5,13 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character", menuName = "Create new character")]
 public class CharacterBase : ScriptableObject
 {
-
-
     //Character name
     [SerializeField] string character_name;
 
     [TextArea]
     [SerializeField] string description;
+
+    [SerializeField] int level;
 
     [SerializeField] int max_HP;
 
@@ -35,4 +35,5 @@ public class CharacterBase : ScriptableObject
     {
         
     }
+    public int getMaxHP(){ return max_HP; }
 }
