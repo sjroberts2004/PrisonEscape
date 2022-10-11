@@ -7,14 +7,17 @@ public class fighting : MonoBehaviour
   public List <GameObject> popuplist;
   public List<GameObject> enemylist;
   public List<GameObject> playerlist;
+  public int countdown;
   private GameObject playerlead;
   private GameObject enemylead;
+
   // note: in fight function player goes first. If both player and enemy would deal lethal damage, front enemy is killed and enemy behind it attacks instead.
   // also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
   public void fight(){
     Debug.Log("fight command received");
     if (playerlist.Count >=1 && enemylist.Count>=1){
      enemylead.GetComponent<statblock>().HP -= playerlead.GetComponent<statblock>().ATK;
+     countdown--;
      if (enemylead.GetComponent<statblock>().HP<=0){
        enemylist.Remove(enemylead);
        Destroy(enemylead);
@@ -74,7 +77,12 @@ public class fighting : MonoBehaviour
       assignpos(playerlist, false);
       assignpos(enemylist, true);
     }
+    void OnGUI()
+    {
+      GUI.Label(new Rect(400,50,400,50), countdown.ToString());
 
+
+    }
     // Update is called once per frame
     void Update()
     {
