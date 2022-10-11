@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class fighting : MonoBehaviour
 {
+  public List <GameObject> popuplist;
   public List<GameObject> enemylist;
   public List<GameObject> playerlist;
   private GameObject playerlead;
@@ -59,9 +60,11 @@ public class fighting : MonoBehaviour
   }
   else if(enemy){
     Debug.Log("Player beat the encounter");
+    popuplist[0].SetActive(true);
   }
   else{
     Debug.Log("Player was defeated");
+    popuplist[1].SetActive(true);
   }
 }
 
