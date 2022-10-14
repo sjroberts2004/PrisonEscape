@@ -17,6 +17,7 @@ public class fighting : MonoBehaviour
     Debug.Log("fight command received");
     if (playerlist.Count >=1 && enemylist.Count>=1){
      enemylead.GetComponent<statblock>().HP -= playerlead.GetComponent<statblock>().ATK;
+     enemylead.SendMessage("adjusthealthbar");
      countdown--;
      if (enemylead.GetComponent<statblock>().HP<=0){
        enemylist.Remove(enemylead);
@@ -24,6 +25,7 @@ public class fighting : MonoBehaviour
        assignpos(enemylist,true);
      }
      playerlead.GetComponent<statblock>().HP -= enemylead.GetComponent<statblock>().ATK;
+     playerlead.SendMessage("adjusthealthbar");
      if (playerlead.GetComponent<statblock>().HP<=0){
        playerlist.Remove(playerlead);
        Destroy(playerlead);
@@ -76,6 +78,7 @@ public class fighting : MonoBehaviour
     {
       assignpos(playerlist, false);
       assignpos(enemylist, true);
+
     }
     void OnGUI()
     {
