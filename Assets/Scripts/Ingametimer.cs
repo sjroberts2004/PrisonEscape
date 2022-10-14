@@ -1,16 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
-{
+// public class TimerController: MonoBehaviour
+// {
+//     public static TimerController instance;
 
-    public float timeRemaining = 1000;
-    void Update()
-    {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-        }
-    }
-}
+//     public Text timeCounter;
+
+//     private TimeSpan timePlaying;
+//     private bool timerGoing;
+
+//     private float elapsedTime;
+
+//     private void Awake()
+//     {
+//         instance = this;
+//     }
+
+//     private void Start()
+//     {
+//         timeCounter.text = "Time: 00.00.00 ";
+//         timerGoing = false;
+//     }
+
+//     public void BeginTimer()
+//     {
+//         timerGoing = true;
+//         startTime = Time.time;
+//         elapsedTime = 0f;
+
+//         StartCoroutine(UpdateTimer());
+//     }
+
+//     public void BeginGame()
+//     {
+//         gamePlaying = true;
+//         TimerController.instance.BeginTimer();
+//     }
+
+//     public void EndTimer()
+//     {
+//         timerGoing = false;
+//     }
+
+//     private IEnumerator UpdateTimer()
+//     {
+//         while (timerGoing)
+        
+//             elapsedTime += Time.deltaTime;
+//             timePlaying = TimeSpan.FromSeconds(elapsedTime);
+//             string timePlayingStr = "Time: " + timePlaying.toString("mm:' 'ss'. 'ff ");
+
+//             yield return null;
+//     }
+// }
