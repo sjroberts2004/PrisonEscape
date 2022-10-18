@@ -59,6 +59,7 @@ public class statblock : MonoBehaviour
         texture.Apply();
     }
     void Update(){
+      if (pos>=0){
       if(enemy){
         x = 520+(60*pos);
         position.x = 1.5F+(pos);
@@ -68,7 +69,7 @@ public class statblock : MonoBehaviour
         position.x = -1.5F-(pos);
       }
       transform.position = position;
-
+    }
     }
     // Update is called once per frame
     void OnGUI()
