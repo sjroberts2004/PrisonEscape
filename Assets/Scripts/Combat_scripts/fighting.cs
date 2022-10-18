@@ -7,6 +7,7 @@ public class fighting : MonoBehaviour
   public List <GameObject> popuplist;
   public List<GameObject> enemylist;
   public List<GameObject> playerlist;
+  public GameObject loadingsource;
   public int countdown;
   private GameObject playerlead;
   private GameObject enemylead;
@@ -72,12 +73,16 @@ public class fighting : MonoBehaviour
     popuplist[1].SetActive(true);
   }
 }
+public void load(){
+  playerlist = loadingsource.GetComponent<combatlistholder>().playerlist;
+  enemylist = loadingsource.GetComponent<combatlistholder>().enemylist;
+  assignpos(playerlist, false);
+  assignpos(enemylist, true);
 
+}
     // Start is called before the first frame update
     void Start()
     {
-      assignpos(playerlist, false);
-      assignpos(enemylist, true);
 
     }
     void OnGUI()
