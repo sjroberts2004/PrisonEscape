@@ -6,24 +6,25 @@ using UnityEngine;
 public class CharacterBase : ScriptableObject
 {
     //Character name
-    [SerializeField] string character_name;
+    [SerializeField] public bool active = true;
+    [SerializeField] public string character_name;
 
     [TextArea]
     [SerializeField] string description;
 
     [SerializeField] int level;
-
     [SerializeField] int max_HP;
-
     [SerializeField] int base_attack;
-
     [SerializeField] int defense;
-
     [SerializeField] int accuracy;
 
-    [SerializeField] Sprite icon;
+    [SerializeField] public Sprite icon;
+    [SerializeField] public Sprite character_sprite;
 
-    [SerializeField] Sprite character_sprite;
+    [SerializeField] public int pay_me_price;
+
+    [TextArea]
+    [SerializeField] public string bounty_dialogue;
 
     void Start()
     {

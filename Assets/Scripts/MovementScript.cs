@@ -11,7 +11,16 @@ public class MovementScript : MonoBehaviour
     private float root; // keeps track of the players position 
     private float range = 5; // range the player can moove from the root until the player makes a 'step'
 
+    DialogueManager dialogueManager;
+    EncounterManager encounterManager;
+    [SerializeField] GameObject EM;
+    [SerializeField] Canvas Canvas_Holding_DM;
+
     // Start is called before the first frame update
+    void Awake() {
+        dialogueManager = Canvas_Holding_DM.GetComponent<DialogueManager>();
+        encounterManager = EM.GetComponent<EncounterManager>();
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,26 +30,32 @@ public class MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if(Input.GetKey("right")){
+      if(Input.GetKey("right"))
+      {
+
           position.x = position.x + movementSpeed;
-        }
-      else if(position.x > 0 && Input.GetKey("left")){
+
+      }
+ 
+      if(Input.GetKey("left") && position.x > 0)
+      {
+
         position.x = position.x+(movementSpeed*-1);
+
       }
 
         transform.position = position;
 
-        if (position.x > root + range) 
+        if (position.x > root + range) //steping right
         {
-            Debug.Log("Player took a step forwards");
-
+         
             root = position.x;
+            encounterManager.step();
         }
 
-        if (position.x < root - range)
+        if (position.x < root - range) //stepping left
         {
-            Debug.Log("Player took a step backwards");
-
+            
             root = position.x;
         }
     }
