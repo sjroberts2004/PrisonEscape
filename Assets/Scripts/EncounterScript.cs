@@ -33,7 +33,7 @@ public class EncounterScript : MonoBehaviour
 
         this.type = type;
 
-        fieldIcon = character.icon;
+        this.GetComponent<SpriteRenderer>().sprite = character.icon;
 
         if (type == EncounterTypes.PAY_ME) {
 

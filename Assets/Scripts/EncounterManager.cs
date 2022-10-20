@@ -42,8 +42,11 @@ public class EncounterManager : MonoBehaviour
 
     void GenerateEncounter() {
 
-        Instantiate(EncounterPrefab, new Vector3(movementScript.position.x + 6, -0.88f, 0), Quaternion.identity);
+        GameObject LastestEncounter;
 
+        LastestEncounter = Instantiate(EncounterPrefab, new Vector3(movementScript.position.x + 6, -0.88f, 0), Quaternion.identity);
+
+        LastestEncounter.GetComponent<EncounterScript>().Setup(chooseEncounterType(), chooseEncounterCharacter());
         //ActiveEncounters[0].GetComponent<EncounterScript>().Setup(chooseEncounterType(),chooseEncounterCharacter());
 
     }
