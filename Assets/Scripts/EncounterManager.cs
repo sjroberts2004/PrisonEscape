@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
-    [SerializeField] List<ScriptableObject> encounterList;
+    [SerializeField] List<ScriptableObject> Level1_PayMe;
+    [SerializeField] List<ScriptableObject> Level1_Bounty;
 
-
-
+    
 
 }

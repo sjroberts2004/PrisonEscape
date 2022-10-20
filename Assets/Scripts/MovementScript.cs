@@ -8,18 +8,17 @@ public class MovementScript : MonoBehaviour
     public Vector3 position;
     public float movementSpeed;
 
+    private float root; // keeps track of the players position 
+    private float range = 5; // range the player can moove from the root until the player makes a 'step'
 
     // Start is called before the first frame update
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
-
+        root = position.x;
     }
 
     // Update is called once per frame
-
-
     void Update()
     {
       if(Input.GetKey("right")){
@@ -30,6 +29,22 @@ public class MovementScript : MonoBehaviour
       }
 
         transform.position = position;
+
+        if (position.x > root + range) 
+        {
+            Debug.Log("Player took a step forwards");
+
+            root = position.x;
+        }
+
+        if (position.x < root - range)
+        {
+            Debug.Log("Player took a step backwards");
+
+            root = position.x;
+        }
     }
+
+
 
   }

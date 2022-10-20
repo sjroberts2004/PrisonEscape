@@ -450,7 +450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236251608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 1.4, z: 0}
+  m_LocalPosition: {x: -3.9, y: 1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -991,7 +991,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280559547}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1280559550
 Camera:
   m_ObjectHideFlags: 0
@@ -1156,8 +1156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb799ffa42191dd4db734e2fad675d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encounterList:
-  - {fileID: 11400000, guid: c727e9c9eb1aaac4aa065334d2d5fcce, type: 2}
+  Level1_PayMe: []
+  Level1_Bounty: []
 --- !u!4 &1559371489
 Transform:
   m_ObjectHideFlags: 0
