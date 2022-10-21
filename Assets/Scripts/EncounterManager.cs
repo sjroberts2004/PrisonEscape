@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
+    [SerializeField] Canvas encounterCanvas;
+    DialogueManager dialogueManager;
+
     List<GameObject> ActiveEncounters;
     [SerializeField] List<CharacterBase> Level1;
 
@@ -23,7 +26,7 @@ public class EncounterManager : MonoBehaviour
     }
     private void Awake()
     {
-     
+        dialogueManager = encounterCanvas.GetComponent<DialogueManager>();
         movementScript = player.GetComponent<MovementScript>();
     }
 
@@ -33,6 +36,7 @@ public class EncounterManager : MonoBehaviour
             Debug.Log(root);
             Debug.Log(steps);
             Debug.Log("Gen Encounter");
+            dialogueManager.ShowDialogue("Generating Encounter...", 2);
             GenerateEncounter();
             root = steps;
             Debug.Log(root);
