@@ -36,7 +36,7 @@ public class EncounterManager : MonoBehaviour
             Debug.Log(root);
             Debug.Log(steps);
             Debug.Log("Gen Encounter");
-            dialogueManager.ShowDialogue("Generating Encounter...", 2);
+       
             GenerateEncounter();
             root = steps;
             Debug.Log(root);
