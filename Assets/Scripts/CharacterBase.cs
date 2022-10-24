@@ -21,10 +21,11 @@ public class CharacterBase : ScriptableObject
     [SerializeField] public Sprite icon;
     [SerializeField] public Sprite character_sprite;
 
+    [SerializeField] public bool pay_me_enabled = true;
     [SerializeField] public int pay_me_price;
 
-    [TextArea]
-    [SerializeField] public string bounty_dialogue;
+    [SerializeField] public bool bounty_enabled = true;
+    [TextArea] [SerializeField] public string bounty_dialogue;
 
     void Start()
     {
@@ -37,4 +38,20 @@ public class CharacterBase : ScriptableObject
         
     }
     public int getMaxHP(){ return max_HP; }
+
+    public bool isValidEncounterType(EncounterScript.EncounterTypes type) { 
+    
+        switch (type) { 
+        
+            case EncounterScript.EncounterTypes.PAY_ME:
+                return pay_me_enabled;
+
+            case EncounterScript.EncounterTypes.BOUNTY:
+                return bounty_enabled;
+        
+        }
+
+        return false;
+    
+    }
 }

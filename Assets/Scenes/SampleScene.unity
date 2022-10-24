@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: -0.88, z: 0}
-  movementSpeed: 0.01
+  movementSpeed: 0.1
   EM: {fileID: 1559371487}
   Canvas_Holding_DM: {fileID: 142047838}
 --- !u!61 &172830596
@@ -1107,11 +1107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb799ffa42191dd4db734e2fad675d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encounterCanvas: {fileID: 142047838}
-  Level1:
+  encounterDialogueCanvas: {fileID: 142047838}
+  levelOneCharacters:
   - {fileID: 11400000, guid: 4e5f23355b856654595b3b77d849c20a, type: 2}
   - {fileID: 11400000, guid: 70b4aed530f83134bbd04210a625175c, type: 2}
-  - {fileID: 11400000, guid: 70b4aed530f83134bbd04210a625175c, type: 2}
+  levelTwoCharacters: []
+  levelThreeCharacters: []
   EncounterPrefab: {fileID: 7014373453947796135, guid: 6a0c5bf5e58bcc143822f79daee408e8, type: 3}
   player: {fileID: 172830590}
 --- !u!4 &1559371489

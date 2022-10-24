@@ -8,7 +8,7 @@ public class followplayer : MonoBehaviour
   public float interpSpeed;
   private Vector3 targetPos;
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
       targetPos = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
       transform.position = Vector3.Lerp(transform.position, targetPos, interpSpeed);

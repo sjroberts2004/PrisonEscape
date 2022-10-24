@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character
   m_EditorClassIdentifier: 
   active: 1
-  character_name: Whatever
+  character_name: 
   description: 
   level: 0
   max_HP: 0

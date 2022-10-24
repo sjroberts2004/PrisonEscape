@@ -33,7 +33,19 @@ public class EncounterScript : MonoBehaviour
 
         this.type = type;
 
-        this.GetComponent<SpriteRenderer>().sprite = character.icon;
+        if (character.icon)
+        {
+
+            this.GetComponent<SpriteRenderer>().sprite = character.icon;
+
+        }
+        else {
+
+            Debug.LogWarning("No sprite found");
+        
+        }
+
+        
 
         if (type == EncounterTypes.PAY_ME) {
 
@@ -49,9 +61,9 @@ public class EncounterScript : MonoBehaviour
 
     }
 
-    void Interact() { 
-    
-    
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("OnCollisionEnter2D");
     }
 
 }
