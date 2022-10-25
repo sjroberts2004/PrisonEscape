@@ -64,7 +64,6 @@ public class EncounterManager : MonoBehaviour
 
             case 1:
                 val = Random.Range(0, levelOneCharacters.Count);
-                Debug.Log(levelOneCharacters.Count);
                 return levelOneCharacters[val];
 
             case 2:

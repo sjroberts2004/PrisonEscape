@@ -20,6 +20,7 @@ public class MovementScript : MonoBehaviour
     void Awake() {
         dialogueManager = Canvas_Holding_DM.GetComponent<DialogueManager>();
         encounterManager = EM.GetComponent<EncounterManager>();
+
     }
     void Start()
     {
@@ -51,11 +52,8 @@ public class MovementScript : MonoBehaviour
     void Update()
     {
 
-
-
         if (position.x > root + range) //steping right
         {
-         
             root = position.x;
             encounterManager.step();
         }
@@ -66,7 +64,4 @@ public class MovementScript : MonoBehaviour
             root = position.x;
         }
     }
-
-
-
   }
