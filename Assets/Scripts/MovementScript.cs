@@ -26,6 +26,7 @@ public class MovementScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         root = position.x;
+ 
     }
 
     private void FixedUpdate()
@@ -33,25 +34,20 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetKey("right"))
         {
-
             position.x = position.x + movementSpeed;
-
         }
 
         if (Input.GetKey("left") && position.x > 0)
         {
-
             position.x = position.x + (movementSpeed * -1);
-
         }
-
+   
         transform.position = position;
 
     }
     // Update is called once per frame
     void Update()
     {
-
         if (position.x > root + range) //steping right
         {
             root = position.x;
@@ -60,7 +56,6 @@ public class MovementScript : MonoBehaviour
 
         if (position.x < root - range) //stepping left
         {
-            
             root = position.x;
         }
     }

@@ -61,9 +61,9 @@ public class EncounterScript : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnCollisionEnter2D");
+         Debug.Log("OnCollisionEnter2D");
     }
 
 }
