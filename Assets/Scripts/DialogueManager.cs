@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        dialogueBox.SetActive(false);
+       // dialogueBox.SetActive(true);
     }
     public void ShowDialogue(string dialogue, int displayTime) {
 
@@ -31,7 +31,6 @@ public class DialogueManager : MonoBehaviour
     IEnumerator pause() // Unity makes me do this to wait for seconds
     {
         
-
         dialogueBox.SetActive(true);
         yield return new WaitForSeconds(duration);
         dialogueBox.SetActive(false);

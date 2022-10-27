@@ -7,6 +7,7 @@ public class MovementScript : MonoBehaviour
     Rigidbody2D rb;
     public Vector3 position;
     public float movementSpeed;
+    bool facingRight = true;
 
     private float root; // keeps track of the players position 
     private float range = 5; // range the player can moove from the root until the player makes a 'step'
@@ -34,11 +35,14 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetKey("right"))
         {
+            if (!facingRight) { Flip(); }
             position.x = position.x + movementSpeed;
+
         }
 
-        if (Input.GetKey("left") && position.x > 0)
+        if (Input.GetKey("left") && position.x > root )
         {
+            if (facingRight) { Flip(); }
             position.x = position.x + (movementSpeed * -1);
         }
    
@@ -58,5 +62,14 @@ public class MovementScript : MonoBehaviour
         {
             root = position.x;
         }
+    }
+
+    void Flip() {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+
+        facingRight = !facingRight; 
+    
     }
   }

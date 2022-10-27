@@ -5,7 +5,7 @@ using UnityEngine;
 public class EncounterManager : MonoBehaviour
 {
     [SerializeField] Canvas encounterDialogueCanvas;
-    DialogueManager dialogueManager;
+    DialogueManager dialogueManager; 
 
     List<GameObject> ActiveEncounters;
     [SerializeField] List<CharacterBase> levelOneCharacters;
@@ -24,6 +24,7 @@ public class EncounterManager : MonoBehaviour
     int range = 3;
     public void step() {
         steps++;
+        player.GetComponent<PlayerInfo>().loseO2(2);
     }
     private void Awake()
     {
