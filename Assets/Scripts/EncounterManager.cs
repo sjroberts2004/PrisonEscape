@@ -21,7 +21,7 @@ public class EncounterManager : MonoBehaviour
     int level = 1;
     int steps = 0;
     int root = 0;
-    int range = 3;
+    int range = 2;
     public void step() {
         steps++;
         player.GetComponent<PlayerInfo>().loseO2(2);
