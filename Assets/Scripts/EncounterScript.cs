@@ -68,7 +68,7 @@ public class EncounterScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Diver") { 
            Debug.Log("OnCollisionEnter2D");
-            dialogueManager.ShowDialogue("We couldnt implement a working combat system in time so instead here are the enemies you wouldve faced "+_base.character_name+": "+_base.description,2);
+            dialogueManager.ShowDialogue(_base.character_name+": "+_base.description,2);
         }
       
     }
