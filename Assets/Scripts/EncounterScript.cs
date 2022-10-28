@@ -16,6 +16,7 @@ public class EncounterScript : MonoBehaviour
     Sprite fieldIcon;
     string encounterDialog;
     int price;
+    CharacterBase _base;
 
     void Start()
     {
@@ -32,6 +33,8 @@ public class EncounterScript : MonoBehaviour
     public void Setup(EncounterTypes type, CharacterBase character) {
 
         this.type = type;
+
+        _base = character;
 
         if (character.icon)
         {
@@ -65,6 +68,7 @@ public class EncounterScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Diver") { 
            Debug.Log("OnCollisionEnter2D");
+            dialogueManager.ShowDialogue("We couldnt implement a working combat system in time so instead here are the enemies you wouldve faced "+_base.character_name+": "+_base.description,2);
         }
       
     }

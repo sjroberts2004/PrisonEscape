@@ -36,7 +36,7 @@ public class EncounterManager : MonoBehaviour
         if (steps > root + range) {
             
             Debug.Log("Generating Encounter...");
-            dialogueManager.ShowDialogue("Generating Encounter...", 1);
+            //dialogueManager.ShowDialogue("Generating Encounter...", 1);
             GenerateRandomEncounter();
             root = steps;
 

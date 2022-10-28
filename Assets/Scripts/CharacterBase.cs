@@ -10,7 +10,7 @@ public class CharacterBase : ScriptableObject
     [SerializeField] public string character_name;
 
     [TextArea]
-    [SerializeField] string description;
+    [SerializeField] public string description;
 
     [SerializeField] int level;
     [SerializeField] int max_HP;

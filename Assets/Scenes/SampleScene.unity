@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 142047837}
   - component: {fileID: 142047836}
   - component: {fileID: 142047840}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1096638825
+  m_SortingLayerID: 15964957
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &142047839
@@ -299,7 +299,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096638825
-  m_SortingLayer: 2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6be37d710a46d114ba7aa67cd4d61328, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57422db9a1c63a2438f3bd0e25de94cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: -0.88, z: 0}
+  position: {x: 0.3, y: -0.88, z: 0}
   movementSpeed: 0.1
   EM: {fileID: 1559371487}
   Canvas_Holding_DM: {fileID: 142047838}
@@ -497,7 +497,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 60075647
-  m_SortingLayer: 1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 09f55d67879dae5499a8bc3bbb62e4ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -562,7 +562,7 @@ GameObject:
   - component: {fileID: 418103448}
   - component: {fileID: 418103450}
   - component: {fileID: 418103449}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fish food counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -272, y: 70}
+  m_AnchoredPosition: {x: -242, y: 56}
   m_SizeDelta: {x: 128.58, y: 71.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418103449
@@ -746,13 +746,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483088514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.37969923, y: -0.3024451, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -832,7 +832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.3, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 563037949}
   - component: {fileID: 563037948}
   - component: {fileID: 563037952}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CounterCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +952,7 @@ RectTransform:
   - {fileID: 1232582607}
   - {fileID: 418103448}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -989,7 +989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &870600551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1128,7 +1128,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096638825
-  m_SortingLayer: 2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8e8dcf2ab2af92d4c82da8936bf6ce6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1167,7 +1167,7 @@ GameObject:
   - component: {fileID: 1008912547}
   - component: {fileID: 1008912549}
   - component: {fileID: 1008912548}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: O2 counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1191,7 +1191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -272, y: 147}
+  m_AnchoredPosition: {x: -242.00002, y: 133}
   m_SizeDelta: {x: 133.3, y: 63.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1008912548
@@ -1425,7 +1425,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096638825
-  m_SortingLayer: 2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ec7eb537f960954695dfdb33cb4a62d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1451,7 +1451,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232582606
 GameObject:
@@ -1464,7 +1464,7 @@ GameObject:
   - component: {fileID: 1232582607}
   - component: {fileID: 1232582609}
   - component: {fileID: 1232582608}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fish food icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -387.94, y: 80.31}
+  m_AnchoredPosition: {x: -357.94, y: 66.31}
   m_SizeDelta: {x: 73.88, y: 73.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1232582608
@@ -1658,7 +1658,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1402829827
 MonoBehaviour:
@@ -1683,7 +1683,7 @@ GameObject:
   - component: {fileID: 1482411651}
   - component: {fileID: 1482411653}
   - component: {fileID: 1482411652}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: DialougeBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1794,13 +1794,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559371487}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3003007, y: -0.91755486, z: 0.40180206}
+  m_LocalPosition: {x: 1.68, y: -1.22, z: 0.40180206}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 870600551}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690404895
 GameObject:
@@ -1813,7 +1813,7 @@ GameObject:
   - component: {fileID: 1690404896}
   - component: {fileID: 1690404898}
   - component: {fileID: 1690404897}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: O2 icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1837,7 +1837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -377, y: 160.76}
+  m_AnchoredPosition: {x: -347, y: 146.76}
   m_SizeDelta: {x: 73.88, y: 73.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1690404897
@@ -1889,7 +1889,7 @@ GameObject:
   - component: {fileID: 1916690626}
   - component: {fileID: 1916690628}
   - component: {fileID: 1916690627}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Counter Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1913,7 +1913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -315.87, y: 114.45}
+  m_AnchoredPosition: {x: -285.87, y: 100.45}
   m_SizeDelta: {x: 246.28, y: 164.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916690627
@@ -1965,7 +1965,7 @@ GameObject:
   - component: {fileID: 2078039651}
   - component: {fileID: 2078039653}
   - component: {fileID: 2078039652}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2148,7 +2148,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 60075647
-  m_SortingLayer: 1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 09f55d67879dae5499a8bc3bbb62e4ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
