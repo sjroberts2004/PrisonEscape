@@ -16,7 +16,7 @@ MonoBehaviour:
   character_name: Siren
   description: Despite what legend tells us, sirens spend most of their time learning
     and studying magic. They are nerds per se and mostly want to be left alone. Sometimes,
-    they get bored and commit coercion and sexual assault.
+    they get bored and commit coercion.
   level: 1
   max_HP: 100
   base_attack: 10

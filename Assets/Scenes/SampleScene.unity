@@ -1708,8 +1708,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109, y: 89}
-  m_SizeDelta: {x: 450, y: 142}
+  m_AnchoredPosition: {x: 0, y: 92}
+  m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482411652
 MonoBehaviour:
@@ -1782,6 +1782,8 @@ MonoBehaviour:
   levelOneCharacters:
   - {fileID: 11400000, guid: 4e5f23355b856654595b3b77d849c20a, type: 2}
   - {fileID: 11400000, guid: 70b4aed530f83134bbd04210a625175c, type: 2}
+  - {fileID: 11400000, guid: 06c334fd2182d4a478d7b91965453dcd, type: 2}
+  - {fileID: 11400000, guid: e17a9c9b3a14e0d4abad5c83d3948039, type: 2}
   levelTwoCharacters: []
   levelThreeCharacters: []
   EncounterPrefab: {fileID: 7014373453947796135, guid: 6a0c5bf5e58bcc143822f79daee408e8, type: 3}
@@ -1989,8 +1991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.311e-10, y: 0.0000047684}
-  m_SizeDelta: {x: 450, y: 142}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 449.99997, y: 99.99999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2078039652
 MonoBehaviour:
