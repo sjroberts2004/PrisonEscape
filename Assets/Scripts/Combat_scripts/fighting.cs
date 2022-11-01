@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class fighting : MonoBehaviour
 {
@@ -67,10 +68,12 @@ public class fighting : MonoBehaviour
   else if(enemy){
     Debug.Log("Player beat the encounter");
     popuplist[0].SetActive(true);
+    UnityEngine.SceneManagement.SceneManager.LoadScene(1);
   }
   else{
     Debug.Log("Player was defeated");
     popuplist[1].SetActive(true);
+    UnityEngine.SceneManagement.SceneManager.LoadScene(1);
   }
 }
 public void load(){
