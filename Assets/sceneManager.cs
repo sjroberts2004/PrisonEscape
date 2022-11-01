@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
+  public bool enabled;
   public int scene;
   public GameObject self;
   void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Player"))
+    if (enabled && other.CompareTag("Player"))
     {
       Destroy(self);
-      UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+      SceneManager.LoadScene(scene);
     }
   }
 }
