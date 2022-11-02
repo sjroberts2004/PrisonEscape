@@ -12,7 +12,8 @@ public class statblockMain : MonoBehaviour
     public int ACC;
     public bool enemy;
     public int pos;
-    private int yline = 115;
+    public bool healthbarenabled;
+    private int yline = 110;
     private int x;
     private Vector3 position;
     private Texture2D texture;
@@ -63,11 +64,11 @@ public class statblockMain : MonoBehaviour
         if (pos>=0){
         if(enemy){
           x = 520+(60*pos);
-          position.x = 1.5F+(pos);
+          position.x = -10.5F+(pos);
         }
         else{
           x = 345-(60*pos);
-          position.x = -1.5F-(pos);
+          position.x = -13.5F-(pos);
         }
         transform.position = position;
       }
@@ -75,8 +76,11 @@ public class statblockMain : MonoBehaviour
       // Update is called once per frame
       void OnGUI()
       {
-        GUI.Label(new Rect(x,yline,x,yline), HP.ToString());
-        GUI.Label(new Rect(x-15,yline+20, x-15, yline+20),texture);
+        if (healthbarenabled){
+          GUI.Label(new Rect(x,yline,x,yline), HP.ToString());
+          GUI.Label(new Rect(x-15,yline+20, x-15, yline+20),texture);
+        }
+
 
       }
 }

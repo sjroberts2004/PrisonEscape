@@ -13,9 +13,10 @@ public class combatlistholder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
       randomenemyno = Random.Range(1,5);
       for (int i = 0; i < randomenemyno; i++){
-      randomgen = Random.Range(0,4);
+      randomgen = Random.Range(0,3);
       enemylist.Add(GameObject.Instantiate(allenemies[randomgen]));
       }
     }

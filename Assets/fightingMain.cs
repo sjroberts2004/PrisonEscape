@@ -9,6 +9,8 @@ public class fightingMain : MonoBehaviour
   public List<GameObject> playerlist;
   public GameObject loadingsource;
   public int countdown;
+  public List <Camera> cameras;
+  public GameObject backbutton;
   private GameObject playerlead;
   private GameObject enemylead;
 
@@ -17,17 +19,17 @@ public class fightingMain : MonoBehaviour
   public void fight(){
     Debug.Log("fight command received");
     if (playerlist.Count >=1 && enemylist.Count>=1){
-     enemylead.GetComponent<statblock>().HP -= playerlead.GetComponent<statblock>().ATK;
+     enemylead.GetComponent<statblockMain>().HP -= playerlead.GetComponent<statblockMain>().ATK;
      enemylead.SendMessage("adjusthealthbar");
      countdown--;
-     if (enemylead.GetComponent<statblock>().HP<=0){
+     if (enemylead.GetComponent<statblockMain>().HP<=0){
        enemylist.Remove(enemylead);
        Destroy(enemylead);
        assignpos(enemylist,true);
      }
-     playerlead.GetComponent<statblock>().HP -= enemylead.GetComponent<statblock>().ATK;
+     playerlead.GetComponent<statblockMain>().HP -= enemylead.GetComponent<statblockMain>().ATK;
      playerlead.SendMessage("adjusthealthbar");
-     if (playerlead.GetComponent<statblock>().HP<=0){
+     if (playerlead.GetComponent<statblockMain>().HP<=0){
        playerlist.Remove(playerlead);
        Destroy(playerlead);
        assignpos(playerlist, false);
@@ -50,11 +52,17 @@ public class fightingMain : MonoBehaviour
   }
 
   }
+  public void backout(){
+    backbutton.SetActive(false);
+    cameras[1].enabled = false;
+    cameras[0].enabled = true;
+  }
   public void assignpos(List<GameObject> lineup, bool enemy){
     if (lineup.Count >=1){
     int i = 0;
     foreach (GameObject g in lineup){
-      g.GetComponent<statblock>().pos = i;
+      g.GetComponent<statblockMain>().healthbarenabled = true;
+      g.GetComponent<statblockMain>().pos = i;
       i++;
     }
     if (enemy){
@@ -67,12 +75,13 @@ public class fightingMain : MonoBehaviour
   else if(enemy){
     Debug.Log("Player beat the encounter");
     popuplist[0].SetActive(true);
-    UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    backbutton.SetActive(true);
   }
   else{
     Debug.Log("Player was defeated");
     popuplist[1].SetActive(true);
-    UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    backbutton.SetActive(true);
+
   }
 }
 public void load(){
@@ -89,7 +98,8 @@ public void load(){
     }
     void OnGUI()
     {
-      GUI.Label(new Rect(400,50,400,50), countdown.ToString());
+      // this is to display o2 counter, not yet necessary
+      // GUI.Label(new Rect(400,50,400,50), countdown.ToString());
 
 
     }
