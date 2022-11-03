@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 92916901475807265}
   - component: {fileID: 2807224854485691505}
   - component: {fileID: -3183344092237465372}
+  - component: {fileID: -9176984162458388028}
   m_Layer: 0
   m_Name: Encounter
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3232467, g: 0.754717, b: 0.41343084, a: 0.31764707}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -124,6 +125,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6491ef0324fed6948a3c1ca3d0766817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 7014373453947796135}
-  EM: {fileID: 0}
-  player: {fileID: 0}
+--- !u!50 &-9176984162458388028
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014373453947796135}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

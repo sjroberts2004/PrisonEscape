@@ -16,6 +16,7 @@ public class EncounterScript : MonoBehaviour
     Sprite fieldIcon;
     string encounterDialog;
     int price;
+    CharacterBase _base;
 
     void Start()
     {
@@ -33,7 +34,21 @@ public class EncounterScript : MonoBehaviour
 
         this.type = type;
 
-        this.GetComponent<SpriteRenderer>().sprite = character.icon;
+        _base = character;
+
+        if (character.icon)
+        {
+
+            this.GetComponent<SpriteRenderer>().sprite = character.icon;
+
+        }
+        else {
+
+            Debug.LogWarning("No sprite found");
+        
+        }
+
+        
 
         if (type == EncounterTypes.PAY_ME) {
 
@@ -49,9 +64,13 @@ public class EncounterScript : MonoBehaviour
 
     }
 
-    void Interact() { 
-    
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Diver") { 
+           Debug.Log("OnCollisionEnter2D");
+            dialogueManager.ShowDialogue(_base.character_name+": "+_base.description,2);
+        }
+      
     }
 
 }

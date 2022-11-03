@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
   m_Name: Hermie
   m_EditorClassIdentifier: 
+  active: 1
   character_name: Hermie
   description: PlaceHolder text
   level: 1
@@ -19,5 +20,7 @@ MonoBehaviour:
   base_attack: 2
   defense: 2
   accuracy: 95
-  icon: {fileID: 21300000, guid: e1a870f0974dfe9498766dbce62db354, type: 3}
-  character_sprite: {fileID: 21300000, guid: e1a870f0974dfe9498766dbce62db354, type: 3}
+  icon: {fileID: 21300000, guid: 96ef3ea7a53c32c4abc67148fafe49ea, type: 3}
+  character_sprite: {fileID: 21300000, guid: 96ef3ea7a53c32c4abc67148fafe49ea, type: 3}
+  pay_me_price: 0
+  bounty_dialogue: 

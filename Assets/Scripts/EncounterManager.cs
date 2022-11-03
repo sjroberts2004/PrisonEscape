@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
+    [SerializeField] Canvas encounterDialogueCanvas;
+    DialogueManager dialogueManager; 
+
     List<GameObject> ActiveEncounters;
-    [SerializeField] List<CharacterBase> Level1;
+    [SerializeField] List<CharacterBase> levelOneCharacters;
+    [SerializeField] List<CharacterBase> levelTwoCharacters;
+    [SerializeField] List<CharacterBase> levelThreeCharacters;
 
     public GameObject EncounterPrefab;
     [SerializeField] GameObject player;
@@ -16,45 +21,63 @@ public class EncounterManager : MonoBehaviour
     int level = 1;
     int steps = 0;
     int root = 0;
-    int range = 3;
+    int range = 2;
     public void step() {
-        Debug.Log("step");
         steps++;
+        player.GetComponent<PlayerInfo>().loseO2(2);
     }
     private void Awake()
     {
-     
+        dialogueManager = encounterDialogueCanvas.GetComponent<DialogueManager>();
         movementScript = player.GetComponent<MovementScript>();
     }
 
     void Update() {
         if (steps > root + range) {
             
-            Debug.Log(root);
-            Debug.Log(steps);
-            Debug.Log("Gen Encounter");
-            GenerateEncounter();
+            Debug.Log("Generating Encounter...");
+            //dialogueManager.ShowDialogue("Generating Encounter...", 1);
+            GenerateRandomEncounter();
             root = steps;
-            Debug.Log(root);
-            Debug.Log(steps);
+
         }
     }
-
-    void GenerateEncounter() {
+    void GenerateRandomEncounter() {
 
         GameObject LastestEncounter;
+        EncounterScript.EncounterTypes chosenType;
+        CharacterBase chosenCharacter;
 
         LastestEncounter = Instantiate(EncounterPrefab, new Vector3(movementScript.position.x + 6, -0.88f, 0), Quaternion.identity);
 
-        LastestEncounter.GetComponent<EncounterScript>().Setup(chooseEncounterType(), chooseEncounterCharacter());
-        //ActiveEncounters[0].GetComponent<EncounterScript>().Setup(chooseEncounterType(),chooseEncounterCharacter());
+        chosenType = chooseEncounterType();
 
+        chosenCharacter = chooseEncounterCharacter();
+
+        LastestEncounter.GetComponent<EncounterScript>().Setup(chosenType, chosenCharacter);
+        
     }
-
     CharacterBase chooseEncounterCharacter() {
 
-        return Level1[(int)Random.Range(0, Level1.Count)];
-    
+        int val;
+
+        switch (level) {
+
+            case 1:
+                val = Random.Range(0, levelOneCharacters.Count);
+                return levelOneCharacters[val];
+
+            case 2:
+                val = Random.Range(0, levelTwoCharacters.Count);
+                return levelTwoCharacters[val];
+
+            case 3:
+                val = Random.Range(0, levelThreeCharacters.Count);
+                return levelThreeCharacters[val];
+
+        }
+
+        return null;
     }
     EncounterScript.EncounterTypes chooseEncounterType()
     {
@@ -74,13 +97,9 @@ public class EncounterManager : MonoBehaviour
     }
 
     //Player makes x steps
-
     //Generate Encounter Box
-
     //On collision with Encounter Box
     //  Display options GUI
     //  Do Options
-
-
 
 }
