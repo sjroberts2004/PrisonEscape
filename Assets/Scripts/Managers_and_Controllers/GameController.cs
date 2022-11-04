@@ -24,4 +24,27 @@ public class GameController : MonoBehaviour
     {
 
     }
+    public static void switchCams()
+    {
+        Camera mainCamera;
+        Camera combatCamera;
+
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        combatCamera = GameObject.Find("Combat Camera").GetComponent<Camera>();
+
+        if (mainCamera.enabled == true)
+        {
+
+            mainCamera.enabled = false;
+            combatCamera.enabled = true;
+
+        }
+        if (combatCamera.enabled == true)
+        {
+
+            mainCamera.enabled = true;
+            combatCamera.enabled = false;
+
+        }
+    }
 }
