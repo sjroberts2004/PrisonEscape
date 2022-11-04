@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class cameraswitcher : MonoBehaviour
 {
-  public bool enabled;
-  private GameObject control;
+    Camera mainCamera;
+    Camera combatCamera;
 
-  void Start()
-  {
-  control = GameObject.Find("GameController");
-  }
-
-  void OnTriggerEnter2D(Collider2D other)
-  {
-    if (enabled && other.CompareTag("Player"))
+    private void Awake()
     {
-      GameObject.Find("Diver").GetComponent<MovementScript>().frozen = true;
-      Destroy(gameObject);
-      control.GetComponent<GameController>().cams[0].enabled = false;
-      control.GetComponent<GameController>().cams[1].enabled = true;
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        combatCamera = GameObject.Find("Combat Camera").GetComponent<Camera>();
+    }
+    public void switchCams()
+    {
+        if (mainCamera.enabled == true) {
+
+            mainCamera.enabled = false;
+            combatCamera.enabled = true;
+        
+        }
+        if (combatCamera.enabled == true)
+        {
+
+            mainCamera.enabled = true;
+            combatCamera.enabled = false;
+
+        }
+
 
     }
-  }
+
 }

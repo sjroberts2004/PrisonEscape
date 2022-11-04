@@ -24,19 +24,16 @@ public class CharacterBase : ScriptableObject
     [SerializeField] public int pay_me_price;
     [TextArea] [SerializeField] public string bounty_dialogue;
 
-    public Dictionary<EncounterTypes, bool> usableTypes = new Dictionary<EncounterTypes, bool>();
+    [SerializeField] Dictionary<EncounterTypes, bool> usableTypes = new Dictionary<EncounterTypes, bool>();
 
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
     }
     public int getMaxHP(){ return max_HP; }
-
 
 }

@@ -8,7 +8,7 @@ public class EncounterManager : MonoBehaviour
     [SerializeField] GameObject player;
     MovementScript movementScript;
     
-    int level = 1;
+    public static int level = 1;
     int steps = 0;
     int root = 0;
     int range = 2;
@@ -16,12 +16,21 @@ public class EncounterManager : MonoBehaviour
         steps++;
         player.GetComponent<PlayerInfo>().loseO2(2);
     }
-
     private void Awake()
     {
+        movementScript = player.GetComponent<MovementScript>();
 
+        Debug.Log("Attempting to Load characters");
+
+        Object[] chars = Resources.LoadAll("", typeof(CharacterBase));
+
+        foreach (var cbase in chars) {
+
+            Debug.Log("Attempting to add " + cbase + "To Character Database");
+            Characters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
+            
+        }
     }
-
     void Update() {
         if (steps > root + range) {
             
@@ -34,7 +43,6 @@ public class EncounterManager : MonoBehaviour
     void GenerateRandomEncounter() {
 
         GameObject newEncounter;
-
         EncounterTypes chosenType = chooseEncounterType();
         CharacterBase chosenCharacter;
 
@@ -42,26 +50,29 @@ public class EncounterManager : MonoBehaviour
 
         chosenCharacter = chooseEncounterCharacter(level, chosenType);
 
+        //chosenItem = chooseItem(level, etc);
+
         newEncounter.GetComponent<EncounterScript>().Setup(chosenType, chosenCharacter);
         
+    }
+    private static bool findCharacter(CharacterBase cb)
+    {
+        return cb.level == EncounterManager.level;
     }
     CharacterBase chooseEncounterCharacter(int level, EncounterTypes type) {
 
         CharacterBase result;
 
-        List<CharacterBase> sample = Characters.FindAll(
-               delegate (CharacterBase ch)
-               {
-
-                   return ch.level == level;
-
-               });
+        List<CharacterBase> sample = Characters.FindAll(findCharacter);
 
         int val = (int)Random.Range(0, sample.Count);
 
+        Debug.Log("val: " + val);
+        Debug.Log("count: " + sample.Count);
+
         result = sample[val];
 
-        return null;
+        return result;
 
     }
     EncounterTypes chooseEncounterType()
@@ -77,6 +88,8 @@ public class EncounterManager : MonoBehaviour
         return chosenType;
 
     }
+
+    public int getLevel() { return level; }
 
     //Player makes x steps
     //Generate Encounter Box

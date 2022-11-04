@@ -9,10 +9,7 @@ public enum EncounterTypes
 };
 public class EncounterScript : MonoBehaviour
 {
-
-    DialogueManager dialogueManager;
     EncounterManager encounterManager;
-   
     EncounterTypes type;
     Sprite fieldIcon;
     string encounterDialog;
@@ -21,7 +18,6 @@ public class EncounterScript : MonoBehaviour
 
     void Start()
     {
-        dialogueManager = FindObjectOfType<DialogueManager>();
         encounterManager = FindObjectOfType<EncounterManager>();
 
     }
@@ -33,45 +29,34 @@ public class EncounterScript : MonoBehaviour
     //define Encounter
     public void Setup(EncounterTypes type, CharacterBase character) {
 
+        if (!character) { Debug.LogError("No valid character given"); }
+
         this.type = type;
 
         _base = character;
 
-        if (character.icon)
+        if (_base.icon != null)
         {
-
             this.GetComponent<SpriteRenderer>().sprite = character.icon;
-
         }
-        else {
+        else { Debug.LogWarning("No sprite found"); }
 
-            Debug.LogWarning("No sprite found");
-        
+        switch (type) {
+
+            case EncounterTypes.PAY_ME:
+                price = character.pay_me_price;
+                break;
+
+            case EncounterTypes.BOUNTY:
+                encounterDialog = character.bounty_dialogue;
+                break;
         }
-
-        
-
-        if (type == EncounterTypes.PAY_ME) {
-
-            price = character.pay_me_price;
-        
-        }
-
-        if (type == EncounterTypes.BOUNTY)
-        {
-            encounterDialog = character.bounty_dialogue;
-
-        }
-
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Diver") { 
            Debug.Log("OnCollisionEnter2D");
-            dialogueManager.ShowDialogue(_base.character_name+": "+_base.description,2);
         }
-      
     }
 
 }
