@@ -12,7 +12,7 @@ public class CharacterBase : ScriptableObject
     [TextArea]
     [SerializeField] public string description;
 
-    [SerializeField] int level;
+    [SerializeField] public int level;
     [SerializeField] int max_HP;
     [SerializeField] int base_attack;
     [SerializeField] int defense;
@@ -36,19 +36,5 @@ public class CharacterBase : ScriptableObject
     }
     public int getMaxHP(){ return max_HP; }
 
-    public bool isValidEncounterType(EncounterScript.EncounterTypes type) { 
-    
-        switch (type) { 
-        
-            case EncounterScript.EncounterTypes.PAY_ME:
-                return pay_me_enabled;
 
-            case EncounterScript.EncounterTypes.BOUNTY:
-                return bounty_enabled;
-        
-        }
-
-        return false;
-    
-    }
 }

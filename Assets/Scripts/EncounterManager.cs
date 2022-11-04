@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EncounterManager : MonoBehaviour
 {
     [SerializeField] Canvas encounterDialogueCanvas;
@@ -34,7 +33,6 @@ public class EncounterManager : MonoBehaviour
         if (steps > root + range) {
             
             Debug.Log("Generating Encounter...");
-            //dialogueManager.ShowDialogue("Generating Encounter...", 1);
             GenerateRandomEncounter();
             root = steps;
 
@@ -50,36 +48,34 @@ public class EncounterManager : MonoBehaviour
 
         chosenType = chooseEncounterType();
 
-        chosenCharacter = chooseEncounterCharacter();
-
         LastestEncounter.GetComponent<EncounterScript>().Setup(chosenType, chosenCharacter);
         
     }
     CharacterBase chooseEncounterCharacter(int level) {
 
-        int val;
+        CharacterBase result;
 
-        switch (level) {
+        List<CharacterBase> sample = Characters.FindAll(
+               delegate (CharacterBase ch)
+               {
 
-            case 1:
-                val = Random.Range(0, levelOneCharacters.Count);
-                return levelOneCharacters[val];
+                   return ch.level == level;
 
-            case 2:
-                val = Random.Range(0, levelTwoCharacters.Count);
-                return levelTwoCharacters[val];
+               });
 
-            case 3:
-                val = Random.Range(0, levelThreeCharacters.Count);
-                return levelThreeCharacters[val];
+        int val = (int)Random.Range(0, sample.Count);
 
-        }
+        result = sample[val];
 
         return null;
+
     }
     EncounterScript.EncounterTypes chooseEncounterType()
     {
-       int val = (int)Random.Range(0, 1);
+
+        int numEncounterTypes = System.Enum.GetNames(typeof(EncounterScript.EncounterTypes)).Length;
+
+        int val = (int)Random.Range(0, numEncounterTypes);
 
         switch (val) {
 
