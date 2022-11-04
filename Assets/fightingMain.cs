@@ -56,6 +56,7 @@ public class fightingMain : MonoBehaviour
     backbutton.SetActive(false);
     cameras[1].enabled = false;
     cameras[0].enabled = true;
+    GameObject.Find("Diver").GetComponent<MovementScript>().frozen = false;
   }
   public void assignpos(List<GameObject> lineup, bool enemy){
     if (lineup.Count >=1){

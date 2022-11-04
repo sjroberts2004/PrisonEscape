@@ -7,9 +7,10 @@ public class MovementScript : MonoBehaviour
     Rigidbody2D rb;
     public Vector3 position;
     public float movementSpeed;
+    public bool frozen;
     bool facingRight = true;
 
-    private float root; // keeps track of the players position 
+    private float root; // keeps track of the players position
     private float range = 5; // range the player can moove from the root until the player makes a 'step'
 
     DialogueManager dialogueManager;
@@ -27,12 +28,12 @@ public class MovementScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         root = position.x;
- 
+
     }
 
     private void FixedUpdate()
     {
-
+      if (!frozen){
         if (Input.GetKey("right"))
         {
             if (!facingRight) { Flip(); }
@@ -45,8 +46,9 @@ public class MovementScript : MonoBehaviour
             if (facingRight) { Flip(); }
             position.x = position.x + (movementSpeed * -1);
         }
-   
+
         transform.position = position;
+      }
 
     }
     // Update is called once per frame
@@ -69,7 +71,7 @@ public class MovementScript : MonoBehaviour
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
 
-        facingRight = !facingRight; 
-    
+        facingRight = !facingRight;
+
     }
   }
