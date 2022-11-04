@@ -8,9 +8,7 @@ public class EncounterManager : MonoBehaviour
     DialogueManager dialogueManager; 
 
     List<GameObject> ActiveEncounters;
-    [SerializeField] List<CharacterBase> levelOneCharacters;
-    [SerializeField] List<CharacterBase> levelTwoCharacters;
-    [SerializeField] List<CharacterBase> levelThreeCharacters;
+    [SerializeField] List<CharacterBase> Characters;
 
     public GameObject EncounterPrefab;
     [SerializeField] GameObject player;
@@ -57,7 +55,7 @@ public class EncounterManager : MonoBehaviour
         LastestEncounter.GetComponent<EncounterScript>().Setup(chosenType, chosenCharacter);
         
     }
-    CharacterBase chooseEncounterCharacter() {
+    CharacterBase chooseEncounterCharacter(int level) {
 
         int val;
 
