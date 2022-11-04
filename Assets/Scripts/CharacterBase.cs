@@ -21,10 +21,7 @@ public class CharacterBase : ScriptableObject
     [SerializeField] public Sprite icon;
     [SerializeField] public Sprite character_sprite;
 
-    [SerializeField] public bool pay_me_enabled = true;
     [SerializeField] public int pay_me_price;
-
-    [SerializeField] public bool bounty_enabled = true;
     [TextArea] [SerializeField] public string bounty_dialogue;
 
     void Start()
