@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2807224854485691505}
   - component: {fileID: -3183344092237465372}
   - component: {fileID: -9176984162458388028}
+  - component: {fileID: 7987206350776879827}
   m_Layer: 0
   m_Name: Encounter
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1096638825
-  m_SortingLayer: 2
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -146,3 +147,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7987206350776879827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7014373453947796135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3061fdfb28c508147a429e979704dce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabled: 1
+  self: {fileID: 0}
