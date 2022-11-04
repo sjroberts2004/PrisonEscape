@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EncounterTypes
+{
+    PAY_ME,
+    BOUNTY
+};
 public class EncounterScript : MonoBehaviour
 {
 
     DialogueManager dialogueManager;
     EncounterManager encounterManager;
-    public enum EncounterTypes { 
-    PAY_ME,
-    BOUNTY
-    };
-
+   
     EncounterTypes type;
     Sprite fieldIcon;
     string encounterDialog;
