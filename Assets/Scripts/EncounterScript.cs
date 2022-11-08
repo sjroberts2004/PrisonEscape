@@ -54,8 +54,9 @@ public class EncounterScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Diver") { 
+        if (collision.gameObject.name == "Diver") {
            Debug.Log("OnCollisionEnter2D");
+           GameObject.Find("GameController").SendMessage("switchCams");
         }
     }
 
