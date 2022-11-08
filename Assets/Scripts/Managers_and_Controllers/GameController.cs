@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     {
 
     }
-    public static void switchCams()
+    public void switchCams()
     {
         Camera mainCamera;
         Camera combatCamera;
@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
             combatCamera.enabled = true;
 
         }
-        if (combatCamera.enabled == true)
+        else if (combatCamera.enabled == true)
         {
 
             mainCamera.enabled = true;
