@@ -312,8 +312,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876554107}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+      - m_Target: {fileID: 1402829830}
+        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
         m_MethodName: SendMessage
         m_Mode: 5
         m_Arguments:
@@ -584,8 +584,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876554107}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+      - m_Target: {fileID: 1402829830}
+        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
         m_MethodName: SendMessage
         m_Mode: 5
         m_Arguments:
@@ -2313,8 +2313,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876554107}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+      - m_Target: {fileID: 1402829830}
+        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
         m_MethodName: SendMessage
         m_Mode: 5
         m_Arguments:
@@ -2447,8 +2447,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 876554107}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+      - m_Target: {fileID: 1402829830}
+        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
         m_MethodName: SendMessage
         m_Mode: 5
         m_Arguments:
@@ -2753,6 +2753,7 @@ GameObject:
   - component: {fileID: 1402829827}
   - component: {fileID: 1402829828}
   - component: {fileID: 1402829829}
+  - component: {fileID: 1402829830}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2787,7 +2788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c84199cf96a444cafdf1a877525267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cams: []
 --- !u!114 &1402829828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2813,6 +2813,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EncounterPrefab: {fileID: 7014373453947796135, guid: 6a0c5bf5e58bcc143822f79daee408e8, type: 3}
+--- !u!114 &1402829830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402829825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947c01aa0c916bf4d806e14842da23dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterPrefab: {fileID: 0}
+  popuplist:
+  - {fileID: 1692625981}
+  - {fileID: 482715764}
+  enemylist: []
+  playerlist: []
+  loadingsource: {fileID: 87137254}
+  countdown: 0
+  cameras:
+  - {fileID: 519420031}
+  - {fileID: 1280559550}
+  backbutton: {fileID: 1102733960}
 --- !u!1 &1455406029
 GameObject:
   m_ObjectHideFlags: 0
