@@ -17,7 +17,7 @@ public class fightingMain : MonoBehaviour
 
   // note: in fight function player goes first. If both player and enemy would deal lethal damage, front enemy is killed and enemy behind it attacks instead.
   // also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
-  public void fight(List<CharacterBase> enemies){
+  public void fight(){
     Debug.Log("fight command received");
 
         if (playerlist.Count >=1 && enemylist.Count>=1){

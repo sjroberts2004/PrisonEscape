@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
     DialogueManager DM;
     CounterController CC;
     PlayerInfo playerInfo;
-    public Camera[] cams;
     private void Awake()
     {
         Physics2D.gravity.Set(0, 0);
