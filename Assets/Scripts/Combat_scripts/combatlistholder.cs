@@ -7,6 +7,7 @@ public class combatlistholder : MonoBehaviour
   public List<GameObject> allenemies;
   public List<GameObject> enemylist;
   public List<GameObject> playerlist;
+  public List<CharacterBase> testenemylist;
   private int randomenemyno;
   private int randomgen;
 

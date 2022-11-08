@@ -57,6 +57,7 @@ public class EncounterScript : MonoBehaviour
         if (collision.gameObject.name == "Diver") {
            Debug.Log("OnCollisionEnter2D");
            GameObject.Find("GameController").SendMessage("switchCams");
+          GameObject.Find("combatmanager").SendMessage("SpawnEnemies");
         }
     }
 
