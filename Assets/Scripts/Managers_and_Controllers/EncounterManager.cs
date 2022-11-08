@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EncounterManager : MonoBehaviour
 {
-    [SerializeField] List<CharacterBase> Characters;
+    List<CharacterBase> Characters;
     public GameObject EncounterPrefab;
-    [SerializeField] GameObject player;
+    GameObject player;
     MovementScript movementScript;
     
     public static int level = 1;
@@ -18,6 +18,7 @@ public class EncounterManager : MonoBehaviour
     }
     private void Awake()
     {
+        player = GameObject.Find("Player");
         movementScript = player.GetComponent<MovementScript>();
 
         Debug.Log("Attempting to Load characters");
