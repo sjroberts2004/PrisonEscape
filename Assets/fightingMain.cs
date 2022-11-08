@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class fightingMain : MonoBehaviour
 {
+  public GameObject CharacterPrefab;
   public List <GameObject> popuplist;
-  public List<GameObject> enemylist;
-  public List<GameObject> playerlist;
+  public List <GameObject> enemylist;
+  public List <GameObject> playerlist;
   public GameObject loadingsource;
   public int countdown;
   public List <Camera> cameras;
@@ -16,9 +17,10 @@ public class fightingMain : MonoBehaviour
 
   // note: in fight function player goes first. If both player and enemy would deal lethal damage, front enemy is killed and enemy behind it attacks instead.
   // also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
-  public void fight(){
+  public void fight(List<CharacterBase> enemies){
     Debug.Log("fight command received");
-    if (playerlist.Count >=1 && enemylist.Count>=1){
+
+        if (playerlist.Count >=1 && enemylist.Count>=1){
      enemylead.GetComponent<statblockMain>().HP -= playerlead.GetComponent<statblockMain>().ATK;
      enemylead.SendMessage("adjusthealthbar");
      countdown--;
@@ -92,6 +94,21 @@ public void load(){
   assignpos(enemylist, true);
 
 }
+    public void SpawnEnemies(List<CharacterBase> enemies) {
+
+        foreach (CharacterBase _base in enemies)
+        {
+
+            GameObject newCharacter = Instantiate(CharacterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+            newCharacter.GetComponent<Character>().Setup(_base);
+
+            enemylist.Add(newCharacter);
+
+        }
+
+
+    }
     // Start is called before the first frame update
     void Start()
     {

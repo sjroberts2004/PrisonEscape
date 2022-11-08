@@ -56,6 +56,9 @@ public class EncounterScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Diver") { 
            Debug.Log("OnCollisionEnter2D");
+
+           
+
         }
     }
 

@@ -13,10 +13,10 @@ public class CharacterBase : ScriptableObject
     [SerializeField] public string description;
 
     [SerializeField] public int level;
-    [SerializeField] int max_HP;
-    [SerializeField] int base_attack;
-    [SerializeField] int defense;
-    [SerializeField] int accuracy;
+    [SerializeField] public int max_HP;
+    [SerializeField] public int base_attack;
+    [SerializeField] public int defense;
+    [SerializeField] public int accuracy;
 
     [SerializeField] public Sprite icon;
     [SerializeField] public Sprite character_sprite;
@@ -35,5 +35,7 @@ public class CharacterBase : ScriptableObject
         
     }
     public int getMaxHP(){ return max_HP; }
+    
+
 
 }
