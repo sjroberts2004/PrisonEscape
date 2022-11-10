@@ -6,9 +6,9 @@ public class fightingMain : MonoBehaviour
 {
   public GameObject CharacterPrefab;
   public List <GameObject> popuplist;
+  public List <CharacterBase> testenemyinput;
   public List <GameObject> enemylist;
   public List <GameObject> playerlist;
-  public GameObject loadingsource;
   public int countdown;
   public List <Camera> cameras;
   public GameObject backbutton;
@@ -21,7 +21,7 @@ public class fightingMain : MonoBehaviour
     Debug.Log("fight command received");
 
         if (playerlist.Count >=1 && enemylist.Count>=1){
-     enemylead.GetComponent<statblockMain>().HP -= playerlead.GetComponent<statblockMain>().ATK;
+     enemylead.GetComponent<statblockMain>().HP -= playerlead.GetComponent<statblockMain>().ATK-enemylead.GetComponent<statblockMain>().DEF;
      enemylead.SendMessage("adjusthealthbar");
      countdown--;
      if (enemylead.GetComponent<statblockMain>().HP<=0){
@@ -29,7 +29,7 @@ public class fightingMain : MonoBehaviour
        Destroy(enemylead);
        assignpos(enemylist,true);
      }
-     playerlead.GetComponent<statblockMain>().HP -= enemylead.GetComponent<statblockMain>().ATK;
+     playerlead.GetComponent<statblockMain>().HP -= enemylead.GetComponent<statblockMain>().ATK-playerlead.GetComponent<statblockMain>().DEF;
      playerlead.SendMessage("adjusthealthbar");
      if (playerlead.GetComponent<statblockMain>().HP<=0){
        playerlist.Remove(playerlead);
@@ -88,31 +88,25 @@ public class fightingMain : MonoBehaviour
   }
 }
 public void load(){
-  playerlist = loadingsource.GetComponent<combatlistholder>().playerlist;
-  enemylist = loadingsource.GetComponent<combatlistholder>().enemylist;
+  foreach (CharacterBase _base in testenemyinput)
+  {
+
+    GameObject newCharacter = Instantiate(CharacterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+    newCharacter.GetComponent<Character>().Setup(_base);
+
+    enemylist.Add(newCharacter);
+  }
   assignpos(playerlist, false);
   assignpos(enemylist, true);
 
 }
-    public void SpawnEnemies(List<CharacterBase> enemies) {
 
-        foreach (CharacterBase _base in enemies)
-        {
-
-            GameObject newCharacter = Instantiate(CharacterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-
-            newCharacter.GetComponent<Character>().Setup(_base);
-
-            enemylist.Add(newCharacter);
-
-        }
-
-
-    }
     // Start is called before the first frame update
     void Start()
     {
-
+      //cameras[0].enabled = false;
+      //cameras[1].enabled = true;
     }
     void OnGUI()
     {

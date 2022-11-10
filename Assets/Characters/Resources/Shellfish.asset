@@ -16,10 +16,10 @@ MonoBehaviour:
   character_name: Shellfish Chef
   description: Placeholder text
   level: 1
-  max_HP: 5
-  base_attack: 2
+  maxHP: 10
+  attack: 1
   defense: 3
-  accuracy: 95
+  accuracy: 100
   icon: {fileID: 21300000, guid: 7b1e9b22cefafd74187c2f98771c293e, type: 3}
   character_sprite: {fileID: 21300000, guid: 7b1e9b22cefafd74187c2f98771c293e, type: 3}
   pay_me_price: 0

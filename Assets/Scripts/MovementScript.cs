@@ -46,7 +46,6 @@ public class MovementScript : MonoBehaviour
 
         transform.position = position;
       }
-
     }
     // Update is called once per frame
     void Update()

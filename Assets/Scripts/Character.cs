@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-   
+
     CharacterBase _base;
     bool player;
-    int currHP;
     int maxHP;
-    int baseAttack;
-    int baseDefence;
+    int attack;
+    int defense;
     int accuracy;
-    int attackMod = 0;
-    int defenseMod = 0;
-    int accuracyMod = 0;
+    //int attackMod = 0;
+    //int defenseMod = 0;
+  //  int accuracyMod = 0;
+    Sprite character_sprite;
+
 
     Sprite Character_Sprite;
     public void Setup(CharacterBase cBase) {
 
         _base = cBase;
-        currHP = _base.getMaxHP();
-        maxHP = _base.getMaxHP();
-        baseAttack = _base.base_attack;
-        baseDefence = _base.defense;
-        accuracy = _base.accuracy;
-
-        Character_Sprite = cBase.character_sprite;
+        this.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
+        this.GetComponent<statblockMain>().HP = _base.maxHP;
+        this.GetComponent<statblockMain>().maxHP = _base.maxHP;
+        this.GetComponent<statblockMain>().ATK = _base.attack;
+        this.GetComponent<statblockMain>().DEF = _base.defense;
+        this.GetComponent<statblockMain>().ACC = _base.accuracy;
+        this.GetComponent<statblockMain>().enemy = true;
 
     }
 
