@@ -19,9 +19,9 @@ MonoBehaviour:
     they get bored and commit coercion.
   level: 1
   maxHP: 50
-  attack: 3
+  attack: 20
   defense: 0
-  accuracy: 100
+  accuracy: 50
   icon: {fileID: 21300000, guid: 866528a01558e2e4b898b7953271070c, type: 3}
   character_sprite: {fileID: 21300000, guid: 866528a01558e2e4b898b7953271070c, type: 3}
   pay_me_price: 0
