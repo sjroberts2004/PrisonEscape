@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
-  m_Name: Hermie
+  m_Name: Orville the Octopus
   m_EditorClassIdentifier: 
   active: 1
-  character_name: Hermie the Crab
-  description: PlaceHolder text
+  character_name: Orville the Octopus
+  description: 
   level: 1
-  maxHP: 75
-  attack: 2
-  defense: 6
+  maxHP: 50
+  attack: 15
+  defense: 0
   accuracy: 95
-  icon: {fileID: 21300000, guid: 96ef3ea7a53c32c4abc67148fafe49ea, type: 3}
-  character_sprite: {fileID: 21300000, guid: 96ef3ea7a53c32c4abc67148fafe49ea, type: 3}
+  icon: {fileID: 0}
+  character_sprite: {fileID: 21300000, guid: af540d6cf69a486479f9d5debadfd211, type: 3}
   pay_me_price: 0
   bounty_dialogue: 
