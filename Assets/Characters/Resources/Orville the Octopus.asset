@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   character_name: Orville the Octopus
-  description: 
+  description: "Special: \r\nI\u2019m blind help :O\r\nDeploys inkcloud when glasses
+    are knocked off. Allows one turn of immunity\r\nPoison:\r\nEach attack has a
+    chance to inflict poison effect\r\n\r\n\r\nA rather shy character, Pus may look
+    like a chill and down-to-earth individual. However, he wears transitions as he
+    isn\u2019t used to the bright light and is kind of scared of everything.\r\n"
   level: 1
   maxHP: 50
   attack: 15
