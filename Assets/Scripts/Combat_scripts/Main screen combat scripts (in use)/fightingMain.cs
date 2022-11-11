@@ -10,27 +10,38 @@ public class fightingMain : MonoBehaviour
   public List <GameObject> enemylist;
   public List <GameObject> playerlist;
   public int countdown;
+  public int bar;
   public List <Camera> cameras;
   public GameObject backbutton;
   private GameObject playerlead;
   private GameObject enemylead;
-
+  private int damage;
   // note: in fight function player goes first. If both player and enemy would deal lethal damage, front enemy is killed and enemy behind it attacks instead.
   // also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
   public void fight(){
     Debug.Log("fight command received");
+    bar = Random.Range(1,101);
 
-        if (playerlist.Count >=1 && enemylist.Count>=1){
-     enemylead.GetComponent<statblockMain>().HP -= playerlead.GetComponent<statblockMain>().ATK-enemylead.GetComponent<statblockMain>().DEF;
+    if (playerlist.Count >=1 && enemylist.Count>=1){
+
+      if (bar >= 100- enemylead.GetComponent<statblockMain>().ACC){
+        damage = playerlead.GetComponent<statblockMain>().ATK-enemylead.GetComponent<statblockMain>().DEF;
+        if (damage<1){damage = 1;}
+     enemylead.GetComponent<statblockMain>().HP -= damage;
      enemylead.SendMessage("adjusthealthbar");
+      }
      countdown--;
      if (enemylead.GetComponent<statblockMain>().HP<=0){
        enemylist.Remove(enemylead);
        Destroy(enemylead);
        assignpos(enemylist,true);
      }
-     playerlead.GetComponent<statblockMain>().HP -= enemylead.GetComponent<statblockMain>().ATK-playerlead.GetComponent<statblockMain>().DEF;
+     if (bar >= 100-enemylead.GetComponent<statblockMain>().ACC){
+       damage =  enemylead.GetComponent<statblockMain>().ATK-playerlead.GetComponent<statblockMain>().DEF;
+       if (damage<1){damage = 1;}
+     playerlead.GetComponent<statblockMain>().HP -= damage;
      playerlead.SendMessage("adjusthealthbar");
+      }
      if (playerlead.GetComponent<statblockMain>().HP<=0){
        playerlist.Remove(playerlead);
        Destroy(playerlead);
@@ -58,7 +69,7 @@ public class fightingMain : MonoBehaviour
     backbutton.SetActive(false);
     cameras[1].enabled = false;
     cameras[0].enabled = true;
-    GameObject.Find("Diver").GetComponent<MovementScript>().frozen = false;
+    GameObject.Find("Player").GetComponent<MovementScript>().frozen = false;
   }
   public void assignpos(List<GameObject> lineup, bool enemy){
     if (lineup.Count >=1){
@@ -105,8 +116,8 @@ public void load(){
     // Start is called before the first frame update
     void Start()
     {
-      //cameras[0].enabled = false;
-      //cameras[1].enabled = true;
+      cameras[0].enabled = false;
+      cameras[1].enabled = true;
     }
     void OnGUI()
     {

@@ -156,7 +156,7 @@ MonoBehaviour:
   HP: 100
   maxHP: 100
   ATK: 5
-  DEF: 1
+  DEF: 999
   ACC: 100
   enemy: 0
   pos: 0
@@ -2582,6 +2582,7 @@ MonoBehaviour:
   - {fileID: 1692625981}
   - {fileID: 482715764}
   testenemyinput:
+  - {fileID: 11400000, guid: 5ff8b24ae10b6cb4e8e88cf355d8e4a6, type: 2}
   - {fileID: 11400000, guid: 70b4aed530f83134bbd04210a625175c, type: 2}
   - {fileID: 11400000, guid: 06c334fd2182d4a478d7b91965453dcd, type: 2}
   - {fileID: 11400000, guid: e17a9c9b3a14e0d4abad5c83d3948039, type: 2}
@@ -2589,6 +2590,7 @@ MonoBehaviour:
   playerlist:
   - {fileID: 2977297}
   countdown: 0
+  bar: 0
   cameras:
   - {fileID: 519420031}
   - {fileID: 1280559550}
