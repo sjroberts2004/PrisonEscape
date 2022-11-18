@@ -13,7 +13,7 @@ public class statblockMain : MonoBehaviour
     public bool enemy;
     public int pos;
     public bool healthbarenabled;
-    private int yline = 110;
+    private int yline = 80;
     private int x;
     private Vector3 position;
     private Texture2D texture;
