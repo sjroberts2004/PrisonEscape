@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class fightingMain : MonoBehaviour
 {
+    /*
   public GameObject CharacterPrefab;
   public List <GameObject> popuplist;
   public List <CharacterBase> testenemyinput;
@@ -131,4 +132,5 @@ public void load(){
     {
 
     }
+    */
 }

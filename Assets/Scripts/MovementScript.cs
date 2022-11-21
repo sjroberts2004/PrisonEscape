@@ -18,7 +18,7 @@ public class MovementScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake() {
 
-        encounterManager = this.GetComponent<EncounterManager>();
+        encounterManager = GameObject.Find("GameController").GetComponent<EncounterManager>();
 
     }
     void Start()

@@ -15,11 +15,14 @@ public class EncounterScript : MonoBehaviour
     string encounterDialog;
     int price;
     CharacterBase _base;
+    GameObject CharacterPrefab;
+    GameController GC;
 
     void Start()
     {
         encounterManager = FindObjectOfType<EncounterManager>();
-
+        CharacterPrefab = encounterManager.CharacterPrefab;
+        GC = GameObject.Find("GameController").GetComponent<GameController>();
     }
     void Update()
     {
@@ -35,9 +38,9 @@ public class EncounterScript : MonoBehaviour
 
         _base = character;
 
-        if (_base.icon != null)
+        if (_base.character_sprite != null)
         {
-            this.GetComponent<SpriteRenderer>().sprite = character.icon;
+            this.GetComponent<SpriteRenderer>().sprite = character.character_sprite;
         }
         else { Debug.LogWarning("No sprite found"); }
 
@@ -54,9 +57,35 @@ public class EncounterScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Diver") {
+        if (collision.gameObject.name == "Player") {
            Debug.Log("OnCollisionEnter2D");
-           GameObject.Find("GameController").SendMessage("switchCams");
+
+            switch (type)
+            {
+                case EncounterTypes.PAY_ME:
+                    //GC.switchCams();
+                    Debug.Log("Pay me encounter");
+                    break;
+
+                case EncounterTypes.BOUNTY:
+                    //just for testing
+                    //creates a new character based on the selected Character
+                    Character newChar;
+                    newChar = new Character(_base);
+
+                    //Loads that Character into a new team
+                    Team enemy;
+                    enemy = new Team(newChar);
+
+                    //find the players team
+                    Team playersTeam = GC.playerTeam;
+
+                    //and start combat
+                    GC.switchCams();
+                    GC.CM.startCombat(playersTeam, enemy);
+
+                    break;
+            }
 
 
         }

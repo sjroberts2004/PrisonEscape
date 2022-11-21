@@ -10,21 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
-  m_Name: Stingray
+  m_Name: Diver
   m_EditorClassIdentifier: 
   active: 1
-  character_name: 
-  description: 'Thankfully, he isn''t Steve Irwin''s Killer.
-
-
-    Poison: inflicts
-    poison when attacking'
+  character_name: Diver
+  description: He be divinnng
   level: 1
-  maxHP: 40
-  attack: 5
-  defense: 2
+  maxHP: 10
+  attack: 3
+  defense: 5
   accuracy: 95
-  icon: {fileID: 0}
-  character_sprite: {fileID: 21300000, guid: 4c4126794cea95f4ca68459ae1a082c3, type: 3}
+  icon: {fileID: 21300000, guid: 6be37d710a46d114ba7aa67cd4d61328, type: 3}
+  character_sprite: {fileID: 21300000, guid: 6be37d710a46d114ba7aa67cd4d61328, type: 3}
   pay_me_price: 0
   bounty_dialogue: 

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EncounterManager : MonoBehaviour
 {
-    List<CharacterBase> Characters;
+    private List<CharacterBase> Characters;
+    private List<CharacterBase> repeatCharacters;
     public GameObject EncounterPrefab;
+    public GameObject CharacterPrefab;
     GameObject player;
     MovementScript movementScript;
     
@@ -13,29 +15,45 @@ public class EncounterManager : MonoBehaviour
     int root = 0;
     int range = 2;
     public void step() {
+
         steps++;
         player.GetComponent<PlayerInfo>().loseO2(2);
+
     }
     private void Awake()
     {
+        Characters = new List<CharacterBase>();
+        repeatCharacters = new List<CharacterBase>();
+
         player = GameObject.Find("Player");
         movementScript = player.GetComponent<MovementScript>();
 
         Debug.Log("Attempting to Load characters");
-
-        Object[] chars = Resources.LoadAll("", typeof(CharacterBase));
+        Object[] chars = Resources.LoadAll("Unique", typeof(CharacterBase));
 
         foreach (var cbase in chars) {
+            if (cbase != null)
+            {
+                Debug.Log("Attempting to add " + cbase + "To Character Database");
+                Characters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
+            }
+        }
 
-            Debug.Log("Attempting to add " + cbase + "To Character Database");
-            Characters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
-            
+        Object[] repeat_chars = Resources.LoadAll("Repeating", typeof(CharacterBase));
+
+        foreach (var cbase in repeat_chars)
+        {
+            if (cbase != null)
+            {
+                Debug.Log("Attempting to add " + cbase + "To repeating Character Database");
+                Characters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
+            }
         }
     }
     void Update() {
         if (steps > root + range) {
             
-            Debug.Log("Generating Encounter...");
+            //Debug.Log("Generating Encounter...");
             GenerateRandomEncounter();
             root = steps;
 
@@ -49,7 +67,7 @@ public class EncounterManager : MonoBehaviour
 
         newEncounter = Instantiate(EncounterPrefab, new Vector3(movementScript.position.x + 6, -0.88f, 0), Quaternion.identity);
 
-        chosenCharacter = chooseEncounterCharacter(level, chosenType);
+        chosenCharacter = chooseEncounterCharacter(level, chosenType, true);
 
         //chosenItem = chooseItem(level, etc);
 
@@ -60,16 +78,22 @@ public class EncounterManager : MonoBehaviour
     {
         return cb.level == EncounterManager.level;
     }
-    CharacterBase chooseEncounterCharacter(int level, EncounterTypes type) {
+    CharacterBase chooseEncounterCharacter(int level, EncounterTypes type, bool unique) {
 
         CharacterBase result;
 
-        List<CharacterBase> sample = Characters.FindAll(findCharacter);
+        List<CharacterBase> sample;
+
+        if (unique)
+        {
+            sample = Characters.FindAll(findCharacter);
+        }
+        else 
+        {
+            sample = repeatCharacters.FindAll(findCharacter);
+        }
 
         int val = (int)Random.Range(0, sample.Count);
-
-        Debug.Log("val: " + val);
-        Debug.Log("count: " + sample.Count);
 
         result = sample[val];
 
@@ -97,5 +121,16 @@ public class EncounterManager : MonoBehaviour
     //On collision with Encounter Box
     //  Display options GUI
     //  Do Options
+
+}
+
+public class Encounter
+{ 
+
+
+
+
+
+
 
 }

@@ -10,7 +10,7 @@ public class CounterController : MonoBehaviour
     void Awake()
     {
         counterCanvas = GameObject.Find("CounterCanvas");
-        playerInfo = GameObject.Find("Diver").GetComponent<PlayerInfo>();
+        playerInfo = GameObject.Find("Player").GetComponent<PlayerInfo>();
     }
 
     public void UpdateFFCounter() {

@@ -10,17 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
-  m_Name: Snail
+  m_Name: Stingray
   m_EditorClassIdentifier: 
   active: 1
-  character_name: 
-  description: A slow snail
+  character_name: Stingray
+  description: 'Thankfully, he isn''t Steve Irwin''s Killer.
+
+
+    Poison: inflicts
+    poison when attacking'
   level: 1
-  maxHP: 20
+  maxHP: 40
   attack: 5
-  defense: 5
+  defense: 2
   accuracy: 95
-  icon: {fileID: 21300000, guid: 2b0a5be8fce37844cb3d458d1d294975, type: 3}
-  character_sprite: {fileID: 0}
+  icon: {fileID: 0}
+  character_sprite: {fileID: 21300000, guid: 4c4126794cea95f4ca68459ae1a082c3, type: 3}
   pay_me_price: 0
   bounty_dialogue: 

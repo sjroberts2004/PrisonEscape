@@ -25,8 +25,6 @@ public class CharacterBase : ScriptableObject
     [SerializeField] public int pay_me_price;
     [TextArea] [SerializeField] public string bounty_dialogue;
 
-    [SerializeField] Dictionary<EncounterTypes, bool> usableTypes = new Dictionary<EncounterTypes, bool>();
-
     void Start()
     {
 
