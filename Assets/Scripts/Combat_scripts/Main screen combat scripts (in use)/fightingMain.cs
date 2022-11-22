@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class fightingMain : MonoBehaviour
 {
@@ -13,12 +14,13 @@ public class fightingMain : MonoBehaviour
   public int bar;
   public List <Camera> cameras;
   public GameObject backbutton;
+  public GameObject fightbutton;
   private GameObject playerlead;
   private GameObject enemylead;
   private int damage;
   // note: in fight function player goes first. If both player and enemy would deal lethal damage, front enemy is killed and enemy behind it attacks instead.
-  // also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
-  public void fight(){
+// also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
+  IEnumerator fight(){
     Debug.Log("fight command received");
     bar = Random.Range(1,101);
 
@@ -29,8 +31,11 @@ public class fightingMain : MonoBehaviour
         if (damage<1){damage = 1;}
      enemylead.GetComponent<statblockMain>().HP -= damage;
      enemylead.SendMessage("adjusthealthbar");
+     enemylead.SendMessage("hit");
       }
      countdown--;
+     fightbutton.GetComponent<Button>().interactable =false;
+     yield return new WaitForSeconds(1f);
      if (enemylead.GetComponent<statblockMain>().HP<=0){
        enemylist.Remove(enemylead);
        Destroy(enemylead);
@@ -41,12 +46,14 @@ public class fightingMain : MonoBehaviour
        if (damage<1){damage = 1;}
      playerlead.GetComponent<statblockMain>().HP -= damage;
      playerlead.SendMessage("adjusthealthbar");
+     playerlead.SendMessage("hit");
       }
      if (playerlead.GetComponent<statblockMain>().HP<=0){
        playerlist.Remove(playerlead);
        Destroy(playerlead);
        assignpos(playerlist, false);
      }
+     fightbutton.GetComponent<Button>().interactable =true;
    }
    else{
      Debug.Log("At least one side is empty, fighting was skipped.");
