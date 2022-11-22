@@ -123,8 +123,8 @@ public void load(){
     // Start is called before the first frame update
     void Start()
     {
-      //cameras[0].enabled = false;
-      //cameras[1].enabled = true;
+      cameras[0].enabled = false;
+      cameras[1].enabled = true;
     }
     void OnGUI()
     {
