@@ -17,17 +17,8 @@ public class statblockMain : MonoBehaviour
     private int x;
     private Vector3 position;
     private Texture2D texture;
-    private SpriteRenderer m_SpriteRenderer;
 
-      IEnumerator damagedanim(){
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
-        m_SpriteRenderer.color = Color.gray;
-        yield return new WaitForSeconds(0.25f);
-        m_SpriteRenderer.color = Color.white;
-      }
-      public void hit(){
-        StartCoroutine(damagedanim());
-      }
+      // Start is called before the first frame update
       public void adjusthealthbar(){
         Debug.Log("adjust received");
         Debug.Log(HP);
