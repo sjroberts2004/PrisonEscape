@@ -33,6 +33,7 @@ public class statblockMain : MonoBehaviour
         Debug.Log(HP);
         float percentHP = (float)HP/(float)maxHP;
         int ratio = (int)Mathf.Round(percentHP*50);
+        if (HP<=0){ratio=0;}
         Debug.Log(ratio);
         texture.Reinitialize(ratio, 3);
         for (int y = 0; y < texture.height; y++)
@@ -72,11 +73,11 @@ public class statblockMain : MonoBehaviour
       void Update(){
         if (pos>=0){
         if(enemy){
-          x = 520+(60*pos);
+          x = 560+(80*pos);
           position.x = -10.5F+(pos);
         }
         else{
-          x = 345-(60*pos);
+          x = 300-(80*pos);
           position.x = -13.5F-(pos);
         }
         transform.position = position;

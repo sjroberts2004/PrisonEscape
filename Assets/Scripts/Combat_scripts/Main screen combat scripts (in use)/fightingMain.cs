@@ -10,7 +10,6 @@ public class fightingMain : MonoBehaviour
   public List <CharacterBase> testenemyinput;
   public List <GameObject> enemylist;
   public List <GameObject> playerlist;
-  public int countdown;
   public int bar;
   public List <Camera> cameras;
   public GameObject backbutton;
@@ -23,36 +22,38 @@ public class fightingMain : MonoBehaviour
   IEnumerator fight(){
     Debug.Log("fight command received");
     bar = Random.Range(1,101);
+    statblockMain estat = enemylead.GetComponent<statblockMain>();
+    statblockMain pstat = playerlead.GetComponent<statblockMain>();
 
     if (playerlist.Count >=1 && enemylist.Count>=1){
 
-      if (bar >= 100- enemylead.GetComponent<statblockMain>().ACC){
-        damage = playerlead.GetComponent<statblockMain>().ATK-enemylead.GetComponent<statblockMain>().DEF;
+      if (bar >= 100- estat.ACC){
+        damage = pstat.ATK - estat.DEF;
         if (damage<1){damage = 1;}
-     enemylead.GetComponent<statblockMain>().HP -= damage;
-     enemylead.SendMessage("adjusthealthbar");
-     enemylead.SendMessage("hit");
+        estat.HP -= damage;
+        enemylead.SendMessage("adjusthealthbar");
+        enemylead.SendMessage("hit");
       }
-     countdown--;
      fightbutton.GetComponent<Button>().interactable =false;
+     if(estat.HP<0){estat.HP = 0;}
      yield return new WaitForSeconds(1f);
-     if (enemylead.GetComponent<statblockMain>().HP<=0){
+     if (estat.HP<=0){
        enemylist.Remove(enemylead);
        Destroy(enemylead);
        assignpos(enemylist,true);
      }
-     if (bar >= 100-enemylead.GetComponent<statblockMain>().ACC){
-       damage =  enemylead.GetComponent<statblockMain>().ATK-playerlead.GetComponent<statblockMain>().DEF;
+     if (enemylist.Count > 0 && bar >= 100 - estat.ACC){
+       damage =  estat.ATK - pstat.DEF;
        if (damage<1){damage = 1;}
-     playerlead.GetComponent<statblockMain>().HP -= damage;
-     playerlead.SendMessage("adjusthealthbar");
-     playerlead.SendMessage("hit");
+       pstat.HP -= damage;
+       playerlead.SendMessage("adjusthealthbar");
+       playerlead.SendMessage("hit");
+       if (pstat.HP<=0){
+         playerlist.Remove(playerlead);
+         Destroy(playerlead);
+         assignpos(playerlist, false);
+       }
       }
-     if (playerlead.GetComponent<statblockMain>().HP<=0){
-       playerlist.Remove(playerlead);
-       Destroy(playerlead);
-       assignpos(playerlist, false);
-     }
      fightbutton.GetComponent<Button>().interactable =true;
    }
    else{
@@ -82,8 +83,9 @@ public class fightingMain : MonoBehaviour
     if (lineup.Count >=1){
     int i = 0;
     foreach (GameObject g in lineup){
-      g.GetComponent<statblockMain>().healthbarenabled = true;
-      g.GetComponent<statblockMain>().pos = i;
+      statblockMain gstat = g.GetComponent<statblockMain>();
+      gstat.healthbarenabled = true;
+      gstat.pos = i;
       i++;
     }
     if (enemy){
@@ -100,6 +102,10 @@ public class fightingMain : MonoBehaviour
   }
   else{
     Debug.Log("Player was defeated");
+    foreach(GameObject e in enemylist){
+      statblockMain estat = e.GetComponent<statblockMain>();
+      estat.healthbarenabled = false;
+    }
     popuplist[1].SetActive(true);
     backbutton.SetActive(true);
 
