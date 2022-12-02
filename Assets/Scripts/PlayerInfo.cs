@@ -17,7 +17,6 @@ public class PlayerInfo : MonoBehaviour
     {
         
     }
-
     public void addO2(int change) { 
         O2 += change;
         CC.Update02Counter();
@@ -62,4 +61,5 @@ public class PlayerInfo : MonoBehaviour
 
     public int getFF() { return FishFood; }
     public int get02() { return O2; }
+
 }
