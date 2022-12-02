@@ -13,17 +13,27 @@ public class statblockMain : MonoBehaviour
     public bool enemy;
     public int pos;
     public bool healthbarenabled;
-    private int yline = 110;
+    private int yline = 80;
     private int x;
     private Vector3 position;
     private Texture2D texture;
+    private SpriteRenderer m_SpriteRenderer;
 
-      // Start is called before the first frame update
+      IEnumerator damagedanim(){
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_SpriteRenderer.color = Color.gray;
+        yield return new WaitForSeconds(0.25f);
+        m_SpriteRenderer.color = Color.white;
+      }
+      public void hit(){
+        StartCoroutine(damagedanim());
+      }
       public void adjusthealthbar(){
         Debug.Log("adjust received");
         Debug.Log(HP);
         float percentHP = (float)HP/(float)maxHP;
         int ratio = (int)Mathf.Round(percentHP*50);
+        if (HP<=0){ratio=0;}
         Debug.Log(ratio);
         texture.Reinitialize(ratio, 3);
         for (int y = 0; y < texture.height; y++)
@@ -63,11 +73,11 @@ public class statblockMain : MonoBehaviour
       void Update(){
         if (pos>=0){
         if(enemy){
-          x = 520+(60*pos);
+          x = 560+(80*pos);
           position.x = -10.5F+(pos);
         }
         else{
-          x = 345-(60*pos);
+          x = 300-(80*pos);
           position.x = -13.5F-(pos);
         }
         transform.position = position;
