@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class fightingMain : MonoBehaviour
 {
@@ -10,44 +11,51 @@ public class fightingMain : MonoBehaviour
   public List <CharacterBase> testenemyinput;
   public List <GameObject> enemylist;
   public List <GameObject> playerlist;
-  public int countdown;
   public int bar;
   public List <Camera> cameras;
   public GameObject backbutton;
+  public GameObject fightbutton;
   private GameObject playerlead;
   private GameObject enemylead;
   private int damage;
   // note: in fight function player goes first. If both player and enemy would deal lethal damage, front enemy is killed and enemy behind it attacks instead.
-  // also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
-  public void fight(){
+// also it looks like second enemy gets hit, this is only because it replaces the first one right away(No animation)
+  IEnumerator fight(){
     Debug.Log("fight command received");
     bar = Random.Range(1,101);
+    statblockMain estat = enemylead.GetComponent<statblockMain>();
+    statblockMain pstat = playerlead.GetComponent<statblockMain>();
 
     if (playerlist.Count >=1 && enemylist.Count>=1){
 
-      if (bar >= 100- enemylead.GetComponent<statblockMain>().ACC){
-        damage = playerlead.GetComponent<statblockMain>().ATK-enemylead.GetComponent<statblockMain>().DEF;
+      if (bar >= 100- estat.ACC){
+        damage = pstat.ATK - estat.DEF;
         if (damage<1){damage = 1;}
-     enemylead.GetComponent<statblockMain>().HP -= damage;
-     enemylead.SendMessage("adjusthealthbar");
+        estat.HP -= damage;
+        enemylead.SendMessage("adjusthealthbar");
+        enemylead.SendMessage("hit");
       }
-     countdown--;
-     if (enemylead.GetComponent<statblockMain>().HP<=0){
+     fightbutton.GetComponent<Button>().interactable =false;
+     if(estat.HP<0){estat.HP = 0;}
+     yield return new WaitForSeconds(1f);
+     if (estat.HP<=0){
        enemylist.Remove(enemylead);
        Destroy(enemylead);
        assignpos(enemylist,true);
      }
-     if (bar >= 100-enemylead.GetComponent<statblockMain>().ACC){
-       damage =  enemylead.GetComponent<statblockMain>().ATK-playerlead.GetComponent<statblockMain>().DEF;
+     if (enemylist.Count > 0 && bar >= 100 - estat.ACC){
+       damage =  estat.ATK - pstat.DEF;
        if (damage<1){damage = 1;}
-     playerlead.GetComponent<statblockMain>().HP -= damage;
-     playerlead.SendMessage("adjusthealthbar");
+       pstat.HP -= damage;
+       playerlead.SendMessage("adjusthealthbar");
+       playerlead.SendMessage("hit");
+       if (pstat.HP<=0){
+         playerlist.Remove(playerlead);
+         Destroy(playerlead);
+         assignpos(playerlist, false);
+       }
       }
-     if (playerlead.GetComponent<statblockMain>().HP<=0){
-       playerlist.Remove(playerlead);
-       Destroy(playerlead);
-       assignpos(playerlist, false);
-     }
+     fightbutton.GetComponent<Button>().interactable =true;
    }
    else{
      Debug.Log("At least one side is empty, fighting was skipped.");
@@ -76,8 +84,9 @@ public class fightingMain : MonoBehaviour
     if (lineup.Count >=1){
     int i = 0;
     foreach (GameObject g in lineup){
-      g.GetComponent<statblockMain>().healthbarenabled = true;
-      g.GetComponent<statblockMain>().pos = i;
+      statblockMain gstat = g.GetComponent<statblockMain>();
+      gstat.healthbarenabled = true;
+      gstat.pos = i;
       i++;
     }
     if (enemy){
@@ -94,6 +103,10 @@ public class fightingMain : MonoBehaviour
   }
   else{
     Debug.Log("Player was defeated");
+    foreach(GameObject e in enemylist){
+      statblockMain estat = e.GetComponent<statblockMain>();
+      estat.healthbarenabled = false;
+    }
     popuplist[1].SetActive(true);
     backbutton.SetActive(true);
 
@@ -117,8 +130,8 @@ public void load(){
     // Start is called before the first frame update
     void Start()
     {
-      //cameras[0].enabled = false;
-      //cameras[1].enabled = true;
+      cameras[0].enabled = false;
+      cameras[1].enabled = true;
     }
     void OnGUI()
     {
