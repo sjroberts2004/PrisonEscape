@@ -31,7 +31,7 @@ public class EncounterManager : MonoBehaviour
     public void step() {
 
         steps++;
-        player.GetComponent<PlayerInfo>().loseO2(2);
+        player.GetComponent<PlayerInfo>().loseO2(Random.Range(1,4)); //random range from 1 - 4 excluding 4
 
     }
     private void Awake()
