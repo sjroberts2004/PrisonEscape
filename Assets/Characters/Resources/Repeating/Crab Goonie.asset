@@ -16,10 +16,10 @@ MonoBehaviour:
   character_name: Crab Goonie
   description: So basic, he doesn't even have a special effect.
   level: 1
-  maxHP: 8
-  attack: 4
+  maxHP: 45
+  attack: 8
   defense: 3
-  accuracy: 100
+  accuracy: 95
   icon: {fileID: 0}
   character_sprite: {fileID: 21300000, guid: 4dfde2dd9615c9f4a80a6eb42c20e151, type: 3}
   pay_me_price: 0
