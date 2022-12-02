@@ -2,63 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EncounterTypes
-{
-    PAY_ME,
-    BOUNTY
-};
+
 public class EncounterScript : MonoBehaviour
 {
-    EncounterManager encounterManager;
+    Encounter encounter;
     EncounterTypes type;
     Sprite fieldIcon;
     string encounterDialog;
-    int price;
     CharacterBase _base;
-    GameObject CharacterPrefab;
-    GameController GC;
 
+    GameController GC;
+    EncounterManager EM;
+
+    private void Awake()
+    {
+        GC = GameObject.Find("GameController").GetComponent<GameController>();
+        EM = GameObject.Find("GameController").GetComponent(typeof(EncounterManager)) as EncounterManager;
+    }
     void Start()
     {
-        encounterManager = FindObjectOfType<EncounterManager>();
-        CharacterPrefab = encounterManager.CharacterPrefab;
-        GC = GameObject.Find("GameController").GetComponent<GameController>();
-    }
-    void Update()
-    {
+        
 
+    }
+    void Update(){
+    
     }
 
     //define Encounter
-    public void Setup(EncounterTypes type, CharacterBase character) {
+    //change this so that this function only sets sprite handle all other things in another OBJ (lol)
+    public void Setup(EncounterTypes type, Encounter encounter) {
 
-        if (!character) { Debug.LogError("No valid character given"); }
+        this.encounter = encounter;
 
-        this.type = type;
+        if (encounter._base == null && encounter.characterEncounter == true) {
+            
+            Debug.LogError("no base found");
 
-        _base = character;
+            return;
 
-        if (_base.character_sprite != null)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = character.character_sprite;
+        } else if (this.EM == null) {
+
+            Debug.LogError("Couldn't find EM");
+
+            return;
+
         }
-        else { Debug.LogWarning("No sprite found"); }
 
+        Debug.Log("Enconuter Type: " + type);
+       
         switch (type) {
 
-            case EncounterTypes.PAY_ME:
-                price = character.pay_me_price;
+            case EncounterTypes.CHEST:
+                this.GetComponent<SpriteRenderer>().sprite = GC.transform.GetComponent<EncounterManager>().chestSprite; //good god
                 break;
 
-            case EncounterTypes.BOUNTY:
-                encounterDialog = character.bounty_dialogue;
+            default:
+                this.GetComponent<SpriteRenderer>().sprite = encounter._base.character_sprite;
                 break;
         }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        EM.active = this.encounter; 
+
         if (collision.gameObject.name == "Player") {
            Debug.Log("OnCollisionEnter2D");
+
+            EM.DisplayEncounter();
 
             switch (type)
             {
@@ -68,27 +80,14 @@ public class EncounterScript : MonoBehaviour
                     break;
 
                 case EncounterTypes.BOUNTY:
-                    //just for testing
-                    //creates a new character based on the selected Character
-                    Character newChar;
-                    newChar = new Character(_base);
-
-                    //Loads that Character into a new team
-                    Team enemy;
-                    enemy = new Team(newChar);
-
-                    //find the players team
-                    Team playersTeam = GC.playerTeam;
-
-                    //and start combat
-                    GC.switchCams();
-                    GC.CM.startCombat(playersTeam, enemy);
+                    
 
                     break;
             }
 
-
         }
     }
+
+
 
 }

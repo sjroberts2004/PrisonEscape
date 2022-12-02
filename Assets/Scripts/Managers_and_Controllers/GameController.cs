@@ -10,34 +10,49 @@ public enum GameState {
 }
 public class GameController : MonoBehaviour
 {
-    public Canvas Combat;
-    CounterController CC;
-    PlayerInfo playerInfo;
-    public CombatManager CM;
+    public GameState gameState;
 
-    [SerializeField] CharacterBase diver;
-    Character player;
-    public Team playerTeam;
+    public Canvas CombatCanvas; // Canvas containing combat GUI
+    public Canvas EncounterCanvas; // Canvas Showing options at time of encounter
+    public Canvas CounterCanvas; // Canvas displaying O2 and Fish food
+
+    CounterController CC; // Class controlling the Players O2 and Fish food GUI
+
+    public CombatManager CM; // Class that manages combat
+
+    public GameObject playerObj;
+    [SerializeField] CharacterBase diver; // The Character base for the Player
+    Character playerCharacter; // Character Object to manage player in Combat
+    public Team playerTeam; // Team object to store the players team 
     
     private void Awake()
     {
+        gameState = GameState.OVERWORLD;
         Physics2D.gravity.Set(0, 0);
+
+        //find and store relevant gameObjects and classes
         CC = GameObject.Find("CounterCanvas").GetComponent<CounterController>();
-        playerInfo = GameObject.Find("Player").GetComponent<PlayerInfo>();
-        Combat = GameObject.Find("CombatCanvass").GetComponent<Canvas>();
+
+        CombatCanvas = this.transform.Find("CombatCanvass").GetComponent<Canvas>();
+        EncounterCanvas = this.transform.Find("EncounterCanvas").GetComponent<Canvas>();
+        CounterCanvas = this.transform.Find("CounterCanvas").GetComponent<Canvas>();
+
     }
     void Start()
     {
         CC.Update02Counter();
         CC.UpdateFFCounter();
 
-        CM = new CombatManager();
-        player = new Character(diver);
-        playerTeam = new Team(player);
+        EncounterCanvas.enabled = false;
+
+        //Initialize objects
+        CM = new CombatManager(gameState, CombatCanvas);
+        playerCharacter = new Character(diver);
+        playerTeam = new Team(playerCharacter);
 
     }
     void Update(){}
-    public void switchCams()
+    public static void switchCams()
     {
         Camera mainCamera;
         Camera combatCamera;
@@ -75,23 +90,35 @@ public class Team
 
     }
 }
-public class CombatManager{
+public class CombatManager {
 
     bool Turn = true; //true = player turn, false = enemy turn
     Vector3 origin; // get center of combat screen
-    public CombatManager() {
+    Canvas canvas;
+    GameState state;
+    public CombatManager(GameState state, Canvas combatCanvas) {
 
-       origin = GameObject.Find("GameController").GetComponent<GameController>().Combat.transform.position;
+        origin = GameObject.Find("GameController").GetComponent<GameController>().CombatCanvas.transform.position;
+
+        canvas = combatCanvas;
+
+        this.state = state;
 
     }
-    
+
+    private void Update() {
+
+    }
+
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
 
+        GameController.switchCams();
+
+        state = GameState.PLAYERMOVE;
         displayTeams(playerTeam, EnemyTeam);
 
     }
-
     private void displayTeams(Team playerTeam, Team EnemyTeam) {
         //displays the sprites for each team on screen
         float order = 0f;

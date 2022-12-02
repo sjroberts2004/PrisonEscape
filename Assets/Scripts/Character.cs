@@ -9,15 +9,12 @@ public class Character
     //Character Base Object to be used for base stats
     CharacterBase _base;
 
-    //boolean that decides if this Character is the Player
-    bool player;
-    bool enemy;
-
     //stats
     int maxHP;
+    int currHP;
     int attack;
-    int defense;
-    int accuracy;
+    int defence;
+    float accuracy;
 
     // modifiers on stats to be used later in combat
     int attackMod = 0;
@@ -43,8 +40,7 @@ public class Character
         Obj = new GameObject();
         Obj.name = _base.character_name;
 
-
-        if (_base.character_sprite != null)
+        if (_base.character_sprite != null) // make sure there is a Sprite for the Character
         {
             Obj.AddComponent<SpriteRenderer>();
             Obj.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
@@ -54,23 +50,12 @@ public class Character
             Debug.LogWarning("No sprite found"); 
         }
 
-    }
-    public void Setup() {
-
-      
-
-        /*
-        this.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
-        this.GetComponent<statblockMain>().HP = _base.maxHP;
-        this.GetComponent<statblockMain>().maxHP = _base.maxHP;
-        this.GetComponent<statblockMain>().ATK = _base.attack;
-        this.GetComponent<statblockMain>().DEF = _base.defense;
-        this.GetComponent<statblockMain>().ACC = _base.accuracy;
-        this.GetComponent<statblockMain>().enemy = true;
-        */
-
-
+        // Assign stats
+        maxHP = _base.GetMaxHP();
+        currHP = maxHP;
+        attack = _base.GetAttack();
+        defence = _base.GetDefence();
+        accuracy = 0.95f; // 95% accuracy
 
     }
-
 }

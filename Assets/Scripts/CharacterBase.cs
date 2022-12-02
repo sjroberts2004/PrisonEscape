@@ -5,36 +5,48 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character", menuName = "Create new character")]
 public class CharacterBase : ScriptableObject
 {
-
-    [SerializeField] public bool active = true;
+   // public bool active = true;
     [SerializeField] public string character_name;
 
     [TextArea]
     [SerializeField] public string description;
 
-    [SerializeField] public int level;
-    [SerializeField] public int maxHP;
+    [SerializeField] int level;
+    [SerializeField] int maxHP;
     
-    [SerializeField] public int attack;
-    [SerializeField] public int defense;
-    [SerializeField] public int accuracy;
+    [SerializeField] int attack;
+    [SerializeField] int defence;
+    [SerializeField] float accuracy;
 
     [SerializeField] public Sprite icon;
     [SerializeField] public Sprite character_sprite;
 
+    [SerializeField] bool pay_me_enabled = true;
+    [SerializeField] bool free_me_enabled = true;
+    [SerializeField] bool bounty_enabled = true;
+
     [SerializeField] public int pay_me_price;
+    [SerializeField] public int free_me_price;
     [TextArea] [SerializeField] public string bounty_dialogue;
 
-    void Start()
-    {
+    public int GetLevel(){ return level; }
+    public int GetMaxHP() { return maxHP; }
+    public int GetAttack() { return attack; }
+    public int GetDefence() { return defence; }
+    public bool IsTypeUsable(EncounterTypes type) {
 
+        switch (type){
+
+            case EncounterTypes.FREE_ME:
+                return free_me_enabled;
+
+            case EncounterTypes.PAY_ME:
+                return pay_me_enabled;
+
+            case EncounterTypes.BOUNTY:
+                return bounty_enabled;
+
+        }
+        return false;
     }
-    void Update()
-    {
-
-    }
-    public int getMaxHP(){ return maxHP; }
-
-
-
 }
