@@ -50,6 +50,18 @@ public class Character
             Debug.LogWarning("No sprite found"); 
         }
 
+        void Show() {
+
+            Obj.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
+
+        }
+
+        void Hide() {
+
+            Obj.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
+
+        }
+
         // Assign stats
         maxHP = _base.GetMaxHP();
         currHP = maxHP;

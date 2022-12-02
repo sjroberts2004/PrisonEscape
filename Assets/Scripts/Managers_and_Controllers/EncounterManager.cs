@@ -20,6 +20,8 @@ public class EncounterManager : MonoBehaviour
 
     public Encounter active;
 
+  
+
     public static int level = 1; // stores the games current Level
     public static EncounterTypes desired_type;
 
@@ -36,6 +38,8 @@ public class EncounterManager : MonoBehaviour
     }
     private void Awake()
     {
+        
+
         Characters = new List<CharacterBase>();
         repeatCharacters = new List<CharacterBase>();
 
@@ -147,12 +151,12 @@ public class EncounterManager : MonoBehaviour
     public int getLevel() { return level; }
     public void DisplayEncounter() {
 
-        EncounterCanvas.enabled = true;
-        
+     EncounterCanvas.enabled = true;
 
-        //re write immediately loll
-        GameObject.Find("GameController").gameObject.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<TMPro.TMP_Text>().text 
-            = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
+     //re-write immediately lol
+     Debug.Log(GameObject.Find("GameController").gameObject.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>() == null);
+
+        // = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
 
     }
     public void AcceptEncounter() {
