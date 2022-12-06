@@ -18,8 +18,9 @@ public class CharacterBase : ScriptableObject
     [SerializeField] int defence;
     [SerializeField] float accuracy;
 
-    [SerializeField] public Sprite icon;
-    [SerializeField] public Sprite character_sprite;
+    public Sprite icon;
+    public Sprite character_sprite;
+    public bool isRightFacing = false;
 
     [SerializeField] bool pay_me_enabled = true;
     [SerializeField] bool free_me_enabled = true;

@@ -12,7 +12,10 @@ public class GameController : MonoBehaviour
 {
     public GameState gameState;
 
-    public Canvas CombatCanvas; // Canvas containing combat GUI
+    public GameObject hpBarPrefab;
+    public static GameObject hpBarPrefabStatic;
+
+    public GameObject combatCanvasObject; // Canvas containing combat GUI
     public Canvas EncounterCanvas; // Canvas Showing options at time of encounter
     public Canvas CounterCanvas; // Canvas displaying O2 and Fish food
 
@@ -33,9 +36,10 @@ public class GameController : MonoBehaviour
         //find and store relevant gameObjects and classes
         CC = GameObject.Find("CounterCanvas").GetComponent<CounterController>();
 
-        CombatCanvas = this.transform.Find("CombatCanvass").GetComponent<Canvas>();
         EncounterCanvas = this.transform.Find("EncounterCanvas").GetComponent<Canvas>();
         CounterCanvas = this.transform.Find("CounterCanvas").GetComponent<Canvas>();
+
+        hpBarPrefabStatic = hpBarPrefab;
 
     }
     void Start()
@@ -46,7 +50,7 @@ public class GameController : MonoBehaviour
         EncounterCanvas.enabled = false;
 
         //Initialize objects
-        CM = new CombatManager(gameState, CombatCanvas);
+        CM = new CombatManager(gameState, combatCanvasObject);
         playerCharacter = new Character(diver);
         playerTeam = new Team(playerCharacter);
 
@@ -89,6 +93,12 @@ public class Team
         //Debug.Log(Characters[0].Obj.name + ": Joined the team!");
 
     }
+
+    public void AddCharacter(Character ch) {
+
+        Characters.Add(ch);
+    
+    }
 }
 public class CombatManager {
 
@@ -96,11 +106,11 @@ public class CombatManager {
     Vector3 origin; // get center of combat screen
     Canvas canvas;
     GameState state;
-    public CombatManager(GameState state, Canvas combatCanvas) {
+    public CombatManager(GameState state, GameObject combatCanvasObject) {
 
-        origin = GameObject.Find("GameController").GetComponent<GameController>().CombatCanvas.transform.position;
+        canvas = combatCanvasObject.GetComponent<Canvas>(); 
 
-        canvas = combatCanvas;
+        origin = canvas.transform.position;
 
         this.state = state;
 
@@ -127,9 +137,18 @@ public class CombatManager {
 
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
 
-            ch.Obj.transform.position = origin + new Vector3(-1f - width - (order * 1.5f), 0.5f, 0f);
+            ch.Obj.transform.position = origin + new Vector3(-0.5f - width - (order * 1.5f), 0.5f, 0f);
 
-            order--;
+            if (!ch._base.isRightFacing) {
+
+               // ch.FlipSpriteOnX();
+            
+            }
+
+            ch.Show();
+            ch.hpBar.GetComponent<LiveHPBar>().Show(ch);
+
+            order++;
         }
 
         order = 0;
@@ -139,7 +158,9 @@ public class CombatManager {
 
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
 
-            ch.Obj.transform.position = origin + new Vector3(1f + width + (order * 1.5f), 0.5f, 0f);
+            ch.Obj.transform.position = origin + new Vector3(0.5f + width + (order * 0.3f), 0.5f, 0f);
+
+            ch.Show();
 
             order++;
         }

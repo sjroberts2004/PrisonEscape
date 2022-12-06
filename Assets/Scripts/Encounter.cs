@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Encounter
 {
-
     GameObject me;
 
     GameController GC;
@@ -13,6 +12,8 @@ public class Encounter
     public EncounterTypes type;
 
     Sprite fieldIcon;
+
+    string name;
 
     string encounterDialog;
 
@@ -30,36 +31,42 @@ public class Encounter
 
         me = GameObject.Instantiate(manager.EncounterPrefab, new Vector3(GC.playerObj.transform.position.x + 6, -0.88f, 0), Quaternion.identity);
 
-        this.type = manager.ChooseEncounterType();
+        this.type = type;
 
         characterEncounter = true;
 
-            switch (type)
+        switch (type)
             {
                 case EncounterTypes.CHEST:
                 characterEncounter = false;
+                name = "Chest";
 
                 break;
 
                 case EncounterTypes.BOUNTY:
                 _base = manager.ChooseEncounterCharacter(type, true);
+                name = _base.character_name;
                 break;
 
                 case EncounterTypes.FREE_ME:
                 _base = manager.ChooseEncounterCharacter(type, true);
                 price = _base.free_me_price;
+                name = _base.character_name;
 
                 break;
 
                 case EncounterTypes.PAY_ME:
                 _base = manager.ChooseEncounterCharacter(type, true);
                 price = _base.pay_me_price;
+                name = _base.character_name;
 
                 break;
 
             }
 
         me.GetComponent<EncounterScript>().Setup(type, this);
+
+        me.name = System.Enum.GetNames(typeof(EncounterTypes))[(int)type] + ": " + name;
 
     }
     public void startEncounter() {
@@ -68,22 +75,27 @@ public class Encounter
         {
 
             case EncounterTypes.PAY_ME:
-                Debug.Log("Pay me encounter");
-                FightPlayer();
+                Debug.Log("");
+                
                 break;
 
             case EncounterTypes.BOUNTY:
-                Debug.Log("Bounty encounter");
+                Debug.Log("");
                 FightPlayer();
                 break;
 
             case EncounterTypes.FREE_ME:
-                Debug.Log("Bounty encounter");
-                FightPlayer();
+                Debug.Log("");
+
+                Character ch = new Character(_base);
+
+                GC.playerTeam.AddCharacter(ch);
+
+
                 break;
 
             case EncounterTypes.CHEST:
-                Debug.Log("Bounty encounter");
+                Debug.Log("");
 
                 break;
         }
@@ -104,6 +116,13 @@ public class Encounter
 
         GC.CM.startCombat(playersTeam, enemy);
 
+    }
+    public void Spill()
+    {
+
+        Debug.Log("Encounter of Type: " + type + "\n" +
+                  "Base: " + name + "\n"
+                   );
     }
 
 }

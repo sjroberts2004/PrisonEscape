@@ -17,10 +17,10 @@ public class EncounterManager : MonoBehaviour
     public Sprite chestSprite;
 
     Canvas EncounterCanvas;
+    public GameObject encounterCanvasTextObject;
+    TMPro.TextMeshProUGUI encounterCanvasText;
 
     public Encounter active;
-
-  
 
     public static int level = 1; // stores the games current Level
     public static EncounterTypes desired_type;
@@ -28,7 +28,7 @@ public class EncounterManager : MonoBehaviour
     //For the steps thing probably move this to the Game controller
     int steps = 0;
     int root = 0;
-    int range = 2;
+    int range = 1;
 
     public void step() {
 
@@ -37,8 +37,7 @@ public class EncounterManager : MonoBehaviour
 
     }
     private void Awake()
-    {
-        
+    {   
 
         Characters = new List<CharacterBase>();
         repeatCharacters = new List<CharacterBase>();
@@ -47,6 +46,8 @@ public class EncounterManager : MonoBehaviour
         movementScript = player.GetComponent<MovementScript>();
 
         EncounterCanvas = GameObject.Find("GameController").GetComponent<GameController>().EncounterCanvas;
+
+        encounterCanvasText = encounterCanvasTextObject.GetComponent<TMPro.TextMeshProUGUI>();
 
         // put this all in a function somewhere Jesus
 
@@ -84,9 +85,9 @@ public class EncounterManager : MonoBehaviour
     }
     void GenerateRandomEncounter() {
 
-        Encounter encounter;
+        Encounter encounter = new Encounter(this, ChooseEncounterType());
 
-        encounter = new Encounter(this, ChooseEncounterType());
+        //encounter.Spill();
 
     }
     private static bool FindCharacterBasedOnLevel(CharacterBase cb)
@@ -101,6 +102,7 @@ public class EncounterManager : MonoBehaviour
 
         CharacterBase result;
         List<CharacterBase> sample;
+        List<CharacterBase> sample2;
 
         if (unique)
         {
@@ -108,13 +110,13 @@ public class EncounterManager : MonoBehaviour
         sample = Characters.FindAll(FindCharacterBasedOnLevel); // find characters of the right level
             desired_type = type;
 
-        sample = sample.FindAll(FindCharacterBasedOnType); // and of the right type
+        sample2 = sample.FindAll(FindCharacterBasedOnType); // and of the right type
 
-            if (sample != null)
+            if (sample2 != null)
             {
 
-                int val = (int)Random.Range(0, sample.Count);
-                result = sample[val];
+                int val = (int)Random.Range(0, sample2.Count);
+                result = sample2[val];
 
             }
             else { return null; }
@@ -123,11 +125,11 @@ public class EncounterManager : MonoBehaviour
         else 
         {
 
-        sample = repeatCharacters.FindAll(FindCharacterBasedOnLevel);
+        sample2 = repeatCharacters.FindAll(FindCharacterBasedOnLevel);
 
-            if (sample != null)
+            if (sample2 != null)
             {
-                int val = (int)Random.Range(0, sample.Count);
+                int val = (int)Random.Range(0, sample2.Count);
                 result = repeatCharacters[val];
             }
             else { return null; }
@@ -135,15 +137,28 @@ public class EncounterManager : MonoBehaviour
         }
         return result;
     }
+    public static int GenerateRandomNumber() {
+
+        //free me, pay me, bounty, chest
+
+        int[] nums = new int[] { 0, 0, 1, 2, 2, 2, 2, 2, 3 };
+
+        int val = (int)Random.Range(0, nums.Length);
+
+        return nums[val];
+
+    }
     public EncounterTypes ChooseEncounterType()
     {
         EncounterTypes chosenType;
 
         int numEncounterTypes = System.Enum.GetNames(typeof(EncounterTypes)).Length;
 
-        int val = (int)Random.Range(0, numEncounterTypes);
+        int val = GenerateRandomNumber();
 
         chosenType = (EncounterTypes)val;
+
+        //print("Type Chosen: " + chosenType);
 
         return chosenType;
 
@@ -151,12 +166,17 @@ public class EncounterManager : MonoBehaviour
     public int getLevel() { return level; }
     public void DisplayEncounter() {
 
-     EncounterCanvas.enabled = true;
+    EncounterCanvas.enabled = true;
 
-     //re-write immediately lol
-     Debug.Log(GameObject.Find("GameController").gameObject.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>() == null);
+    encounterCanvasText.text = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
 
-        // = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
+    Debug.Log("Display should say :" + active.type);
+
+    }
+    public void HideEncounter()
+    {
+
+        EncounterCanvas.enabled = false;
 
     }
     public void AcceptEncounter() {

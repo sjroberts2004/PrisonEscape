@@ -117,7 +117,7 @@ public void load(){
 
     GameObject newCharacter = Instantiate(CharacterPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
-    newCharacter.GetComponent<Character>().Setup(_base);
+    //newCharacter.GetComponent<Character>().Setup(_base);
 
     enemylist.Add(newCharacter);
   }
@@ -129,8 +129,8 @@ public void load(){
     // Start is called before the first frame update
     void Start()
     {
-      cameras[0].enabled = false;
-      cameras[1].enabled = true;
+      //cameras[0].enabled = false;
+      //cameras[1].enabled = true;
     }
     void OnGUI()
     {

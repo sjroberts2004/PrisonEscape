@@ -19,10 +19,8 @@ public class EncounterScript : MonoBehaviour
         GC = GameObject.Find("GameController").GetComponent<GameController>();
         EM = GameObject.Find("GameController").GetComponent(typeof(EncounterManager)) as EncounterManager;
     }
-    void Start()
-    {
+    void Start(){
         
-
     }
     void Update(){
     
@@ -47,8 +45,6 @@ public class EncounterScript : MonoBehaviour
             return;
 
         }
-
-        Debug.Log("Enconuter Type: " + type);
        
         switch (type) {
 
@@ -61,6 +57,8 @@ public class EncounterScript : MonoBehaviour
                 break;
         }
 
+        //encounter.Spill();
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -68,26 +66,22 @@ public class EncounterScript : MonoBehaviour
         EM.active = this.encounter; 
 
         if (collision.gameObject.name == "Player") {
-           Debug.Log("OnCollisionEnter2D");
+           //Debug.Log("OnCollisionEnter2D");
 
             EM.DisplayEncounter();
 
-            switch (type)
-            {
-                case EncounterTypes.PAY_ME:
-                    //GC.switchCams();
-                    Debug.Log("Pay me encounter");
-                    break;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
 
-                case EncounterTypes.BOUNTY:
-                    
+        if (collision.gameObject.name == "Player")
+        {
+            //Debug.Log("OnCollisionEnter2D");
 
-                    break;
-            }
+            EM.HideEncounter();
 
         }
     }
-
-
-
+ 
 }

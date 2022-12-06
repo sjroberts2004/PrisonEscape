@@ -90,7 +90,5 @@ public class statblockMain : MonoBehaviour
           GUI.Label(new Rect(x,yline,x,yline), HP.ToString());
           GUI.Label(new Rect(x-15,yline+20, x-15, yline+20),texture);
         }
-
-
       }
 }

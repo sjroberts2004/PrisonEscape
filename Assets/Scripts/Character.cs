@@ -7,7 +7,9 @@ public class Character
     public GameObject Obj;
 
     //Character Base Object to be used for base stats
-    CharacterBase _base;
+    public CharacterBase _base;
+
+    public GameObject hpBar;
 
     //stats
     int maxHP;
@@ -21,13 +23,11 @@ public class Character
     int defenseMod = 0;
     int accuracyMod = 0;
 
-    Sprite character_sprite;
-    Sprite Character_Sprite;
-
+    public Sprite characterSprite;
     public Character(CharacterBase cBase) {
 
-        //check if there is a valid Character base,
-        //then assign the base to this character.
+        // check if there is a valid Character base,
+        // then assign the base to this character.
 
         if (cBase) {
             _base = cBase; 
@@ -44,30 +44,50 @@ public class Character
         {
             Obj.AddComponent<SpriteRenderer>();
             Obj.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
+            characterSprite = _base.character_sprite;
+
         }
         else 
         { 
             Debug.LogWarning("No sprite found"); 
         }
 
-        void Show() {
+        hpBar = GameObject.Instantiate(GameController.hpBarPrefabStatic, Obj.transform);
 
-            Obj.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
-
-        }
-
-        void Hide() {
-
-            Obj.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
-
-        }
+        Hide();
 
         // Assign stats
+
         maxHP = _base.GetMaxHP();
         currHP = maxHP;
         attack = _base.GetAttack();
         defence = _base.GetDefence();
         accuracy = 0.95f; // 95% accuracy
+
+    }
+
+    void MoveTo(Vector3 newPos) {
+
+        Obj.transform.position = newPos;
+    
+    }
+    public void Show()
+    {
+
+        Obj.GetComponent<SpriteRenderer>().enabled = true;
+
+    }
+
+    public void Hide()
+    {
+
+        Obj.GetComponent<SpriteRenderer>().enabled = false;
+
+    }
+
+    public void FlipSpriteOnX() {
+
+        Obj.GetComponent<SpriteRenderer>().flipX ^= true;
 
     }
 }

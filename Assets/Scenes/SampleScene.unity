@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2977297}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c74136ed9ab7424e89ccd4f2373e830, type: 3}
   m_Name: 
@@ -2691,13 +2691,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1402829829}
         m_TargetAssemblyTypeName: EncounterManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: AcceptEncounter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3055,7 +3055,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  CombatCanvas: {fileID: 0}
+  hpBarPrefab: {fileID: 2662752236763278953, guid: 652ed6c97bd2bf64c91b9f349535e9ce, type: 3}
+  combatCanvasObject: {fileID: 1346648108}
   EncounterCanvas: {fileID: 1839365930}
   CounterCanvas: {fileID: 563037950}
   playerObj: {fileID: 172830590}
@@ -3074,6 +3075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EncounterPrefab: {fileID: 7014373453947796135, guid: 6a0c5bf5e58bcc143822f79daee408e8, type: 3}
   chestSprite: {fileID: 21300000, guid: e87adc0b19671664eb236571e60f2edb, type: 3}
+  encounterCanvasTextObject: {fileID: 1061726418}
 --- !u!114 &1402829830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3086,6 +3088,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947c01aa0c916bf4d806e14842da23dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterPrefab: {fileID: 0}
+  popuplist: []
+  testenemyinput: []
+  enemylist: []
+  playerlist: []
+  bar: 0
+  cameras: []
+  backbutton: {fileID: 0}
+  fightbutton: {fileID: 0}
 --- !u!1 &1468873485
 GameObject:
   m_ObjectHideFlags: 0

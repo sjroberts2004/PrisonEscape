@@ -21,8 +21,10 @@ MonoBehaviour:
   accuracy: 95
   icon: {fileID: 21300000, guid: 6be37d710a46d114ba7aa67cd4d61328, type: 3}
   character_sprite: {fileID: 21300000, guid: 6be37d710a46d114ba7aa67cd4d61328, type: 3}
+  isRightFacing: 1
   pay_me_enabled: 0
   free_me_enabled: 0
   bounty_enabled: 0
   pay_me_price: 0
+  free_me_price: 0
   bounty_dialogue: 
