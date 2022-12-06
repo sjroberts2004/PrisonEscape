@@ -31,5 +31,4 @@ public class CounterController : MonoBehaviour
         counterCanvas.transform.Find("O2 counter").GetComponent<TMPro.TMP_Text>().text = count.ToString();
 
     }
-
 }

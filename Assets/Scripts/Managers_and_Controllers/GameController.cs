@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { 
+public enum GameState {
     OVERWORLD,
     PLAYERMOVE,
     ENEMYMOVE,
@@ -26,8 +26,8 @@ public class GameController : MonoBehaviour
     public GameObject playerObj;
     [SerializeField] CharacterBase diver; // The Character base for the Player
     Character playerCharacter; // Character Object to manage player in Combat
-    public Team playerTeam; // Team object to store the players team 
-    
+    public Team playerTeam; // Team object to store the players team
+
     private void Awake()
     {
         gameState = GameState.OVERWORLD;
@@ -131,8 +131,10 @@ public class CombatManager {
     }
     private void displayTeams(Team playerTeam, Team EnemyTeam) {
         //displays the sprites for each team on screen
+        // Player team : 1st (-13.5, 11.5) 2nd (-14.5, 11.5) 3rd (-15.5, 11.5) 4th (16.5, 11.5)
+        // Enemy team : 1st (-10.5, 11.5) 2nd (-9.5, 11.5) 3rd (-8.5, 11.5) 4th (-7.5, 11.5)
         float order = 0f;
-       
+
         foreach (Character ch in playerTeam.Characters) {
 
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
