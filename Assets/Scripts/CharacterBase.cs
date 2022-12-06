@@ -13,10 +13,10 @@ public class CharacterBase : ScriptableObject
 
     [SerializeField] int level;
     [SerializeField] int maxHP;
-    
+
     [SerializeField] int attack;
     [SerializeField] int defence;
-    [SerializeField] float accuracy;
+    [SerializeField] int accuracy;
 
     public Sprite icon;
     public Sprite character_sprite;
@@ -34,6 +34,7 @@ public class CharacterBase : ScriptableObject
     public int GetMaxHP() { return maxHP; }
     public int GetAttack() { return attack; }
     public int GetDefence() { return defence; }
+    public int GetAccuracy() {return accuracy;}
     public bool IsTypeUsable(EncounterTypes type) {
 
         switch (type){

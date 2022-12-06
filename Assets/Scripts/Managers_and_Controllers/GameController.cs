@@ -97,7 +97,7 @@ public class Team
     public void AddCharacter(Character ch) {
 
         Characters.Add(ch);
-    
+
     }
 }
 public class CombatManager {
@@ -108,7 +108,7 @@ public class CombatManager {
     GameState state;
     public CombatManager(GameState state, GameObject combatCanvasObject) {
 
-        canvas = combatCanvasObject.GetComponent<Canvas>(); 
+        canvas = combatCanvasObject.GetComponent<Canvas>();
 
         origin = canvas.transform.position;
 
@@ -128,14 +128,18 @@ public class CombatManager {
         state = GameState.PLAYERMOVE;
         displayTeams(playerTeam, EnemyTeam);
 
+
     }
     private void displayTeams(Team playerTeam, Team EnemyTeam) {
+
         //displays the sprites for each team on screen
         // Player team : 1st (-13.5, 11.5) 2nd (-14.5, 11.5) 3rd (-15.5, 11.5) 4th (16.5, 11.5)
         // Enemy team : 1st (-10.5, 11.5) 2nd (-9.5, 11.5) 3rd (-8.5, 11.5) 4th (-7.5, 11.5)
         float order = 0f;
 
         foreach (Character ch in playerTeam.Characters) {
+
+          GameObject.Find("GameController").GetComponent<fightingbuttons>().playerlist.Add(ch);
 
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
 
@@ -144,7 +148,7 @@ public class CombatManager {
             if (!ch._base.isRightFacing) {
 
                // ch.FlipSpriteOnX();
-            
+
             }
 
             ch.Show();
@@ -157,7 +161,7 @@ public class CombatManager {
 
         foreach (Character ch in EnemyTeam.Characters)
         {
-
+          GameObject.Find("GameController").GetComponent<fightingbuttons>().enemylist.Add(ch);
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
 
             ch.Obj.transform.position = origin + new Vector3(0.5f + width + (order * 0.3f), 0.5f, 0f);
@@ -167,4 +171,5 @@ public class CombatManager {
             order++;
         }
     }
+
 }

@@ -76,7 +76,7 @@ public class Encounter
 
             case EncounterTypes.PAY_ME:
                 Debug.Log("");
-                
+
                 break;
 
             case EncounterTypes.BOUNTY:
@@ -115,6 +115,7 @@ public class Encounter
         Team playersTeam = GC.playerTeam;
 
         GC.CM.startCombat(playersTeam, enemy);
+
 
     }
     public void Spill()

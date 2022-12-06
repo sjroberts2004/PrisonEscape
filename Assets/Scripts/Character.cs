@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 public class Character
 {
     // A gameobject to be put in the scene.
@@ -13,10 +14,12 @@ public class Character
 
     //stats
     int maxHP;
-    int currHP;
-    int attack;
-    int defence;
-    float accuracy;
+    int HP;
+    int ATK;
+    int DEF;
+    int ACC;
+    public int pos;
+    public int[] statblock;
 
     // modifiers on stats to be used later in combat
     int attackMod = 0;
@@ -30,11 +33,11 @@ public class Character
         // then assign the base to this character.
 
         if (cBase) {
-            _base = cBase; 
+            _base = cBase;
         } else {
             Debug.LogWarning("No Character Base found");
         }
-       
+
         Debug.Log("Creating new: " + _base.character_name);
 
         Obj = new GameObject();
@@ -47,9 +50,9 @@ public class Character
             characterSprite = _base.character_sprite;
 
         }
-        else 
-        { 
-            Debug.LogWarning("No sprite found"); 
+        else
+        {
+            Debug.LogWarning("No sprite found");
         }
 
         hpBar = GameObject.Instantiate(GameController.hpBarPrefabStatic, Obj.transform);
@@ -59,17 +62,18 @@ public class Character
         // Assign stats
 
         maxHP = _base.GetMaxHP();
-        currHP = maxHP;
-        attack = _base.GetAttack();
-        defence = _base.GetDefence();
-        accuracy = 0.95f; // 95% accuracy
+        HP = maxHP;
+        ATK = _base.GetAttack();
+        DEF = _base.GetDefence();
+        ACC = _base.GetAccuracy();
+        statblock = new int[] {HP, ATK, DEF, ACC}; // 95% accuracy
 
     }
 
     void MoveTo(Vector3 newPos) {
 
         Obj.transform.position = newPos;
-    
+
     }
     public void Show()
     {
