@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
   m_Name: Imitation Crab
   m_EditorClassIdentifier: 
-  active: 1
   character_name: Imitation Crab
   description: This inmate was sentenced to 20 years in [The Deep] for four counts
     of felony impersonation in the restaurant industry.
   level: 2
   maxHP: 20
   attack: 5
-  defense: 10
+  defence: 1
   accuracy: 100
   icon: {fileID: 21300000, guid: 57c4f3b9d10b7e54692391f77a46d8ee, type: 3}
   character_sprite: {fileID: 21300000, guid: 57c4f3b9d10b7e54692391f77a46d8ee, type: 3}
+  isRightFacing: 0
+  pay_me_enabled: 1
+  free_me_enabled: 1
+  bounty_enabled: 1
   pay_me_price: 0
+  free_me_price: 0
   bounty_dialogue: 
