@@ -102,10 +102,13 @@ public class Team
 }
 public class CombatManager {
 
-    bool Turn = true; //true = player turn, false = enemy turn
     Vector3 origin; // get center of combat screen
-    Canvas canvas;
+
+    Canvas canvas; //combat canvas
+
     GameState state;
+
+    Team enemies;
     public CombatManager(GameState state, GameObject combatCanvasObject) {
 
         canvas = combatCanvasObject.GetComponent<Canvas>(); 
@@ -116,17 +119,15 @@ public class CombatManager {
 
     }
 
-    private void Update() {
-
-    }
-
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
+        enemies = EnemyTeam;
 
         GameController.switchCams();
 
         state = GameState.PLAYERMOVE;
-        displayTeams(playerTeam, EnemyTeam);
+
+        displayTeams(playerTeam, enemies);
 
     }
     private void displayTeams(Team playerTeam, Team EnemyTeam) {
@@ -148,7 +149,8 @@ public class CombatManager {
             }
 
             ch.Show();
-            ch.hpBar.GetComponent<LiveHPBar>().Show(ch);
+            ch.hpBar.GetComponent<LiveHPBar>().Set(ch);
+            ch.ShowHpBar();
 
             order++;
         }
@@ -163,8 +165,11 @@ public class CombatManager {
             ch.Obj.transform.position = origin + new Vector3(0.5f + width + (order * 0.3f), 0.5f, 0f);
 
             ch.Show();
+            ch.hpBar.GetComponent<LiveHPBar>().Set(ch);
+            ch.ShowHpBar();
 
             order++;
         }
+    
     }
 }

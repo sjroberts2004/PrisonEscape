@@ -46,6 +46,7 @@ public class Encounter
                 case EncounterTypes.BOUNTY:
                 _base = manager.ChooseEncounterCharacter(type, true);
                 name = _base.character_name;
+                
                 break;
 
                 case EncounterTypes.FREE_ME:
@@ -82,15 +83,14 @@ public class Encounter
             case EncounterTypes.BOUNTY:
                 Debug.Log("");
                 FightPlayer();
+                
                 break;
 
             case EncounterTypes.FREE_ME:
                 Debug.Log("");
-
                 Character ch = new Character(_base);
 
                 GC.playerTeam.AddCharacter(ch);
-
 
                 break;
 

@@ -52,8 +52,7 @@ public class Character
             Debug.LogWarning("No sprite found"); 
         }
 
-        hpBar = GameObject.Instantiate(GameController.hpBarPrefabStatic, Obj.transform);
-
+        CreateHpBar();
         Hide();
 
         // Assign stats
@@ -71,20 +70,34 @@ public class Character
         Obj.transform.position = newPos;
     
     }
+
+    public void CreateHpBar() {
+
+        hpBar = GameObject.Instantiate(GameController.hpBarPrefabStatic, Obj.transform);
+
+    }
+    public void ShowHpBar() {
+
+        hpBar.GetComponent<LiveHPBar>().Show();
+
+    }
+    public void HideHpBar() {
+
+        hpBar.GetComponent<LiveHPBar>().Hide();
+
+    }
     public void Show()
     {
 
         Obj.GetComponent<SpriteRenderer>().enabled = true;
 
     }
-
     public void Hide()
     {
 
         Obj.GetComponent<SpriteRenderer>().enabled = false;
 
     }
-
     public void FlipSpriteOnX() {
 
         Obj.GetComponent<SpriteRenderer>().flipX ^= true;
