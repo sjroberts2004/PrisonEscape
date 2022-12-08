@@ -11,8 +11,6 @@ public class Encounter
 
     public EncounterTypes type;
 
-    Sprite fieldIcon;
-
     string name;
 
     string encounterDialog;
@@ -75,27 +73,31 @@ public class Encounter
         {
 
             case EncounterTypes.PAY_ME:
-                Debug.Log("");
+<<<<<<< HEAD
+                //Debug.Log("Pay me Encounter");
                 
+=======
+                Debug.Log("");
+
+>>>>>>> b31f1ff2f1f20077d0cbfccad17776e023571ed7
                 break;
 
             case EncounterTypes.BOUNTY:
-                Debug.Log("");
+                //Debug.Log("Bounty Encounter");
                 FightPlayer();
                 break;
 
             case EncounterTypes.FREE_ME:
-                Debug.Log("");
+                //Debug.Log("Free me Encounter");
 
                 Character ch = new Character(_base);
 
                 GC.playerTeam.AddCharacter(ch);
 
-
                 break;
 
             case EncounterTypes.CHEST:
-                Debug.Log("");
+                //Debug.Log("Chest Encounter");
 
                 break;
         }
@@ -115,6 +117,7 @@ public class Encounter
         Team playersTeam = GC.playerTeam;
 
         GC.CM.startCombat(playersTeam, enemy);
+
 
     }
     public void Spill()

@@ -49,7 +49,7 @@ public class EncounterManager : MonoBehaviour
 
         encounterCanvasText = encounterCanvasTextObject.GetComponent<TMPro.TextMeshProUGUI>();
 
-        // put this all in a function somewhere Jesus
+        // Put this all in a function somewhere Jesus
 
         Debug.Log("Attempting to Load characters");
         Object[] chars = Resources.LoadAll("Unique", typeof(CharacterBase));
@@ -57,7 +57,7 @@ public class EncounterManager : MonoBehaviour
         foreach (var cbase in chars) {
             if (cbase != null)
             {
-                //Debug.Log("Attempting to add " + cbase + "To Character Database");
+                //Debug.Log("Attempting to add " + cbase + "To Unique Character Database");
                 Characters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
             }
         }
@@ -69,7 +69,7 @@ public class EncounterManager : MonoBehaviour
             if (cbase != null)
             {
                 //Debug.Log("Attempting to add " + cbase + "To repeating Character Database");
-                Characters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
+                repeatCharacters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
             }
         }
     }
@@ -101,7 +101,9 @@ public class EncounterManager : MonoBehaviour
     public CharacterBase ChooseEncounterCharacter(EncounterTypes type, bool unique) {
 
         CharacterBase result;
+
         List<CharacterBase> sample;
+
         List<CharacterBase> sample2;
 
         if (unique)
@@ -121,6 +123,8 @@ public class EncounterManager : MonoBehaviour
             }
             else { return null; }
 
+            Characters.Remove(result);
+
         }
         else 
         {
@@ -137,11 +141,12 @@ public class EncounterManager : MonoBehaviour
         }
         return result;
     }
+
     public static int GenerateRandomNumber() {
 
         //free me, pay me, bounty, chest
 
-        int[] nums = new int[] { 0, 0, 1, 2, 2, 2, 2, 2, 3 };
+        int[] nums = new int[] { 0, 2, };
 
         int val = (int)Random.Range(0, nums.Length);
 
