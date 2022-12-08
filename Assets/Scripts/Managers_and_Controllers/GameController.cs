@@ -55,16 +55,7 @@ public class GameController : MonoBehaviour
         playerTeam = new Team(playerCharacter);
 
     }
-    void Update() {
-
-        if (gameState == GameState.ENEMYMOVE) {
-
-            CM.enemies.Attack(playerTeam);
-        
-        
-        }
-
-    }
+    void Update(){}
     public static void switchCams()
     {
         Camera mainCamera;
@@ -89,23 +80,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void Attack(){
-
-        playerTeam.Attack(CM.enemies);
-
-        gameState = GameState.ENEMYMOVE;
-
-    }
-    public void Swap() {
-
-        gameState = GameState.ENEMYMOVE;
-    }
-
-    public void Escape() {
-
-        
-    }
-
 }
 public class Team
 {
@@ -116,21 +90,14 @@ public class Team
 
         Characters.Add(initalChar);
 
-        Debug.Log(Characters[0].Obj.name + ": Joined the team!");
+        //Debug.Log(Characters[0].Obj.name + ": Joined the team!");
 
     }
+
     public void AddCharacter(Character ch) {
 
         Characters.Add(ch);
-
-    }
-    public void SwapCharacters(){ }
-
-    public void Attack(Team Enemy)
-    {
-
-        Characters[0].Attack(Enemy.Characters[0]);
-
+    
     }
 }
 public class CombatManager {
@@ -139,11 +106,9 @@ public class CombatManager {
     Vector3 origin; // get center of combat screen
     Canvas canvas;
     GameState state;
-
-    public Team enemies;
     public CombatManager(GameState state, GameObject combatCanvasObject) {
 
-        canvas = combatCanvasObject.GetComponent<Canvas>();
+        canvas = combatCanvasObject.GetComponent<Canvas>(); 
 
         origin = canvas.transform.position;
 
@@ -158,40 +123,32 @@ public class CombatManager {
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
 
-        enemies = EnemyTeam;
-
         GameController.switchCams();
 
         state = GameState.PLAYERMOVE;
-
-        displayTeams(playerTeam, enemies);
-
+        displayTeams(playerTeam, EnemyTeam);
 
     }
     private void displayTeams(Team playerTeam, Team EnemyTeam) {
-
         //displays the sprites for each team on screen
         // Player team : 1st (-13.5, 11.5) 2nd (-14.5, 11.5) 3rd (-15.5, 11.5) 4th (16.5, 11.5)
         // Enemy team : 1st (-10.5, 11.5) 2nd (-9.5, 11.5) 3rd (-8.5, 11.5) 4th (-7.5, 11.5)
-
         float order = 0f;
 
         foreach (Character ch in playerTeam.Characters) {
 
-          GameObject.Find("GameController").GetComponent<fightingbuttons>().playerlist.Add(ch);
-
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
 
-            ch.Obj.transform.position = origin + new Vector3(-1.5f - (1f * order), 0f, 0f);
+            ch.Obj.transform.position = origin + new Vector3(-0.5f - width - (order * 1.5f), 0.5f, 0f);
 
             if (!ch._base.isRightFacing) {
 
                // ch.FlipSpriteOnX();
-
+            
             }
 
             ch.Show();
-            ch.CreateHpBar();
+            ch.hpBar.GetComponent<LiveHPBar>().Show(ch);
 
             order++;
         }
@@ -200,20 +157,14 @@ public class CombatManager {
 
         foreach (Character ch in EnemyTeam.Characters)
         {
-          GameObject.Find("GameController").GetComponent<fightingbuttons>().enemylist.Add(ch);
+
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
 
-            ch.Obj.transform.position = origin + new Vector3(1.5f + (1f * order), 0f, 0f);
+            ch.Obj.transform.position = origin + new Vector3(0.5f + width + (order * 0.3f), 0.5f, 0f);
 
             ch.Show();
-            ch.CreateHpBar();
 
             order++;
         }
     }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> b31f1ff2f1f20077d0cbfccad17776e023571ed7
 }

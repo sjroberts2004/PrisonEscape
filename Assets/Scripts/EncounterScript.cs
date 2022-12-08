@@ -6,6 +6,10 @@ using UnityEngine;
 public class EncounterScript : MonoBehaviour
 {
     Encounter encounter;
+    EncounterTypes type;
+    Sprite fieldIcon;
+    string encounterDialog;
+    CharacterBase _base;
 
     GameController GC;
     EncounterManager EM;
@@ -52,10 +56,6 @@ public class EncounterScript : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().sprite = encounter._base.character_sprite;
                 break;
         }
-        //
-        float ypos = -0.88f - GC.playerObj.GetComponent<SpriteRenderer>().sprite.bounds.size.y + (this.GetComponent<SpriteRenderer>().sprite.bounds.size.y);
-
-        this.transform.position = new Vector3(this.transform.position.x, ypos, this.transform.position.z);
 
         //encounter.Spill();
 
