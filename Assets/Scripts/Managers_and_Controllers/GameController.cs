@@ -55,7 +55,6 @@ public class GameController : MonoBehaviour
         playerTeam = new Team(playerCharacter);
 
     }
-    void Update(){}
     public static void switchCams()
     {
         Camera mainCamera;
@@ -79,7 +78,24 @@ public class GameController : MonoBehaviour
 
         }
     }
+    void Update() {
 
+        if (gameState == GameState.ENEMYMOVE)
+        {
+            CM.enemies.Attack(playerTeam);
+
+        }
+
+    }
+    public void Attack()
+    {
+        playerTeam.Attack(CM.enemies);
+        gameState = GameState.ENEMYMOVE;
+    }
+    public void Swap()
+    {
+        gameState = GameState.ENEMYMOVE;
+    }
 }
 public class Team
 {
@@ -99,6 +115,12 @@ public class Team
         Characters.Add(ch);
     
     }
+
+    public void Attack(Team Enemy)
+    {
+        Characters[0].Attack(Enemy.Characters[0]);
+    }
+
 }
 public class CombatManager {
 
@@ -108,7 +130,7 @@ public class CombatManager {
 
     GameState state;
 
-    Team enemies;
+    public Team enemies;
     public CombatManager(GameState state, GameObject combatCanvasObject) {
 
         canvas = combatCanvasObject.GetComponent<Canvas>(); 
@@ -119,6 +141,7 @@ public class CombatManager {
 
     }
 
+  
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
         enemies = EnemyTeam;
@@ -172,4 +195,8 @@ public class CombatManager {
         }
     
     }
+
+
+
+
 }

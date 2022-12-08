@@ -103,4 +103,17 @@ public class Character
         Obj.GetComponent<SpriteRenderer>().flipX ^= true;
 
     }
+    public void Attack(Character en)
+    {
+        int dmg;
+        dmg = attack + attackMod;
+        en.TakeDamage(dmg);
+    }
+    public void TakeDamage(int dmg)
+    {
+        int total = (int)((float)dmg * (1 - (0.4 * Mathf.Log10(defence + defenseMod)))); //find percent damage reduction, max 40%
+        currHP -= total;
+
+    }
+
 }
