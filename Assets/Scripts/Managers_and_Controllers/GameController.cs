@@ -84,13 +84,16 @@ public class GameController : MonoBehaviour
         {
             CM.enemies.Attack(playerTeam);
 
+            gameState = GameState.PLAYERMOVE;
         }
 
     }
     public void Attack()
     {
+
         playerTeam.Attack(CM.enemies);
         gameState = GameState.ENEMYMOVE;
+
     }
     public void Swap()
     {
@@ -109,15 +112,14 @@ public class Team
         //Debug.Log(Characters[0].Obj.name + ": Joined the team!");
 
     }
-
     public void AddCharacter(Character ch) {
 
         Characters.Add(ch);
     
     }
-
     public void Attack(Team Enemy)
     {
+        Debug.Log("Attacking Enemy\n");
         Characters[0].Attack(Enemy.Characters[0]);
     }
 
@@ -140,8 +142,6 @@ public class CombatManager {
         this.state = state;
 
     }
-
-  
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
         enemies = EnemyTeam;
@@ -195,8 +195,5 @@ public class CombatManager {
         }
     
     }
-
-
-
 
 }

@@ -86,6 +86,11 @@ public class Character
         hpBar.GetComponent<LiveHPBar>().Hide();
 
     }
+    public void UpdateHpBar() {
+
+        hpBar.GetComponent<LiveHPBar>().AdjustHealthBar(currHP, maxHP);
+
+    }
     public void Show()
     {
 
@@ -111,8 +116,21 @@ public class Character
     }
     public void TakeDamage(int dmg)
     {
-        int total = (int)((float)dmg * (1 - (0.4 * Mathf.Log10(defence + defenseMod)))); //find percent damage reduction, max 40%
+        int total;
+        float reduction = 0.4f * Mathf.Log10(defence + defenseMod); //find percent damage reduction, max 40%
+        float remainder = 1f - reduction; // 1 - reduction = remainder
+
+        total = (int) ((float)dmg * remainder); // incoming * remainder = new value
+ 
         currHP -= total;
+
+        Debug.Log(_base.character_name + " is assigned " + dmg + " damage!! \n");
+
+        Debug.Log(_base.character_name + " defence of " + defence + " reduced incoming damage by" + reduction * 100 + "%.\n");
+
+        Debug.Log(_base.character_name + " is taking " + total + " damage.");
+
+        UpdateHpBar();
 
     }
 
