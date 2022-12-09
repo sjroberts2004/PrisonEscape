@@ -51,14 +51,14 @@ public class Encounter
 
                 case EncounterTypes.FREE_ME:
                 _base = manager.ChooseEncounterCharacter(type, true);
-                price = _base.free_me_price;
+                price = _base.free_me_price_O2;
                 name = _base.character_name;
 
                 break;
 
                 case EncounterTypes.PAY_ME:
                 _base = manager.ChooseEncounterCharacter(type, true);
-                price = _base.pay_me_price;
+                price = _base.pay_me_price_food;
                 name = _base.character_name;
 
                 break;

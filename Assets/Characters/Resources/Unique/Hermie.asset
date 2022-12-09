@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character_name: Hermie the Crab
   description: Hermie is a crab
-  level: 1
-  maxHP: 75
-  attack: 2
-  defence: 1
-  accuracy: 95
+  level: 2
+  maxHP: 25
+  attack: 8
+  defence: 8
+  accuracy: 80
   icon: {fileID: 21300000, guid: 96ef3ea7a53c32c4abc67148fafe49ea, type: 3}
   character_sprite: {fileID: 21300000, guid: 96ef3ea7a53c32c4abc67148fafe49ea, type: 3}
   isRightFacing: 0
   pay_me_enabled: 1
   free_me_enabled: 1
   bounty_enabled: 1
-  pay_me_price: 0
-  free_me_price: 0
+  pay_me_price_food: 20
+  free_me_price_O2: 70
   bounty_dialogue: 

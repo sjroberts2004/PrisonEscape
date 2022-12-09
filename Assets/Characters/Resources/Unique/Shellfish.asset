@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character_name: Shellfish Chef
   description: Placeholder text
-  level: 1
-  maxHP: 10
-  attack: 1
-  defence: 1
-  accuracy: 100
+  level: 2
+  maxHP: 15
+  attack: 6
+  defence: 8
+  accuracy: 95
   icon: {fileID: 21300000, guid: 7b1e9b22cefafd74187c2f98771c293e, type: 3}
   character_sprite: {fileID: 21300000, guid: 7b1e9b22cefafd74187c2f98771c293e, type: 3}
   isRightFacing: 0
   pay_me_enabled: 1
   free_me_enabled: 1
   bounty_enabled: 1
-  pay_me_price: 0
-  free_me_price: 0
+  pay_me_price_food: 10
+  free_me_price_O2: 70
   bounty_dialogue: 

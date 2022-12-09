@@ -26,8 +26,8 @@ public class CharacterBase : ScriptableObject
     [SerializeField] bool free_me_enabled = true;
     [SerializeField] bool bounty_enabled = true;
 
-    [SerializeField] public int pay_me_price;
-    [SerializeField] public int free_me_price;
+    [SerializeField] public int pay_me_price_food;
+    [SerializeField] public int free_me_price_O2;
     [TextArea] [SerializeField] public string bounty_dialogue;
 
     public int GetLevel(){ return level; }

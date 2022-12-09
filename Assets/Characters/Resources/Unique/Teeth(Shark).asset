@@ -17,16 +17,16 @@ MonoBehaviour:
     Is a model prisoner and has trouble pronouncing Bs, Ps, and Ms.\r\n\r\nSpecial
     enemy\r"
   level: 2
-  maxHP: 100
-  attack: 30
-  defence: 1
-  accuracy: 95
+  maxHP: 50
+  attack: 50
+  defence: 0
+  accuracy: 50
   icon: {fileID: 0}
   character_sprite: {fileID: 21300000, guid: 648dd161c744c504fbae391e9d730485, type: 3}
   isRightFacing: 0
   pay_me_enabled: 1
   free_me_enabled: 1
   bounty_enabled: 1
-  pay_me_price: 0
-  free_me_price: 0
+  pay_me_price_food: 10
+  free_me_price_O2: 80
   bounty_dialogue: 

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7bb7f93154fe942ac90a5f78922739, type: 3}
-  m_Name: Snail
+  m_Name: Sail Fish
   m_EditorClassIdentifier: 
-  character_name: Snail
-  description: A slow snail
-  level: 1
-  maxHP: 20
-  attack: 5
+  character_name: Sail Fish
+  description: 
+  level: 2
+  maxHP: 25
+  attack: 0
   defence: 0
-  accuracy: 95
-  icon: {fileID: 21300000, guid: 2b0a5be8fce37844cb3d458d1d294975, type: 3}
-  character_sprite: {fileID: 21300000, guid: 2b0a5be8fce37844cb3d458d1d294975, type: 3}
+  accuracy: 0
+  icon: {fileID: 0}
+  character_sprite: {fileID: 21300000, guid: b96dcabf69347a540a620e4f24df8336, type: 3}
   isRightFacing: 0
   pay_me_enabled: 1
   free_me_enabled: 1
