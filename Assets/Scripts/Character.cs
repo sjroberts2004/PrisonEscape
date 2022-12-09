@@ -15,7 +15,7 @@ public class Character
 
     //stats
     int maxHP;
-    int currHP;
+    public int currHP;
     int attack;
     int defence;
     float accuracy;
@@ -122,7 +122,15 @@ public class Character
         float remainder = 1f - reduction; // 1 - reduction = remainder
 
         total = (int) ((float)dmg * remainder); // incoming * remainder = new value
- 
+
+        if (total < 0 || total > 500) { // checking to make sure negative or infinity damage is never assigned
+
+            total = 0;
+
+            Debug.LogWarning("Crazy number generated for damage, check math. \n");
+        
+        }
+
         LoseHp(total);
 
         Debug.Log(_base.character_name + " is assigned " + dmg + " damage!! \n");
@@ -149,6 +157,8 @@ public class Character
     public void JoinTeam(Team team) {
 
         myTeam = team;
+
+        myTeam.Log();
 
     }
     public void Die() {

@@ -15,7 +15,7 @@ public class CharacterBase : ScriptableObject
     [SerializeField] int maxHP;
 
     [SerializeField] int attack;
-    [SerializeField] int defence;
+    [SerializeField] int defence = 1;
     [SerializeField] float accuracy;
 
     public Sprite icon;

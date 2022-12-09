@@ -12,8 +12,6 @@ public class Encounter
 
     public EncounterTypes type;
 
-    Sprite fieldIcon;
-
     string name;
 
     string encounterDialog;
@@ -28,11 +26,15 @@ public class Encounter
 
     public Encounter(EncounterManager manager, EncounterTypes type) {
 
+        //this function is called when the encounter is first generated (off screen);
+
         this.manager = manager;
 
         GC = manager.gameObject.GetComponent<GameController>();
 
         me = GameObject.Instantiate(manager.EncounterPrefab, new Vector3(GC.playerObj.transform.position.x + 6, -0.88f, 0), Quaternion.identity);
+
+        me.name = System.Enum.GetNames(typeof(EncounterTypes))[(int)type] + ": " + name;
 
         this.type = type;
 
@@ -45,35 +47,37 @@ public class Encounter
         switch (type)
             {
                 case EncounterTypes.CHEST:
-                characterEncounter = false;
-                name = "Chest";
-                if (encountertext != null){encountertext.text = "Open the chest?";}
+
+                    characterEncounter = false;
+                    name = "Chest";
+                    SetEncounterText("Open the chest?");
 
                 break;
 
                 case EncounterTypes.BOUNTY:
-                _base = manager.ChooseEncounterCharacter(type, true);
-                name = _base.character_name;
-                encounterDialog = _base.bounty_dialogue;
-                if (encountertext != null){encountertext.text = _base.bounty_dialogue;}
 
-
+                    _base = manager.ChooseEncounterCharacter(type, true);
+                    name = _base.character_name;
+                    encounterDialog = _base.bounty_dialogue;
+                    SetEncounterText(me.name + _base.bounty_dialogue);
 
                 break;
 
                 case EncounterTypes.FREE_ME:
-                _base = manager.ChooseEncounterCharacter(type, true);
-                price = _base.free_me_price_O2;
-                name = _base.character_name;
-                if (encountertext != null){encountertext.text = _base.freeme_dialogue;}
+
+                    _base = manager.ChooseEncounterCharacter(type, true);
+                    price = _base.free_me_price_O2;
+                    name = _base.character_name;
+                    SetEncounterText(me.name + _base.freeme_dialogue);
 
                 break;
 
                 case EncounterTypes.PAY_ME:
-                _base = manager.ChooseEncounterCharacter(type, true);
-                price = _base.pay_me_price_food;
-                name = _base.character_name;
-                if (encountertext != null){encountertext.text = _base.payme_dialogue;}
+
+                    _base = manager.ChooseEncounterCharacter(type, true);
+                    price = _base.pay_me_price_food;
+                    name = _base.character_name;
+                    SetEncounterText(me.name + _base.payme_dialogue);
 
                 break;
 
@@ -81,7 +85,7 @@ public class Encounter
 
         me.GetComponent<EncounterScript>().Setup(type, this);
 
-        me.name = System.Enum.GetNames(typeof(EncounterTypes))[(int)type] + ": " + name;
+        
 
     }
     public void startEncounter() {
@@ -137,6 +141,12 @@ public class Encounter
         Debug.Log("Encounter of Type: " + type + "\n" +
                   "Base: " + name + "\n");
                    
+    }
+
+    public void SetEncounterText(string text) {
+
+        if (encountertext != null) { encountertext.text = text; }
+
     }
 
 }

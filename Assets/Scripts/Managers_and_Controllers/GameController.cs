@@ -80,15 +80,41 @@ public class GameController : MonoBehaviour
     }
     void Update() {
 
+        if (gameState != GameState.OVERWORLD)
+        {
+        
+           // CM.Update(playerTeam);
+
+        }
+
         if (gameState == GameState.ENEMYMOVE)
         {
-            CM.enemies.Attack(playerTeam);
+
+            CM.Update(playerTeam);
+
+            if (CM.enemies != null) { 
+            
+             CM.enemies.Attack(playerTeam);
+            
+            }
 
             gameState = GameState.PLAYERMOVE;
         }
 
     }
-    public void Attack()
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.I))// for combat information
+        {
+
+            playerTeam.Log();
+
+            CM.enemies.Log();
+
+        }
+
+    }
+    public void AttackEnemies()
     {
 
         playerTeam.Attack(CM.enemies);
@@ -103,11 +129,13 @@ public class GameController : MonoBehaviour
 public class Team
 {
     public List<Character> Characters;
+
+    public bool defeated = false;
     public Team(Character initalChar) {
 
         Characters = new List<Character>();
 
-        Characters.Add(initalChar);
+        AddCharacter(initalChar);
 
         //Debug.Log(Characters[0].Obj.name + ": Joined the team!");
 
@@ -115,18 +143,31 @@ public class Team
     public void AddCharacter(Character ch) {
 
         Characters.Add(ch);
+
+        ch.JoinTeam(this);
     
     }
     public void RemoveCharacter(Character ch)
     {
 
+        Debug.Log(ch._base.character_name + " died... Removing from Team \n");
+
         Characters.Remove(ch);
+
+        if (Characters.Count == 0) {
+
+            defeated = true;
+
+        }
 
     }
     public void Attack(Team Enemy)
     {
+
         Debug.Log("Attacking Enemy\n");
+
         Characters[0].Attack(Enemy.Characters[0]);
+
     }
     public void SwapByCharacter(Character ch1, Character ch2) 
     {
@@ -148,6 +189,20 @@ public class Team
 
         Characters[index2] = temp;
 
+    }
+    public void Log() {
+
+        Debug.Log("Team Data: \n");
+
+        foreach (Character ch in Characters) {
+
+            Debug.Log(ch._base.character_name + ": \n" +
+                "HP: " + ch.currHP + "\n\n"
+                
+                );
+        
+        
+        }
     }
 
 }
@@ -171,6 +226,8 @@ public class CombatManager {
     }
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
+        //do not set the Gamestate from Overworld until all combat variables are initialized
+
         enemies = EnemyTeam;
 
         GameController.switchCams();
@@ -180,10 +237,21 @@ public class CombatManager {
         displayTeams(playerTeam, enemies);
 
     }
+    public void EndCombat() {
+
+        enemies = null;
+
+        GameController.switchCams();
+
+        state = GameState.OVERWORLD;
+
+    }
     private void displayTeams(Team playerTeam, Team EnemyTeam) {
+
         //displays the sprites for each team on screen
         // Player team : 1st (-13.5, 11.5) 2nd (-14.5, 11.5) 3rd (-15.5, 11.5) 4th (16.5, 11.5)
         // Enemy team : 1st (-10.5, 11.5) 2nd (-9.5, 11.5) 3rd (-8.5, 11.5) 4th (-7.5, 11.5)
+
         float order = 0f;
 
         foreach (Character ch in playerTeam.Characters) {
@@ -224,18 +292,19 @@ public class CombatManager {
     }
     public void Update(Team playerTeam) {
 
-        if (enemies.Characters[0] == null) {
+        if (enemies.defeated == true) {
 
-            GameController.gameState = GameState.OVERWORLD;
-            GameController.switchCams();
-        
+            enemies = null;
+
+            EndCombat();
+
+
         }
 
         if (playerTeam.Characters[0] == null)
         {
 
-            GameController.gameState = GameState.OVERWORLD;
-            GameController.switchCams();
+            EndCombat();
 
         }
     }

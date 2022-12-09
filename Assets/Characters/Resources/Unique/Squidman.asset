@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 3
   maxHP: 300
   attack: 5
-  defence: 0
+  defence: 1
   accuracy: 10
   icon: {fileID: 0}
   character_sprite: {fileID: 0}
@@ -28,3 +28,5 @@ MonoBehaviour:
   pay_me_price_food: 1
   free_me_price_O2: 1
   bounty_dialogue: 
+  payme_dialogue: 
+  freeme_dialogue: 
