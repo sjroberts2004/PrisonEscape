@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 172830595}
   - component: {fileID: 172830596}
   - component: {fileID: 172830597}
+  - component: {fileID: 172830598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -631,6 +632,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   O2: 300
   FishFood: 0
+--- !u!114 &172830598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172830590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc25322886f02e409b2cc1296e7aab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatStrength: 0.5
 --- !u!1 &269753864
 GameObject:
   m_ObjectHideFlags: 0
