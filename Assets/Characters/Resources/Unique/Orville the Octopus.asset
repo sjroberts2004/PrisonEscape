@@ -19,16 +19,16 @@ MonoBehaviour:
     like a chill and down-to-earth individual. However, he wears transitions as he
     isn\u2019t used to the bright light and is kind of scared of everything.\r\n"
   level: 1
-  maxHP: 50
+  maxHP: 10
   attack: 15
-  defence: 1
-  accuracy: 95
+  defence: 0
+  accuracy: 75
   icon: {fileID: 0}
   character_sprite: {fileID: 21300000, guid: af540d6cf69a486479f9d5debadfd211, type: 3}
   isRightFacing: 0
   pay_me_enabled: 1
   free_me_enabled: 1
   bounty_enabled: 1
-  pay_me_price: 0
-  free_me_price: 0
-  bounty_dialogue: 
+  pay_me_price_food: 5
+  free_me_price_O2: 60
+  bounty_dialogue: Face my wrath!

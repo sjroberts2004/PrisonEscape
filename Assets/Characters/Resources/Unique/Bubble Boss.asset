@@ -24,15 +24,15 @@ MonoBehaviour:
 '
   level: 1
   maxHP: 1
-  attack: 5
-  defence: 1
-  accuracy: 95
+  attack: 1
+  defence: 0
+  accuracy: 1
   icon: {fileID: 0}
   character_sprite: {fileID: 21300000, guid: f122e5b1b6e988f43becbf56fe8692c7, type: 3}
   isRightFacing: 1
   pay_me_enabled: 1
   free_me_enabled: 1
   bounty_enabled: 1
-  pay_me_price: 0
-  free_me_price: 0
-  bounty_dialogue: 
+  pay_me_price_food: 30
+  free_me_price_O2: 180
+  bounty_dialogue: '*intimidating bubble noises*'
