@@ -35,4 +35,4 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 30
   free_me_price_O2: 180
-  bounty_dialogue: 
+  bounty_dialogue: '*intimidating bubble noises*'

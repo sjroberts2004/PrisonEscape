@@ -28,4 +28,4 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 10
   free_me_price_O2: 80
-  bounty_dialogue: 
+  bounty_dialogue: hey. how's it going?

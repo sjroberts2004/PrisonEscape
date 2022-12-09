@@ -27,4 +27,4 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 20
   free_me_price_O2: 70
-  bounty_dialogue: 
+  bounty_dialogue: 'SNIP SNAP SNIP SNAP SNIP SNAP'

@@ -28,4 +28,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 25
   free_me_price_O2: 100
-  bounty_dialogue: 
+  bounty_dialogue: You will never defeat me!
+  payme_dialogue: 
+  freeme_dialogue: 

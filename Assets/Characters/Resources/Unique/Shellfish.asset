@@ -27,4 +27,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 10
   free_me_price_O2: 70
-  bounty_dialogue: 
+  bounty_dialogue: I will cook you!
+  payme_dialogue: Give me some cheddar or you're cooked!
+  freeme_dialogue: HElp! I'll make you a sandwich!

@@ -15,10 +15,9 @@ public class EncounterManager : MonoBehaviour
     MovementScript movementScript;
 
     public Sprite chestSprite;
-
     Canvas EncounterCanvas;
     public GameObject encounterCanvasTextObject;
-    TMPro.TextMeshProUGUI encounterCanvasText;
+    public TMPro.TextMeshProUGUI encounterCanvasText;
 
     public Encounter active;
 
@@ -37,7 +36,7 @@ public class EncounterManager : MonoBehaviour
 
     }
     private void Awake()
-    {   
+    {
 
         Characters = new List<CharacterBase>();
         repeatCharacters = new List<CharacterBase>();
@@ -47,7 +46,9 @@ public class EncounterManager : MonoBehaviour
 
         EncounterCanvas = GameObject.Find("GameController").GetComponent<GameController>().EncounterCanvas;
 
-        encounterCanvasText = encounterCanvasTextObject.GetComponent<TMPro.TextMeshProUGUI>();
+      //  encounterCanvasText = encounterCanvasTextObject.GetComponent<TMPro.TextMeshProUGUI>();
+
+
 
         // put this all in a function somewhere Jesus
 
@@ -79,7 +80,7 @@ public class EncounterManager : MonoBehaviour
             //Debug.Log("Generating Encounter...");
             root = steps;
             GenerateRandomEncounter();
-           
+
 
         }
     }
@@ -122,7 +123,7 @@ public class EncounterManager : MonoBehaviour
             else { return null; }
 
         }
-        else 
+        else
         {
 
         sample2 = repeatCharacters.FindAll(FindCharacterBasedOnLevel);
@@ -168,7 +169,8 @@ public class EncounterManager : MonoBehaviour
 
     EncounterCanvas.enabled = true;
 
-    encounterCanvasText.text = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
+    //encounterCanvasText.text = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
+    //encounterCanvasText.text = "work please";
 
     Debug.Log("Display should say :" + active.type);
 

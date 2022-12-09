@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 public class Encounter
 {
     GameObject me;
@@ -23,6 +24,8 @@ public class Encounter
 
     public CharacterBase _base;
 
+    TMPro.TextMeshProUGUI encountertext;
+
     public Encounter(EncounterManager manager, EncounterTypes type) {
 
         this.manager = manager;
@@ -35,24 +38,34 @@ public class Encounter
 
         characterEncounter = true;
 
+        if (GameObject.Find("EncounterText") != null){
+          encountertext = GameObject.Find("EncounterText").GetComponent<TextMeshProUGUI>();
+        }
+
         switch (type)
             {
                 case EncounterTypes.CHEST:
                 characterEncounter = false;
                 name = "Chest";
+                if (encountertext != null){encountertext.text = "Open the chest?";}
 
                 break;
 
                 case EncounterTypes.BOUNTY:
                 _base = manager.ChooseEncounterCharacter(type, true);
                 name = _base.character_name;
-                
+                encounterDialog = _base.bounty_dialogue;
+                if (encountertext != null){encountertext.text = _base.bounty_dialogue;}
+
+
+
                 break;
 
                 case EncounterTypes.FREE_ME:
                 _base = manager.ChooseEncounterCharacter(type, true);
                 price = _base.free_me_price_O2;
                 name = _base.character_name;
+                if (encountertext != null){encountertext.text = _base.freeme_dialogue;}
 
                 break;
 
@@ -60,6 +73,7 @@ public class Encounter
                 _base = manager.ChooseEncounterCharacter(type, true);
                 price = _base.pay_me_price_food;
                 name = _base.character_name;
+                if (encountertext != null){encountertext.text = _base.payme_dialogue;}
 
                 break;
 
@@ -77,13 +91,13 @@ public class Encounter
 
             case EncounterTypes.PAY_ME:
                 Debug.Log("");
-                
+
                 break;
 
             case EncounterTypes.BOUNTY:
                 Debug.Log("");
                 FightPlayer();
-                
+
                 break;
 
             case EncounterTypes.FREE_ME:
