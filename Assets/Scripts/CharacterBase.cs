@@ -13,7 +13,7 @@ public class CharacterBase : ScriptableObject
 
     [SerializeField] int level;
     [SerializeField] int maxHP;
-    
+
     [SerializeField] int attack;
     [SerializeField] int defence;
     [SerializeField] float accuracy;
@@ -29,6 +29,8 @@ public class CharacterBase : ScriptableObject
     [SerializeField] public int pay_me_price;
     [SerializeField] public int free_me_price;
     [TextArea] [SerializeField] public string bounty_dialogue;
+    [TextArea] [SerializeField] public string payme_dialogue;
+    [TextArea] [SerializeField] public string freeme_dialogue;
 
     public int GetLevel(){ return level; }
     public int GetMaxHP() { return maxHP; }

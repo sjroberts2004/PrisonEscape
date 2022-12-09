@@ -35,4 +35,4 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price: 0
   free_me_price: 0
-  bounty_dialogue: 
+  bounty_dialogue: '*intimidating bubble noises*'
