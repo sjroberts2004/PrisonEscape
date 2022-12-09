@@ -28,3 +28,5 @@ MonoBehaviour:
   pay_me_price_food: 1
   free_me_price_O2: 1
   bounty_dialogue: 
+  payme_dialogue: '*inquisitive snap*'
+  freeme_dialogue: '*fervent snapping*'
