@@ -11,6 +11,8 @@ public class Character
 
     public GameObject hpBar;
 
+    Team myTeam;
+
     //stats
     int maxHP;
     int currHP;
@@ -64,13 +66,11 @@ public class Character
         accuracy = 0.95f; // 95% accuracy
 
     }
-
     void MoveTo(Vector3 newPos) {
 
         Obj.transform.position = newPos;
     
     }
-
     public void CreateHpBar() {
 
         hpBar = GameObject.Instantiate(GameController.hpBarPrefabStatic, Obj.transform);
@@ -116,13 +116,14 @@ public class Character
     }
     public void TakeDamage(int dmg)
     {
+
         int total;
         float reduction = 0.4f * Mathf.Log10(defence + defenseMod); //find percent damage reduction, max 40%
         float remainder = 1f - reduction; // 1 - reduction = remainder
 
         total = (int) ((float)dmg * remainder); // incoming * remainder = new value
  
-        currHP -= total;
+        LoseHp(total);
 
         Debug.Log(_base.character_name + " is assigned " + dmg + " damage!! \n");
 
@@ -132,6 +133,31 @@ public class Character
 
         UpdateHpBar();
 
+    }
+    public void LoseHp(int hp) {
+
+        if (hp >= currHP)
+        {
+
+            Die();
+
+        }
+
+        currHP -= hp;
+    
+    }
+    public void JoinTeam(Team team) {
+
+        myTeam = team;
+
+    }
+    public void Die() {
+
+        HideHpBar();
+        Hide();
+
+        myTeam.RemoveCharacter(this);
+    
     }
 
 }

@@ -22,13 +22,14 @@ public class LiveHPBar : MonoBehaviour
         localScale = healthBar.transform.localScale.x;
 
         Hide();
+
     }
     public void AdjustHealthBar(int currHP, int MaxHP)
     {
        
         float percentHP = (float)currHP / (float)MaxHP;
 
-        Vector3 newScale = new Vector3(localScale * percentHP, 2.8f, 0.7f);
+        Vector3 newScale = new Vector3(localScale * percentHP, 0.7f, 0.7f);
 
         healthBar.transform.localScale = newScale;
 

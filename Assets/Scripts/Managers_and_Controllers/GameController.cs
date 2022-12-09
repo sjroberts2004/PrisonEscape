@@ -10,7 +10,7 @@ public enum GameState {
 }
 public class GameController : MonoBehaviour
 {
-    public GameState gameState;
+    public static GameState gameState;
 
     public GameObject hpBarPrefab;
     public static GameObject hpBarPrefabStatic;
@@ -117,10 +117,37 @@ public class Team
         Characters.Add(ch);
     
     }
+    public void RemoveCharacter(Character ch)
+    {
+
+        Characters.Remove(ch);
+
+    }
     public void Attack(Team Enemy)
     {
         Debug.Log("Attacking Enemy\n");
         Characters[0].Attack(Enemy.Characters[0]);
+    }
+    public void SwapByCharacter(Character ch1, Character ch2) 
+    {
+        
+        int index1 = Characters.FindIndex(ch1.Equals);
+
+        int index2 = Characters.FindIndex(ch2.Equals);
+
+        SwapByIndex(index1, index2);
+
+    }
+    public void SwapByIndex(int index1, int index2)
+    {
+        Character temp;
+
+        temp = Characters[index1];
+
+        Characters[index1] = Characters[index2];
+
+        Characters[index2] = temp;
+
     }
 
 }
@@ -194,6 +221,23 @@ public class CombatManager {
             order++;
         }
     
+    }
+    public void Update(Team playerTeam) {
+
+        if (enemies.Characters[0] == null) {
+
+            GameController.gameState = GameState.OVERWORLD;
+            GameController.switchCams();
+        
+        }
+
+        if (playerTeam.Characters[0] == null)
+        {
+
+            GameController.gameState = GameState.OVERWORLD;
+            GameController.switchCams();
+
+        }
     }
 
 }

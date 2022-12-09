@@ -121,8 +121,8 @@ public class Encounter
     {
 
         Debug.Log("Encounter of Type: " + type + "\n" +
-                  "Base: " + name + "\n"
-                   );
+                  "Base: " + name + "\n");
+                   
     }
 
 }
