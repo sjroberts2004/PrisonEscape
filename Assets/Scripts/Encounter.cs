@@ -24,6 +24,8 @@ public class Encounter
 
     TMPro.TextMeshProUGUI encountertext;
 
+    TMPro.TextMeshProUGUI encounterSubtext;
+
     public Encounter(EncounterManager manager, EncounterTypes type) {
 
         //this function is called when the encounter is first generated (off screen);
@@ -41,24 +43,31 @@ public class Encounter
         characterEncounter = true;
 
         if (GameObject.Find("EncounterText") != null){
-          encountertext = GameObject.Find("EncounterText").GetComponent<TextMeshProUGUI>();
+            
+            encountertext = manager.encounterCanvasText;
+
+            encounterSubtext = manager.encounterCanvasSubText;
+
         }
 
         switch (type)
-            {
-                case EncounterTypes.CHEST:
+        {
+            case EncounterTypes.CHEST:
 
-                    characterEncounter = false;
-                    name = "Chest";
-                    SetEncounterText("Open the chest?");
+                characterEncounter = false;
+                name = "Chest";
+                SetEncounterText("Open the chest?");
 
                 break;
 
-                case EncounterTypes.BOUNTY:
+            case EncounterTypes.BOUNTY:
 
-                    _base = manager.ChooseEncounterCharacter(type, true);
-                    name = _base.character_name;
-                    encounterDialog = _base.bounty_dialogue;
+                _base = manager.ChooseEncounterCharacter(type, true);
+
+                name = _base.character_name;
+                encounterDialog = _base.bounty_dialogue;
+
+                SetEncounterSubText("Pay Your Bounty? (" + GameController.bounty + ")" );
                     SetEncounterText(me.name + _base.bounty_dialogue);
 
                 break;
@@ -66,8 +75,11 @@ public class Encounter
                 case EncounterTypes.FREE_ME:
 
                     _base = manager.ChooseEncounterCharacter(type, true);
+
                     price = _base.free_me_price_O2;
                     name = _base.character_name;
+
+                    SetEncounterSubText("Free This Prisoner?(" + price + " Oxygen)");
                     SetEncounterText(me.name + _base.freeme_dialogue);
 
                 break;
@@ -75,9 +87,12 @@ public class Encounter
                 case EncounterTypes.PAY_ME:
 
                     _base = manager.ChooseEncounterCharacter(type, true);
+
                     price = _base.pay_me_price_food;
                     name = _base.character_name;
-                    SetEncounterText(me.name + _base.payme_dialogue);
+
+                    SetEncounterSubText("Recruit This Prisoner?(" + price + " Fish food)");
+                SetEncounterText(me.name + _base.payme_dialogue);
 
                 break;
 
@@ -85,17 +100,15 @@ public class Encounter
 
         me.GetComponent<EncounterScript>().Setup(type, this);
 
-        
-
     }
-    public void startEncounter() {
-
+    public void ExecuteEncounter() {
+        // do the encounters intended effect
         switch (type)
         {
 
             case EncounterTypes.PAY_ME:
                 Debug.Log("");
-
+                EndEncounter();
                 break;
 
             case EncounterTypes.BOUNTY:
@@ -109,14 +122,26 @@ public class Encounter
                 Character ch = new Character(_base);
 
                 GC.playerTeam.AddCharacter(ch);
-
+                EndEncounter();
                 break;
 
             case EncounterTypes.CHEST:
                 Debug.Log("");
-
+                EndEncounter();
                 break;
         }
+
+    }
+
+    public void EndEncounter() {
+
+        GameController.gameState = GameState.OVERWORLD;
+
+        Debug.Log(GameController.gameState);
+
+        manager.HideEncounter();
+
+        me.GetComponent<BoxCollider2D>().enabled = false;
 
     }
     void FightPlayer() {
@@ -146,6 +171,13 @@ public class Encounter
     public void SetEncounterText(string text) {
 
         if (encountertext != null) { encountertext.text = text; }
+
+    }
+
+    public void SetEncounterSubText(string text)
+    {
+
+        if (encounterSubtext != null) { encounterSubtext.text = text; }
 
     }
 

@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
     Character playerCharacter; // Character Object to manage player in Combat
     public Team playerTeam; // Team object to store the players team
 
+    public static int bounty = 10;
+
     private void Awake()
     {
         gameState = GameState.OVERWORLD;
@@ -50,7 +52,7 @@ public class GameController : MonoBehaviour
         EncounterCanvas.enabled = false;
 
         //Initialize objects
-        CM = new CombatManager(gameState, combatCanvasObject);
+        CM = new CombatManager(this, combatCanvasObject);
         playerCharacter = new Character(diver);
         playerTeam = new Team(playerCharacter);
 
@@ -89,16 +91,18 @@ public class GameController : MonoBehaviour
 
         if (gameState == GameState.ENEMYMOVE)
         {
+            gameState = GameState.PLAYERMOVE;
 
             CM.Update(playerTeam);
 
             if (CM.enemies != null) { 
             
-             CM.enemies.Attack(playerTeam);
+                CM.enemies.Attack(playerTeam);
             
             }
 
-            gameState = GameState.PLAYERMOVE;
+            
+
         }
 
     }
@@ -212,27 +216,33 @@ public class CombatManager {
 
     Canvas canvas; //combat canvas
 
-    GameState state;
+    GameController GC;
+
+    EncounterManager EM;
 
     public Team enemies;
-    public CombatManager(GameState state, GameObject combatCanvasObject) {
+    public CombatManager(GameController gc, GameObject combatCanvasObject) {
+
+        GC = gc;
+
+        EM = GC.gameObject.GetComponent<EncounterManager>();
 
         canvas = combatCanvasObject.GetComponent<Canvas>(); 
 
         origin = canvas.transform.position;
 
-        this.state = state;
+
 
     }
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
-        //do not set the Gamestate from Overworld until all combat variables are initialized
+        // do not set the Gamestate from Overworld until all combat variables are initialized
 
         enemies = EnemyTeam;
 
         GameController.switchCams();
 
-        state = GameState.PLAYERMOVE;
+        GameController.gameState = GameState.PLAYERMOVE;
 
         displayTeams(playerTeam, enemies);
 
@@ -243,7 +253,7 @@ public class CombatManager {
 
         GameController.switchCams();
 
-        state = GameState.OVERWORLD;
+        EM.active.EndEncounter();
 
     }
     private void displayTeams(Team playerTeam, Team EnemyTeam) {
@@ -297,7 +307,6 @@ public class CombatManager {
             enemies = null;
 
             EndCombat();
-
 
         }
 

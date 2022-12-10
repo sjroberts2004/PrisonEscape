@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField] int O2;
-    [SerializeField] int FishFood;
+    public int O2;
+    public int FishFood;
 
     CounterController CC;
 

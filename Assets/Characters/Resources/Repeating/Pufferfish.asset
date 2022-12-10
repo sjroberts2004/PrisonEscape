@@ -32,7 +32,7 @@ MonoBehaviour:
   defence: 1
   accuracy: 95
   icon: {fileID: 0}
-  character_sprite: {fileID: 21300000, guid: b8c4af0ecbff13d4c92524946a81a1ab, type: 3}
+  character_sprite: {fileID: 134113420, guid: b8c4af0ecbff13d4c92524946a81a1ab, type: 3}
   isRightFacing: 1
   pay_me_enabled: 1
   free_me_enabled: 1
@@ -40,3 +40,5 @@ MonoBehaviour:
   pay_me_price_food: 1
   free_me_price_O2: 1
   bounty_dialogue: 
+  payme_dialogue: 
+  freeme_dialogue: 

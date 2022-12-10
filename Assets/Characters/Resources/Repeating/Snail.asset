@@ -20,7 +20,7 @@ MonoBehaviour:
   defence: 1
   accuracy: 95
   icon: {fileID: 21300000, guid: 2b0a5be8fce37844cb3d458d1d294975, type: 3}
-  character_sprite: {fileID: 21300000, guid: 2b0a5be8fce37844cb3d458d1d294975, type: 3}
+  character_sprite: {fileID: 855785234, guid: 2b0a5be8fce37844cb3d458d1d294975, type: 3}
   isRightFacing: 0
   pay_me_enabled: 1
   free_me_enabled: 1

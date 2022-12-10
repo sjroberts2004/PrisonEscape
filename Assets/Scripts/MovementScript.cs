@@ -30,9 +30,12 @@ public class MovementScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+
       if (!frozen){
+
         if (Input.GetKey("right"))
         {
+     
             if (!facingRight) { Flip(); }
             position.x = position.x + movementSpeed;
 
@@ -40,16 +43,33 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetKey("left") && position.x > root )
         {
+
             if (facingRight) { Flip(); }
             position.x = position.x + (movementSpeed * -1);
+
         }
 
         transform.position = position;
+
       }
     }
     // Update is called once per frame
     void Update()
     {
+
+        if (GameController.gameState != GameState.OVERWORLD)
+        {
+
+            frozen = true;
+
+        }
+        if (GameController.gameState == GameState.OVERWORLD)
+        {
+
+            frozen = false;
+        
+        }
+
         if (position.x > root + range) //steping right
         {
             root = position.x;
@@ -67,7 +87,7 @@ public class MovementScript : MonoBehaviour
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
 
-        facingRight = !facingRight;
+        facingRight = !facingRight;// this line might be causing problems
 
     }
   }

@@ -52,6 +52,10 @@ public class EncounterScript : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().sprite = GC.transform.GetComponent<EncounterManager>().chestSprite; //good god
                 break;
 
+            case EncounterTypes.FREE_ME:
+                this.GetComponent<SpriteRenderer>().sprite = GC.transform.GetComponent<EncounterManager>().randomPrisonerSprite; //good god
+                break;
+
             default:
                 this.GetComponent<SpriteRenderer>().sprite = encounter._base.character_sprite;
                 break;

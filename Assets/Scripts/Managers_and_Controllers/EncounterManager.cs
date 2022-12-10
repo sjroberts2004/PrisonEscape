@@ -9,20 +9,26 @@ public class EncounterManager : MonoBehaviour
     // Stores all the Repeating "Generic Enemies data
     private List<CharacterBase> repeatCharacters;
 
-    public GameObject EncounterPrefab;// phase these out!
+    public GameObject EncounterPrefab; // phase these out! // nvm lol
 
     GameObject player;
     MovementScript movementScript;
 
     public Sprite chestSprite;
+    public Sprite randomPrisonerSprite;
     Canvas EncounterCanvas;
+
+    //assigned via inspector
     public GameObject encounterCanvasTextObject;
     public TMPro.TextMeshProUGUI encounterCanvasText;
+    public TMPro.TextMeshProUGUI encounterCanvasSubText;
 
     public Encounter active;
 
     public static int level = 1; // stores the games current Level
     public static EncounterTypes desired_type;
+
+    PlayerInfo playerInfo;
 
     //For the steps thing probably move this to the Game controller
     int steps = 0;
@@ -44,11 +50,11 @@ public class EncounterManager : MonoBehaviour
         player = GameObject.Find("Player");
         movementScript = player.GetComponent<MovementScript>();
 
+        playerInfo = player.GetComponent<PlayerInfo>();
+
         EncounterCanvas = GameObject.Find("GameController").GetComponent<GameController>().EncounterCanvas;
 
-      //  encounterCanvasText = encounterCanvasTextObject.GetComponent<TMPro.TextMeshProUGUI>();
-
-
+        // encounterCanvasText = encounterCanvasTextObject.GetComponent<TMPro.TextMeshProUGUI>();
 
         // put this all in a function somewhere Jesus
 
@@ -80,7 +86,6 @@ public class EncounterManager : MonoBehaviour
             //Debug.Log("Generating Encounter...");
             root = steps;
             GenerateRandomEncounter();
-
 
         }
     }
@@ -169,10 +174,12 @@ public class EncounterManager : MonoBehaviour
 
     EncounterCanvas.enabled = true;
 
-    //encounterCanvasText.text = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
-    //encounterCanvasText.text = "work please";
+    GameController.gameState = GameState.BUSY;
 
-    Debug.Log("Display should say :" + active.type);
+        //encounterCanvasText.text = System.Enum.GetNames(typeof(EncounterTypes))[(int)active.type];
+        //encounterCanvasText.text = "work please";
+
+        Debug.Log("Display should say :" + active.type);
 
     }
     public void HideEncounter()
@@ -183,13 +190,68 @@ public class EncounterManager : MonoBehaviour
     }
     public void AcceptEncounter() {
 
-        EncounterCanvas.enabled = false;
+        switch (active.type) {
 
-        active.startEncounter();
+            case EncounterTypes.BOUNTY:
+
+                if (playerInfo.getFF() >= GameController.bounty)
+                {
+                    playerInfo.loseFF(GameController.bounty);
+
+                    GameController.bounty += 10;
+
+                    active.EndEncounter();
+                }
+
+                break;
+
+            case EncounterTypes.CHEST:
+
+                active.ExecuteEncounter();
+                EncounterCanvas.enabled = false;
+
+                break;
+
+            case EncounterTypes.FREE_ME:
+
+                active.ExecuteEncounter();
+                EncounterCanvas.enabled = false;
+
+                break;
+
+            case EncounterTypes.PAY_ME:
+
+                active.ExecuteEncounter();
+                EncounterCanvas.enabled = false;
+
+                break;
+
+        }
 
     }
     public void DeclineEncounter()
     {
+
+        switch (active.type)
+        {
+
+            case EncounterTypes.BOUNTY:
+                active.ExecuteEncounter();
+                break;
+
+            case EncounterTypes.CHEST:
+                active.EndEncounter();
+                break;
+
+            case EncounterTypes.FREE_ME:
+                active.EndEncounter();
+                break;
+
+            case EncounterTypes.PAY_ME:
+                active.EndEncounter();
+                break;
+
+        }
 
         EncounterCanvas.enabled = false;
 
