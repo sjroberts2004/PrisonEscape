@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
 
         if (gameState != GameState.OVERWORLD)
         {
-        
+
            // CM.Update(playerTeam);
 
         }
@@ -95,13 +95,13 @@ public class GameController : MonoBehaviour
 
             CM.Update(playerTeam);
 
-            if (CM.enemies != null) { 
-            
+            if (CM.enemies != null) {
+
                 CM.enemies.Attack(playerTeam);
-            
+
             }
 
-            
+
 
         }
 
@@ -127,6 +127,8 @@ public class GameController : MonoBehaviour
     }
     public void Swap()
     {
+        playerTeam.SwapByOne();
+        CM.displayTeams(playerTeam, CM.enemies);
         gameState = GameState.ENEMYMOVE;
     }
 }
@@ -145,11 +147,10 @@ public class Team
 
     }
     public void AddCharacter(Character ch) {
-
         Characters.Add(ch);
 
         ch.JoinTeam(this);
-    
+
     }
     public void RemoveCharacter(Character ch)
     {
@@ -173,9 +174,9 @@ public class Team
         Characters[0].Attack(Enemy.Characters[0]);
 
     }
-    public void SwapByCharacter(Character ch1, Character ch2) 
+    public void SwapByCharacter(Character ch1, Character ch2)
     {
-        
+
         int index1 = Characters.FindIndex(ch1.Equals);
 
         int index2 = Characters.FindIndex(ch2.Equals);
@@ -194,6 +195,13 @@ public class Team
         Characters[index2] = temp;
 
     }
+    public void SwapByOne()
+    {
+      Character temp;
+      temp = Characters[0];
+      Characters.RemoveAt(0);
+      Characters.Add(temp);
+    }
     public void Log() {
 
         Debug.Log("Team Data: \n");
@@ -202,10 +210,10 @@ public class Team
 
             Debug.Log(ch._base.character_name + ": \n" +
                 "HP: " + ch.currHP + "\n\n"
-                
+
                 );
-        
-        
+
+
         }
     }
 
@@ -227,7 +235,7 @@ public class CombatManager {
 
         EM = GC.gameObject.GetComponent<EncounterManager>();
 
-        canvas = combatCanvasObject.GetComponent<Canvas>(); 
+        canvas = combatCanvasObject.GetComponent<Canvas>();
 
         origin = canvas.transform.position;
 
@@ -256,7 +264,7 @@ public class CombatManager {
         EM.active.EndEncounter();
 
     }
-    private void displayTeams(Team playerTeam, Team EnemyTeam) {
+    public void displayTeams(Team playerTeam, Team EnemyTeam) {
 
         //displays the sprites for each team on screen
         // Player team : 1st (-13.5, 11.5) 2nd (-14.5, 11.5) 3rd (-15.5, 11.5) 4th (16.5, 11.5)
@@ -273,7 +281,7 @@ public class CombatManager {
             if (!ch._base.isRightFacing) {
 
                // ch.FlipSpriteOnX();
-            
+
             }
 
             ch.Show();
@@ -298,7 +306,7 @@ public class CombatManager {
 
             order++;
         }
-    
+
     }
     public void Update(Team playerTeam) {
 
