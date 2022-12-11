@@ -85,7 +85,7 @@ public class GameController : MonoBehaviour
         if (gameState != GameState.OVERWORLD)
         {
 
-           // CM.Update(playerTeam);
+           //CM.Update(playerTeam);
 
         }
 
@@ -98,6 +98,7 @@ public class GameController : MonoBehaviour
             if (CM.enemies != null) {
 
                 CM.enemies.Attack(playerTeam);
+                CM.Update(playerTeam);
 
             }
 
@@ -128,8 +129,11 @@ public class GameController : MonoBehaviour
     public void Swap()
     {
         playerTeam.SwapByOne();
-        CM.displayTeams(playerTeam, CM.enemies);
+        CM.Update(playerTeam);
         gameState = GameState.ENEMYMOVE;
+    }
+    public void BackInput(){
+      CM.EndCombat();
     }
 }
 public class Team
@@ -227,7 +231,9 @@ public class CombatManager {
     GameController GC;
 
     EncounterManager EM;
-
+    public GameObject backbutton;
+    public GameObject fightbutton;
+    public GameObject switchbutton;
     public Team enemies;
     public CombatManager(GameController gc, GameObject combatCanvasObject) {
 
@@ -238,6 +244,10 @@ public class CombatManager {
         canvas = combatCanvasObject.GetComponent<Canvas>();
 
         origin = canvas.transform.position;
+        backbutton = GameObject.Find("BACK");
+        fightbutton = GameObject.Find("FIGHT");
+        switchbutton = GameObject.Find("SWITCH");
+        backbutton.SetActive(false);
 
 
 
@@ -245,7 +255,9 @@ public class CombatManager {
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
         // do not set the Gamestate from Overworld until all combat variables are initialized
-
+        fightbutton.SetActive(true);
+        if (playerTeam.Characters.Count > 1){switchbutton.SetActive(true);}
+        else{switchbutton.SetActive(false);}
         enemies = EnemyTeam;
 
         GameController.switchCams();
@@ -258,6 +270,7 @@ public class CombatManager {
     public void EndCombat() {
 
         enemies = null;
+        backbutton.SetActive(false);
 
         GameController.switchCams();
 
@@ -309,12 +322,16 @@ public class CombatManager {
 
     }
     public void Update(Team playerTeam) {
-
+        displayTeams(playerTeam, enemies);
+        if (playerTeam.Characters.Count <2){switchbutton.SetActive(false);}
         if (enemies.defeated == true) {
 
             enemies = null;
-
-            EndCombat();
+            backbutton.SetActive(true);
+            fightbutton.SetActive(false);
+            switchbutton.SetActive(false);
+            //pressing backbutton now calls EndCombat function
+          //  EndCombat();
 
         }
 
