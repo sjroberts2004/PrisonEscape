@@ -236,6 +236,7 @@ public class CombatManager {
     public GameObject switchbutton1;
     public GameObject switchbutton2;
     public GameObject switchbutton3;
+    public GameObject winpopup;
     public Team enemies;
     public CombatManager(GameController gc, GameObject combatCanvasObject) {
 
@@ -252,6 +253,8 @@ public class CombatManager {
         switchbutton2 = GameObject.Find("SWITCH2");
         switchbutton3 = GameObject.Find("SWITCH3");
         backbutton.SetActive(false);
+        winpopup = GameObject.Find("temp_win_popup");
+        winpopup.SetActive(false);
 
 
 
@@ -288,6 +291,7 @@ public class CombatManager {
 
         enemies = null;
         backbutton.SetActive(false);
+        winpopup.SetActive(false);
 
         GameController.switchCams();
 
@@ -345,6 +349,7 @@ public class CombatManager {
 
             enemies = null;
             backbutton.SetActive(true);
+            winpopup.SetActive(true);
             fightbutton.SetActive(false);
             activateSwitch(0);
             //pressing backbutton now calls EndCombat function
