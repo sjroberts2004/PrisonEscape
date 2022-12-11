@@ -36,8 +36,6 @@ public class Encounter
 
         me = GameObject.Instantiate(manager.EncounterPrefab, new Vector3(GC.playerObj.transform.position.x + 6, -0.88f, 0), Quaternion.identity);
 
-        me.name = System.Enum.GetNames(typeof(EncounterTypes))[(int)type] + ": " + name;
-
         this.type = type;
 
         characterEncounter = true;
@@ -49,6 +47,8 @@ public class Encounter
             encounterSubtext = manager.encounterCanvasSubText;
 
         }
+
+        me.name = System.Enum.GetNames(typeof(EncounterTypes))[(int)type] + ": ";
 
         switch (type)
         {
@@ -92,11 +92,14 @@ public class Encounter
                     name = _base.character_name;
 
                     SetEncounterSubText("Recruit This Prisoner?(" + price + " Fish food)");
-                SetEncounterText(me.name + _base.payme_dialogue);
+
+                    SetEncounterText(me.name + _base.payme_dialogue);
 
                 break;
 
             }
+
+        me.name += name;
 
         me.GetComponent<EncounterScript>().Setup(type, this);
 
@@ -143,7 +146,6 @@ public class Encounter
         }
 
     }
-
     public void EndEncounter() {
 
         GameController.gameState = GameState.OVERWORLD;
@@ -155,7 +157,6 @@ public class Encounter
         me.GetComponent<BoxCollider2D>().enabled = false;
 
     }
-
     public void Hide() {
 
         me.GetComponent<SpriteRenderer>().enabled = false;
@@ -166,6 +167,13 @@ public class Encounter
         //creates a new character based on the selected Character
         Character newChar;
         newChar = new Character(_base);
+
+        if (!_base.isRightFacing)
+        {
+
+            newChar.FlipSpriteOnX();
+
+        }
 
         //Loads that Character into a new team
         Team enemy;

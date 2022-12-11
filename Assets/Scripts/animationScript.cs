@@ -7,7 +7,7 @@ public class animationScript : MonoBehaviour
 {
     float originalY;
 
-    public float floatStrength = 1; //changable float strength
+    public float floatStrength = 0.5f; //changable float strength
                                     //number indicates speed. and height of both directions
 
     void Start()

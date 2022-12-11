@@ -481,7 +481,6 @@ GameObject:
   - component: {fileID: 172830595}
   - component: {fileID: 172830596}
   - component: {fileID: 172830597}
-  - component: {fileID: 172830598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -632,19 +631,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   O2: 300
   FishFood: 40
---- !u!114 &172830598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172830590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc25322886f02e409b2cc1296e7aab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatStrength: 0.5
 --- !u!1 &269753864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,7 +2206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -45.00004}
+  m_AnchoredPosition: {x: 0, y: -137}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987976148
@@ -3446,6 +3432,8 @@ MonoBehaviour:
   CounterCanvas: {fileID: 563037950}
   playerObj: {fileID: 172830590}
   diver: {fileID: 11400000, guid: 2ab0ca71177c86d4aa6eb20bdf42a9c1, type: 2}
+  NotificationPrefab: {fileID: 6729251526565649412, guid: d2d2b5a8d3957f949960ea81a3150e74, type: 3}
+  NotificationThinPrefab: {fileID: 3505171094021218212, guid: fd16284ea109422418b3b03f119ec87d, type: 3}
 --- !u!114 &1402829829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3464,6 +3452,7 @@ MonoBehaviour:
   encounterCanvasTextObject: {fileID: 1061726418}
   encounterCanvasText: {fileID: 1061726420}
   encounterCanvasSubText: {fileID: 2002829820}
+  GC: {fileID: 0}
 --- !u!1 &1649682844
 GameObject:
   m_ObjectHideFlags: 0

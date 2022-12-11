@@ -136,15 +136,21 @@ public class GameController : MonoBehaviour
         gameState = GameState.ENEMYMOVE;
     }
 
-    public void FullNotification(string msg, Sprite img, int secs)
+    public void FullNotification(string title, string msg, Sprite img, int secs)
     {
 
-        GameObject temp = GameObject.Instantiate(NotificationPrefab);
+        GameObject temp = GameObject.Instantiate(NotificationPrefab, GameController.GetActiveCamera().gameObject.transform);
 
         temp.GetComponent<NotificationController>().setText(msg);
 
-        //temp.GetComponent<NotificationController>().setImage(msg);
+        temp.GetComponent<NotificationController>().setTitle(title);
 
+        if (img) { 
+        
+            temp.GetComponent<NotificationController>().setImage(img);
+
+        }
+        
         temp.GetComponent<NotificationController>().Show();
 
         StartCoroutine(Hide(secs));
@@ -170,7 +176,7 @@ public class GameController : MonoBehaviour
     public void ThinNotification(string msg, Sprite img, int secs)
     {
 
-        GameObject temp = GameObject.Instantiate(NotificationThinPrefab);
+        GameObject temp = GameObject.Instantiate(NotificationThinPrefab, GameController.GetActiveCamera().gameObject.transform);
 
         temp.GetComponent<NotificationController>().setText(msg);
 
@@ -193,6 +199,28 @@ public class GameController : MonoBehaviour
 
             Object.Destroy(temp);
 
+        }
+
+    }
+
+    public static Camera GetActiveCamera() {
+
+        Camera mainCamera;
+        Camera combatCamera;
+
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        combatCamera = GameObject.Find("Combat Camera").GetComponent<Camera>();
+
+        if (mainCamera.enabled == true)
+        {
+
+            return mainCamera;
+
+        }
+        else {
+
+            return combatCamera;
+        
         }
 
     }
@@ -221,6 +249,13 @@ public class Team
         {
 
            Characters.Add(ch);
+
+            if (!ch._base.isRightFacing)
+            {
+
+                ch.FlipSpriteOnX();
+
+            }
 
             ch.JoinTeam(this);
 
@@ -315,6 +350,8 @@ public class CombatManager {
     public GameObject switchbutton3;
     public GameObject winpopup;
     public Team enemies;
+
+    int reward;
     public CombatManager(GameController gc, GameObject combatCanvasObject) {
 
         GC = gc;
@@ -324,34 +361,47 @@ public class CombatManager {
         canvas = combatCanvasObject.GetComponent<Canvas>();
 
         origin = canvas.transform.position;
+
         backbutton = GameObject.Find("BACK");
         fightbutton = GameObject.Find("FIGHT");
+
         switchbutton1 = GameObject.Find("SWITCH1");
         switchbutton2 = GameObject.Find("SWITCH2");
         switchbutton3 = GameObject.Find("SWITCH3");
-        backbutton.SetActive(false);
-        winpopup = GameObject.Find("temp_win_popup");
-        winpopup.SetActive(false);
 
+        backbutton.SetActive(false);
+
+        winpopup = GameObject.Find("temp_win_popup");
+
+        winpopup.SetActive(false);
 
 
     }
     public void activateSwitch(int partymembers){
+
       switchbutton1.SetActive(false);
+
       switchbutton2.SetActive(false);
+
       switchbutton3.SetActive(false);
+
       if (partymembers>1){
         switchbutton1.SetActive(true);
       }
+
       if (partymembers >2){
         switchbutton2.SetActive(true);
       }
+
       if (partymembers >3){
         switchbutton3.SetActive(true);
       }
+
     }
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
+        reward = 0;
+
         // do not set the Gamestate from Overworld until all combat variables are initialized
         fightbutton.SetActive(true);
         activateSwitch(playerTeam.Characters.Count);
@@ -367,6 +417,7 @@ public class CombatManager {
     public void EndCombat() {
 
         enemies = null;
+
         backbutton.SetActive(false);
         winpopup.SetActive(false);
 
@@ -385,21 +436,16 @@ public class CombatManager {
 
         foreach (Character ch in playerTeam.Characters) {
 
-            float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
+            float width = ch.Obj.GetComponent<SpriteRenderer>().bounds.size.x;
 
-            ch.Obj.transform.position = origin + new Vector3(-0.5f - width - (order * 1.5f), 0.5f, 0f);
+            order += width;
 
-            if (!ch._base.isRightFacing) {
-
-               // ch.FlipSpriteOnX();
-
-            }
+            ch.Obj.transform.position = origin + new Vector3(-0.5f - order, 0.5f, 0f);
 
             ch.Show();
             ch.hpBar.GetComponent<LiveHPBar>().Set(ch);
             ch.ShowHpBar();
-
-            order++;
+            
         }
 
         order = 0;
@@ -409,28 +455,41 @@ public class CombatManager {
 
             float width = ch.Obj.GetComponent<SpriteRenderer>().size.x;
 
-            ch.Obj.transform.position = origin + new Vector3(0.5f + width + (order * 0.3f), 0.5f, 0f);
+            order += width;
+
+            ch.Obj.transform.position = origin + new Vector3(0.5f + width, 0.5f, 0f);
 
             ch.Show();
             ch.hpBar.GetComponent<LiveHPBar>().Set(ch);
             ch.ShowHpBar();
 
-            order++;
         }
 
     }
     public void Update(Team playerTeam) {
+
         displayTeams(playerTeam, enemies);
+
         activateSwitch(playerTeam.Characters.Count);
+
         if (enemies.defeated == true) {
 
             enemies = null;
+
             backbutton.SetActive(true);
-            winpopup.SetActive(true);
+
+            //Replacing with Notification
+            //winpopup.SetActive(true);
+
+            GC.FullNotification("Victory!", "", null, 3);
+
             fightbutton.SetActive(false);
+
             activateSwitch(0);
+
             //pressing backbutton now calls EndCombat function
-          //  EndCombat();
+
+            //EndCombat();
 
         }
 

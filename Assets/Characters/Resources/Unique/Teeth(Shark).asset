@@ -21,7 +21,7 @@ MonoBehaviour:
   attack: 50
   defence: 1
   accuracy: 50
-  icon: {fileID: 0}
+  icon: {fileID: 2011855791, guid: 648dd161c744c504fbae391e9d730485, type: 3}
   character_sprite: {fileID: 797183863, guid: 648dd161c744c504fbae391e9d730485, type: 3}
   isRightFacing: 0
   pay_me_enabled: 1

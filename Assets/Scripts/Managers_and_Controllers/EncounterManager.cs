@@ -80,7 +80,7 @@ public class EncounterManager : MonoBehaviour
             if (cbase != null)
             {
                 //Debug.Log("Attempting to add " + cbase + "To repeating Character Database");
-                Characters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
+                repeatCharacters.Add(cbase as CharacterBase); // Load all CharacterBases into a list
             }
         }
     }
@@ -126,6 +126,10 @@ public class EncounterManager : MonoBehaviour
                 int val = (int)Random.Range(0, sample2.Count);
                 result = sample2[val];
 
+                //Since they are Unique
+
+                Characters.Remove(result);
+
             }
             else { return null; }
 
@@ -149,7 +153,7 @@ public class EncounterManager : MonoBehaviour
 
         //free me, pay me, bounty, chest
 
-        int[] nums = new int[] { 0, 1, 2, };
+        int[] nums = new int[] { 0, 1, 1, 2, };
 
         int val = (int)Random.Range(0, nums.Length);
 
