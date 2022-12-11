@@ -125,7 +125,7 @@ TextureImporter:
         width: 128
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,6 +133,27 @@ TextureImporter:
       bones: []
       spriteID: 24d2b8b1bc6b7014faf77331a305f2a4
       internalID: 599790320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stingray_icon
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 40
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc39b336adb3c54493eff4c1ac3f9f1
+      internalID: -4998468
       vertices: []
       indices: 
       edges: []
@@ -148,6 +169,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Stingray_icon: -4998468
       Stingray_0: 599790320
   spritePackingTag: 
   pSDRemoveMatte: 0

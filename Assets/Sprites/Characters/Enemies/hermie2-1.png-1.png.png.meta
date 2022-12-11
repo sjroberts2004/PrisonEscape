@@ -125,7 +125,7 @@ TextureImporter:
         width: 104
         height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,6 +133,27 @@ TextureImporter:
       bones: []
       spriteID: bc751ed7852269941940dd525f3f5bfa
       internalID: -275079545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hermie2_icon
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 30
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c6c55c54798594da2457ace4cee014
+      internalID: -718396402
       vertices: []
       indices: 
       edges: []
@@ -148,6 +169,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      hermie2_icon: -718396402
       hermie2-1.png-1.png_0: -275079545
   spritePackingTag: 
   pSDRemoveMatte: 0

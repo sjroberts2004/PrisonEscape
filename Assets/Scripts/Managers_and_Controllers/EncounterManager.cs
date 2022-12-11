@@ -28,7 +28,7 @@ public class EncounterManager : MonoBehaviour
     public static int level = 1; // stores the games current Level
     public static EncounterTypes desired_type;
 
-    GameController GC;
+    public GameController GC;
 
     PlayerInfo playerInfo;
 
@@ -151,7 +151,7 @@ public class EncounterManager : MonoBehaviour
 
         //free me, pay me, bounty, chest
 
-        int[] nums = new int[] { 0, 2, 2 };
+        int[] nums = new int[] { 0, 1, 2, };
 
         int val = (int)Random.Range(0, nums.Length);
 
@@ -200,6 +200,7 @@ public class EncounterManager : MonoBehaviour
 
                 if (playerInfo.getFF() >= GameController.bounty)
                 {
+
                     playerInfo.loseFF(GameController.bounty);
 
                     GameController.bounty += 10;
@@ -218,15 +219,44 @@ public class EncounterManager : MonoBehaviour
 
             case EncounterTypes.FREE_ME:
 
-                active.ExecuteEncounter();
-                EncounterCanvas.enabled = false;
+                if (GC.playerTeam.full)
+                {
+
+                    GC.ThinNotification("Your Team is Full!", null, 1);
+
+                }
+                else { 
+                
+                    if (playerInfo.get02() >= active.price)
+                    {
+                        playerInfo.loseO2(active.price);
+
+                        active.ExecuteEncounter();
+
+                    }
+                
+                }
 
                 break;
 
             case EncounterTypes.PAY_ME:
 
-                active.ExecuteEncounter();
-                EncounterCanvas.enabled = false;
+                if (GC.playerTeam.full)
+                {
+
+                    GC.ThinNotification("Your Team is Full!", null , 1);
+
+                }
+                else
+                {
+
+                    if (playerInfo.getFF() >= active.price)
+                    {
+                        playerInfo.loseFF(active.price);
+
+                        active.ExecuteEncounter();
+                    }
+                }
 
                 break;
 

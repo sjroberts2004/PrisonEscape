@@ -125,7 +125,7 @@ TextureImporter:
         width: 112
         height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,6 +133,27 @@ TextureImporter:
       bones: []
       spriteID: 26ad5bae9b9483e4fa6b112ffd3aaf09
       internalID: 797183863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: teeth_icon
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 43
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dfa19db872cc804aa5d7e49559de349
+      internalID: 2011855791
       vertices: []
       indices: 
       edges: []
@@ -148,6 +169,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      teeth_icon: 2011855791
       teeth1-1.png_0: 797183863
   spritePackingTag: 
   pSDRemoveMatte: 0

@@ -18,7 +18,7 @@ public class Encounter
 
     public bool characterEncounter; //tracks if the enconter needs a character base or not.
 
-    int price; // price for whatever type of encounter this is
+    public int price; // price for whatever type of encounter this is
 
     public CharacterBase _base;
 
@@ -107,26 +107,34 @@ public class Encounter
         {
 
             case EncounterTypes.PAY_ME:
-                Debug.Log("");
+                //Debug.Log("");
+                Character ch = new Character(_base);
+                GC.playerTeam.AddCharacter(ch);
+
+                manager.GC.ThinNotification(ch._base.character_name + ": Joined your team", ch._base.icon, 1);
+
                 EndEncounter();
                 break;
 
             case EncounterTypes.BOUNTY:
-                Debug.Log("");
+                //Debug.Log("");
                 FightPlayer();
 
                 break;
 
             case EncounterTypes.FREE_ME:
-                Debug.Log("");
-                Character ch = new Character(_base);
+                //Debug.Log("");
+                Character ch1 = new Character(_base);
                 me.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
-                GC.playerTeam.AddCharacter(ch);
+                GC.playerTeam.AddCharacter(ch1);
+
+                manager.GC.ThinNotification(ch1._base.character_name + ": Joined your team", ch1._base.icon, 1);
+
                 EndEncounter();
                 break;
 
             case EncounterTypes.CHEST:
-                Debug.Log("");
+                //Debug.Log("");
                 EndEncounter();
                 break;
         }

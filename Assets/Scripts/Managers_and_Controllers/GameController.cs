@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour
         playerCharacter = new Character(diver);
         playerTeam = new Team(playerCharacter);
 
+
     }
     public static void switchCams()
     {
@@ -111,7 +112,7 @@ public class GameController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.I))// for combat information
+        if (Input.GetKeyDown(KeyCode.A))// for combat information
         {
 
             playerTeam.Log();
@@ -119,7 +120,6 @@ public class GameController : MonoBehaviour
             CM.enemies.Log();
 
         }
-
     }
     public void AttackEnemies()
     {
@@ -135,28 +135,13 @@ public class GameController : MonoBehaviour
         gameState = GameState.ENEMYMOVE;
     }
 
-    public void FullNotification(string msg, int secs) {
-        
-        //show notifications
-        
-        StartCoroutine(Hide(secs));
+    public void FullNotification(string msg, Sprite img, int secs) {
 
-        IEnumerator Hide(int secs)
-        {
-            yield return new WaitForSeconds(secs);
-
-            //destroy noti
-        }
-
-    }
-
-    public void ThinNotification(string msg, int secs)
-    {
-        GameObject temp;
-
-        temp = Instantiate(NotificationThinPrefab);
+        GameObject temp = GameObject.Instantiate(NotificationPrefab);
 
         temp.GetComponent<NotificationController>().setText(msg);
+
+        //temp.GetComponent<NotificationController>().setImage(msg);
 
         temp.GetComponent<NotificationController>().Show();
 
@@ -174,12 +159,45 @@ public class GameController : MonoBehaviour
         }
 
     }
+    public void ThinNotification(string msg, Sprite img, int secs)
+    {
+
+        GameObject temp = GameObject.Instantiate(NotificationThinPrefab);
+
+        temp.GetComponent<NotificationController>().setText(msg);
+
+        if (img != null) {
+
+         temp.GetComponent<NotificationController>().setImage(img);
+
+        }
+
+        temp.GetComponent<NotificationController>().Show();
+
+        StartCoroutine(Hide(secs));
+
+        IEnumerator Hide(int secs)
+        {
+
+            yield return new WaitForSeconds(secs);
+
+            temp.GetComponent<NotificationController>().Hide();
+
+            Object.Destroy(temp);
+
+        }
+
+    }
+
 }
 public class Team
 {
     public List<Character> Characters;
 
     public bool defeated = false;
+
+    public bool full = false;
+
     public Team(Character initalChar) {
 
         Characters = new List<Character>();
@@ -190,9 +208,21 @@ public class Team
 
     }
     public void AddCharacter(Character ch) {
-        Characters.Add(ch);
 
-        ch.JoinTeam(this);
+        if (!full)
+        {
+
+           Characters.Add(ch);
+
+            ch.JoinTeam(this);
+
+        }
+
+        if (Characters.Count >= 4) {
+
+            full = true;
+        
+        }
 
     }
     public void RemoveCharacter(Character ch)
