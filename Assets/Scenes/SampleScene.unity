@@ -3176,6 +3176,8 @@ MonoBehaviour:
   CounterCanvas: {fileID: 563037950}
   playerObj: {fileID: 172830590}
   diver: {fileID: 11400000, guid: 2ab0ca71177c86d4aa6eb20bdf42a9c1, type: 2}
+  NotificationPrefab: {fileID: 6729251526565649412, guid: d2d2b5a8d3957f949960ea81a3150e74, type: 3}
+  NotificationThinPrefab: {fileID: 3505171094021218212, guid: fd16284ea109422418b3b03f119ec87d, type: 3}
 --- !u!114 &1402829829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3420,7 +3422,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839365927}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
