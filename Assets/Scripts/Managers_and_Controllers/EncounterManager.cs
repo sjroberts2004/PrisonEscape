@@ -30,6 +30,7 @@ public class EncounterManager : MonoBehaviour
 
     public GameController GC;
 
+
     PlayerInfo playerInfo;
 
     //For the steps thing probably move this to the Game controller
@@ -45,8 +46,6 @@ public class EncounterManager : MonoBehaviour
     }
     private void Awake()
     {
-
-        GC = this.gameObject.GetComponent<GameController>();
 
         Characters = new List<CharacterBase>();
         repeatCharacters = new List<CharacterBase>();

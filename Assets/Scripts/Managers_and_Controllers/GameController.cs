@@ -28,9 +28,6 @@ public class GameController : MonoBehaviour
     Character playerCharacter; // Character Object to manage player in Combat
     public Team playerTeam; // Team object to store the players team
 
-    public GameObject NotificationPrefab;
-    public GameObject NotificationThinPrefab;
-
     public static int bounty = 10;
 
     private void Awake()
@@ -89,7 +86,7 @@ public class GameController : MonoBehaviour
         if (gameState != GameState.OVERWORLD)
         {
 
-           // CM.Update(playerTeam);
+           //CM.Update(playerTeam);
 
         }
 
@@ -102,6 +99,7 @@ public class GameController : MonoBehaviour
             if (CM.enemies != null) {
 
                 CM.enemies.Attack(playerTeam);
+                CM.Update(playerTeam);
 
             }
 
@@ -128,10 +126,10 @@ public class GameController : MonoBehaviour
         gameState = GameState.ENEMYMOVE;
 
     }
-    public void Swap()
+    public void Swap(int index)
     {
-        playerTeam.SwapByOne();
-        CM.displayTeams(playerTeam, CM.enemies);
+        playerTeam.SwapByIndex(0,index);
+        CM.Update(playerTeam);
         gameState = GameState.ENEMYMOVE;
     }
 
@@ -157,6 +155,10 @@ public class GameController : MonoBehaviour
             Object.Destroy(temp);
 
         }
+
+
+    public void BackInput(){
+      CM.EndCombat();
 
     }
     public void ThinNotification(string msg, Sprite img, int secs)
@@ -300,7 +302,12 @@ public class CombatManager {
     GameController GC;
 
     EncounterManager EM;
-
+    public GameObject backbutton;
+    public GameObject fightbutton;
+    public GameObject switchbutton1;
+    public GameObject switchbutton2;
+    public GameObject switchbutton3;
+    public GameObject winpopup;
     public Team enemies;
     public CombatManager(GameController gc, GameObject combatCanvasObject) {
 
@@ -311,12 +318,37 @@ public class CombatManager {
         canvas = combatCanvasObject.GetComponent<Canvas>();
 
         origin = canvas.transform.position;
+        backbutton = GameObject.Find("BACK");
+        fightbutton = GameObject.Find("FIGHT");
+        switchbutton1 = GameObject.Find("SWITCH1");
+        switchbutton2 = GameObject.Find("SWITCH2");
+        switchbutton3 = GameObject.Find("SWITCH3");
+        backbutton.SetActive(false);
+        winpopup = GameObject.Find("temp_win_popup");
+        winpopup.SetActive(false);
 
+
+
+    }
+    public void activateSwitch(int partymembers){
+      switchbutton1.SetActive(false);
+      switchbutton2.SetActive(false);
+      switchbutton3.SetActive(false);
+      if (partymembers>1){
+        switchbutton1.SetActive(true);
+      }
+      if (partymembers >2){
+        switchbutton2.SetActive(true);
+      }
+      if (partymembers >3){
+        switchbutton3.SetActive(true);
+      }
     }
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
         // do not set the Gamestate from Overworld until all combat variables are initialized
-
+        fightbutton.SetActive(true);
+        activateSwitch(playerTeam.Characters.Count);
         enemies = EnemyTeam;
 
         GameController.switchCams();
@@ -329,6 +361,8 @@ public class CombatManager {
     public void EndCombat() {
 
         enemies = null;
+        backbutton.SetActive(false);
+        winpopup.SetActive(false);
 
         GameController.switchCams();
 
@@ -380,12 +414,17 @@ public class CombatManager {
 
     }
     public void Update(Team playerTeam) {
-
+        displayTeams(playerTeam, enemies);
+        activateSwitch(playerTeam.Characters.Count);
         if (enemies.defeated == true) {
 
             enemies = null;
-
-            EndCombat();
+            backbutton.SetActive(true);
+            winpopup.SetActive(true);
+            fightbutton.SetActive(false);
+            activateSwitch(0);
+            //pressing backbutton now calls EndCombat function
+          //  EndCombat();
 
         }
 
