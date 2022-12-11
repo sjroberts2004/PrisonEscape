@@ -46,6 +46,7 @@ public class EncounterManager : MonoBehaviour
     }
     private void Awake()
     {
+        GC = this.gameObject.GetComponent<GameController>();
 
         Characters = new List<CharacterBase>();
         repeatCharacters = new List<CharacterBase>();
@@ -95,8 +96,6 @@ public class EncounterManager : MonoBehaviour
     void GenerateRandomEncounter() {
 
         Encounter encounter = new Encounter(this, ChooseEncounterType());
-
-        //encounter.Spill();
 
     }
     private static bool FindCharacterBasedOnLevel(CharacterBase cb)

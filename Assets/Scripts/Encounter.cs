@@ -114,6 +114,9 @@ public class Encounter
                 manager.GC.ThinNotification(ch._base.character_name + ": Joined your team", ch._base.icon, 1);
 
                 EndEncounter();
+
+                Hide();
+
                 break;
 
             case EncounterTypes.BOUNTY:
@@ -152,6 +155,12 @@ public class Encounter
         me.GetComponent<BoxCollider2D>().enabled = false;
 
     }
+
+    public void Hide() {
+
+        me.GetComponent<SpriteRenderer>().enabled = false;
+    
+    }
     void FightPlayer() {
 
         //creates a new character based on the selected Character
@@ -175,13 +184,11 @@ public class Encounter
                   "Base: " + name + "\n");
 
     }
-
     public void SetEncounterText(string text) {
 
         if (encountertext != null) { encountertext.text = text; }
 
     }
-
     public void SetEncounterSubText(string text)
     {
 

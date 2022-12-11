@@ -30,6 +30,9 @@ public class GameController : MonoBehaviour
 
     public static int bounty = 10;
 
+    public GameObject NotificationPrefab;
+    public GameObject NotificationThinPrefab;
+
     private void Awake()
     {
         gameState = GameState.OVERWORLD;
@@ -133,7 +136,8 @@ public class GameController : MonoBehaviour
         gameState = GameState.ENEMYMOVE;
     }
 
-    public void FullNotification(string msg, Sprite img, int secs) {
+    public void FullNotification(string msg, Sprite img, int secs)
+    {
 
         GameObject temp = GameObject.Instantiate(NotificationPrefab);
 
@@ -156,11 +160,13 @@ public class GameController : MonoBehaviour
 
         }
 
-
+    }
     public void BackInput(){
+
       CM.EndCombat();
 
     }
+
     public void ThinNotification(string msg, Sprite img, int secs)
     {
 
