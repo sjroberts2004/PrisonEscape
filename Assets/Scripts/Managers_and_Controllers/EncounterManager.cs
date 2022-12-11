@@ -28,8 +28,6 @@ public class EncounterManager : MonoBehaviour
     public static int level = 1; // stores the games current Level
     public static EncounterTypes desired_type;
 
-    GameController GC;
-
     PlayerInfo playerInfo;
 
     //For the steps thing probably move this to the Game controller
@@ -45,8 +43,6 @@ public class EncounterManager : MonoBehaviour
     }
     private void Awake()
     {
-
-        GC = this.gameObject.GetComponent<GameController>();
 
         Characters = new List<CharacterBase>();
         repeatCharacters = new List<CharacterBase>();
