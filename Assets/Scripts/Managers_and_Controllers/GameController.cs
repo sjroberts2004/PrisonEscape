@@ -28,6 +28,9 @@ public class GameController : MonoBehaviour
     Character playerCharacter; // Character Object to manage player in Combat
     public Team playerTeam; // Team object to store the players team
 
+    public GameObject NotificationPrefab;
+    public GameObject NotificationThinPrefab;
+
     public static int bounty = 10;
 
     private void Awake()
@@ -128,6 +131,46 @@ public class GameController : MonoBehaviour
     public void Swap()
     {
         gameState = GameState.ENEMYMOVE;
+    }
+
+    public void FullNotification(string msg, int secs) {
+        
+        //show notifications
+        
+        StartCoroutine(Hide(secs));
+
+        IEnumerator Hide(int secs)
+        {
+            yield return new WaitForSeconds(secs);
+
+            //destroy noti
+        }
+
+    }
+
+    public void ThinNotification(string msg, int secs)
+    {
+        GameObject temp;
+
+        temp = Instantiate(NotificationThinPrefab);
+
+        temp.GetComponent<NotificationController>().setText(msg);
+
+        temp.GetComponent<NotificationController>().Show();
+
+        StartCoroutine(Hide(secs));
+
+        IEnumerator Hide(int secs)
+        {
+
+            yield return new WaitForSeconds(secs);
+
+            temp.GetComponent<NotificationController>().Hide();
+
+            Object.Destroy(temp);
+
+        }
+
     }
 }
 public class Team
@@ -230,8 +273,6 @@ public class CombatManager {
         canvas = combatCanvasObject.GetComponent<Canvas>(); 
 
         origin = canvas.transform.position;
-
-
 
     }
     public void startCombat(Team playerTeam, Team EnemyTeam)
