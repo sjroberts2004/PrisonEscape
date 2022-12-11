@@ -43,7 +43,7 @@ public class Encounter
         characterEncounter = true;
 
         if (GameObject.Find("EncounterText") != null){
-            
+
             encountertext = manager.encounterCanvasText;
 
             encounterSubtext = manager.encounterCanvasSubText;
@@ -120,7 +120,7 @@ public class Encounter
             case EncounterTypes.FREE_ME:
                 Debug.Log("");
                 Character ch = new Character(_base);
-
+                me.GetComponent<SpriteRenderer>().sprite = _base.character_sprite;
                 GC.playerTeam.AddCharacter(ch);
                 EndEncounter();
                 break;
@@ -165,7 +165,7 @@ public class Encounter
 
         Debug.Log("Encounter of Type: " + type + "\n" +
                   "Base: " + name + "\n");
-                   
+
     }
 
     public void SetEncounterText(string text) {
