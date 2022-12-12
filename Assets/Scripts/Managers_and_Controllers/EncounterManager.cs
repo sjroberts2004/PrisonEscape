@@ -122,7 +122,7 @@ public class EncounterManager : MonoBehaviour
 
         sample2 = sample.FindAll(FindCharacterBasedOnType); // and of the right type
 
-            if (sample2.Count != 0)
+            if (sample2 != null)
             {
 
                 // Gving an error find out why
@@ -136,21 +136,7 @@ public class EncounterManager : MonoBehaviour
                 Characters.Remove(result);
 
             }
-            else {
-
-                if (sample2.Count == 0 && EncounterManager.level == 3) { 
-                
-                
-                // You win!
-                
-                
-                }
-
-                EncounterManager.level++;
-
-                return ChooseEncounterCharacter(type, unique);
-
-            }
+            else { return null; }
 
         }
         else
@@ -163,11 +149,7 @@ public class EncounterManager : MonoBehaviour
                 int val = (int)Random.Range(0, sample2.Count-1);
                 result = repeatCharacters[val];
             }
-            else {
-
-                return null; 
-
-            }
+            else { return null; }
 
         }
         return result;
@@ -176,7 +158,7 @@ public class EncounterManager : MonoBehaviour
 
         //free me, pay me, bounty, chest
 
-        int[] nums = new int[] { 0, 1, 1, 2, 2, };
+        int[] nums = new int[] { 0, 1, 1, 2, };
 
         int val = (int)Random.Range(0, nums.Length);
 
