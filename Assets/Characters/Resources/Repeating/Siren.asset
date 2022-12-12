@@ -17,9 +17,9 @@ MonoBehaviour:
     and studying magic. They are nerds per se and mostly want to be left alone. Sometimes,
     they get bored and commit coercion.
   level: 1
-  maxHP: 50
-  attack: 20
-  defence: 1
+  maxHP: 20
+  attack: 15
+  defence: 3
   accuracy: 50
   icon: {fileID: -1098972945, guid: 866528a01558e2e4b898b7953271070c, type: 3}
   character_sprite: {fileID: 341222199, guid: 866528a01558e2e4b898b7953271070c, type: 3}
@@ -30,5 +30,5 @@ MonoBehaviour:
   pay_me_price_food: 1
   free_me_price_O2: 1
   bounty_dialogue: 
-  payme_dialogue: 
+  payme_dialogue: Let me sing for you
   freeme_dialogue: 
