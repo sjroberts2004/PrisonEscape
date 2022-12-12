@@ -358,7 +358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6024c75df09def14390969ddfec2c753, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af11fdf893b3351498f82ba3f637280a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -412,9 +412,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EncounterManager, Assembly-CSharp
-        m_MethodName: AcceptEncounter
+      - m_Target: {fileID: -6065042973936383808}
+        m_TargetAssemblyTypeName: NotificationController, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

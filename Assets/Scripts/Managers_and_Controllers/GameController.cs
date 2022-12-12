@@ -60,7 +60,6 @@ public class GameController : MonoBehaviour
         playerTeam = new Team(playerCharacter);
         playerTeam.playersTeam = true;
 
-
     }
     public static void switchCams()
     {
@@ -233,6 +232,8 @@ public class Team
     public bool defeated = false;
 
     public bool full = false;
+
+    public int reward;
     public Team(Character initalChar) {
 
         Characters = new List<Character>();
@@ -350,7 +351,7 @@ public class CombatManager {
     public GameObject winpopup;
     public Team enemies;
 
-    int reward;
+    
     public CombatManager(GameController gc, GameObject combatCanvasObject) {
 
         GC = gc;
@@ -399,7 +400,6 @@ public class CombatManager {
     }
     public void startCombat(Team playerTeam, Team EnemyTeam)
     {
-        reward = 0;
 
         // do not set the Gamestate from Overworld until all combat variables are initialized
         fightbutton.SetActive(true);
@@ -473,18 +473,18 @@ public class CombatManager {
 
         if (enemies.defeated == true) {
 
-            enemies = null;
+            GC.playerObj.GetComponent<PlayerInfo>().addFF(enemies.reward);
 
             backbutton.SetActive(true);
 
             //Replacing with Notification
             //winpopup.SetActive(true);
 
-            GC.FullNotification("Victory!", "", null, 3);
+            GC.FullNotification("Victory!", "You earned " + enemies.reward + " fish food!", null, 3);
 
             fightbutton.SetActive(false);
 
-            activateSwitch(0);
+
 
             //pressing backbutton now calls EndCombat function
 

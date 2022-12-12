@@ -166,6 +166,8 @@ public class Character
         HideHpBar();
         Hide();
 
+        myTeam.reward += _base.pay_me_price_food;
+
         myTeam.RemoveCharacter(this);
     
     }
