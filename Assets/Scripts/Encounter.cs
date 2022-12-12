@@ -62,33 +62,57 @@ public class Encounter
 
             case EncounterTypes.BOUNTY:
 
-                _base = manager.ChooseEncounterCharacter(type, true);
+                int val = (int)Random.Range(0, 10);
+                if (val > 7)
+                {
+                    _base = manager.ChooseEncounterCharacter(type, true);
+                }
+                else
+                {
+                    _base = manager.ChooseEncounterCharacter(type, false);
+                }
 
                 name = _base.character_name;
                 encounterDialog = _base.bounty_dialogue;
 
                 SetEncounterSubText("Pay Your Bounty? (" + GameController.bounty + ")" );
-                    SetEncounterText(me.name + _base.bounty_dialogue);
+                    SetEncounterText(name + _base.bounty_dialogue);
 
                 break;
 
                 case EncounterTypes.FREE_ME:
 
+                int val2 = (int)Random.Range(0, 10);
+                if (val2 > 6)
+                {
                     _base = manager.ChooseEncounterCharacter(type, true);
+                }
+                else
+                {
+                    _base = manager.ChooseEncounterCharacter(type, false);
+                }
 
-                    price = _base.free_me_price_O2;
+                price = _base.free_me_price_O2;
                     name = _base.character_name;
 
                     SetEncounterSubText("Free This Prisoner?(" + price + " Oxygen)");
-                    SetEncounterText(me.name + _base.freeme_dialogue);
+                    SetEncounterText(_base.freeme_dialogue);
 
                 break;
 
                 case EncounterTypes.PAY_ME:
 
+                int val3 = (int)Random.Range(0, 10);
+                if (val3 > 8)
+                {
                     _base = manager.ChooseEncounterCharacter(type, true);
+                }
+                else
+                {
+                    _base = manager.ChooseEncounterCharacter(type, false);
+                }
 
-                    price = _base.pay_me_price_food;
+                price = _base.pay_me_price_food;
                     name = _base.character_name;
 
                     SetEncounterSubText("Recruit This Prisoner?(" + price + " Fish food)");
