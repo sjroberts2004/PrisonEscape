@@ -22,6 +22,9 @@ public class CharacterBase : ScriptableObject
     public Sprite character_sprite;
     public bool isRightFacing = false;
 
+    public bool isFloating = false;
+    public int bounce = 0;
+
     [SerializeField] bool pay_me_enabled = true;
     [SerializeField] bool free_me_enabled = true;
     [SerializeField] bool bounty_enabled = true;
