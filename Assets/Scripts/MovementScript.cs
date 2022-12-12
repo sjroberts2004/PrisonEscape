@@ -60,9 +60,20 @@ public class MovementScript : MonoBehaviour
           gameObject.GetComponent<Animator>().runtimeAnimatorController = idleanim;
         }
 
+          
+
+
         transform.position = position;
 
       }
+
+
+        if (frozen)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = idle;
+            gameObject.GetComponent<Animator>().runtimeAnimatorController = idleanim;
+
+        }
     }
     // Update is called once per frame
     void Update()
