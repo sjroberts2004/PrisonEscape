@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour
         CM = new CombatManager(this, combatCanvasObject);
         playerCharacter = new Character(diver);
         playerTeam = new Team(playerCharacter);
+        playerTeam.playersTeam = true;
 
 
     }
@@ -135,7 +136,6 @@ public class GameController : MonoBehaviour
         CM.Update(playerTeam);
         gameState = GameState.ENEMYMOVE;
     }
-
     public void FullNotification(string title, string msg, Sprite img, int secs)
     {
 
@@ -172,7 +172,6 @@ public class GameController : MonoBehaviour
       CM.EndCombat();
 
     }
-
     public void ThinNotification(string msg, Sprite img, int secs)
     {
 
@@ -202,7 +201,6 @@ public class GameController : MonoBehaviour
         }
 
     }
-
     public static Camera GetActiveCamera() {
 
         Camera mainCamera;
@@ -230,10 +228,11 @@ public class Team
 {
     public List<Character> Characters;
 
+    public bool playersTeam = false;
+
     public bool defeated = false;
 
     public bool full = false;
-
     public Team(Character initalChar) {
 
         Characters = new List<Character>();

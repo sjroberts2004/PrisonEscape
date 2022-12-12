@@ -116,17 +116,20 @@ public class EncounterManager : MonoBehaviour
         {
 
         sample = Characters.FindAll(FindCharacterBasedOnLevel); // find characters of the right level
-            desired_type = type;
+            
+        desired_type = type;
 
         sample2 = sample.FindAll(FindCharacterBasedOnType); // and of the right type
 
             if (sample2 != null)
             {
 
+                // Gving an error find out why
+
                 int val = (int)Random.Range(0, sample2.Count);
                 result = sample2[val];
-
-                //Since they are Unique
+                 
+                // Since they are Unique
 
                 Characters.Remove(result);
 
