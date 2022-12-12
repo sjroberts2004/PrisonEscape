@@ -111,12 +111,13 @@ public class EncounterManager : MonoBehaviour
         CharacterBase result;
         List<CharacterBase> sample;
         List<CharacterBase> sample2;
+        unique = false;
 
         if (unique)
         {
 
         sample = Characters.FindAll(FindCharacterBasedOnLevel); // find characters of the right level
-            
+
         desired_type = type;
 
         sample2 = sample.FindAll(FindCharacterBasedOnType); // and of the right type
@@ -125,12 +126,13 @@ public class EncounterManager : MonoBehaviour
             {
 
                 // Gving an error find out why
-
-                int val = (int)Random.Range(0, sample2.Count);
+                Debug.Log(sample2.Count);
+                int val = (int)Random.Range(0, sample2.Count-1);
+                Debug.Log(val);
                 result = sample2[val];
-                 
-                // Since they are Unique
 
+                // Since they are Unique
+                // Error happens below. When characters are removed, eventually sample.Count = 0 and it breaks
                 Characters.Remove(result);
 
             }
@@ -144,7 +146,7 @@ public class EncounterManager : MonoBehaviour
 
             if (sample2 != null)
             {
-                int val = (int)Random.Range(0, sample2.Count);
+                int val = (int)Random.Range(0, sample2.Count-1);
                 result = repeatCharacters[val];
             }
             else { return null; }
@@ -230,8 +232,8 @@ public class EncounterManager : MonoBehaviour
                     GC.ThinNotification("Your Team is Full!", null, 1);
 
                 }
-                else { 
-                
+                else {
+
                     if (playerInfo.get02() >= active.price)
                     {
                         playerInfo.loseO2(active.price);
@@ -239,7 +241,7 @@ public class EncounterManager : MonoBehaviour
                         active.ExecuteEncounter();
 
                     }
-                
+
                 }
 
                 break;
