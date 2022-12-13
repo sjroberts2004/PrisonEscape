@@ -3475,6 +3475,7 @@ MonoBehaviour:
   EncounterPrefab: {fileID: 7014373453947796135, guid: 6a0c5bf5e58bcc143822f79daee408e8, type: 3}
   chestSprite: {fileID: 21300000, guid: e87adc0b19671664eb236571e60f2edb, type: 3}
   randomPrisonerSprite: {fileID: 21300000, guid: 4b873876396fad8459cd698ff0bdca5e, type: 3}
+  fishfoodSprite: {fileID: 21300000, guid: 2aa3520d0ebfede4ca4d48efd8d45eaf, type: 3}
   encounterCanvasTextObject: {fileID: 1061726418}
   encounterCanvasText: {fileID: 1061726420}
   encounterCanvasSubText: {fileID: 2002829820}
