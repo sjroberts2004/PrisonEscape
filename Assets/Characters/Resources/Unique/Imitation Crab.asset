@@ -15,8 +15,8 @@ MonoBehaviour:
   character_name: Imitation Crab
   description: This inmate was sentenced to 20 years in [The Deep] for four counts
     of felony impersonation in the restaurant industry.
-  level: 2
-  maxHP: 115
+  level: 3
+  maxHP: 30
   attack: 15
   defence: 5
   accuracy: 95

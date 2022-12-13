@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character_name: Hermie the Crab
   description: Hermie is a crab
-  level: 2
+  level: 1
   maxHP: 25
   attack: 8
   defence: 8

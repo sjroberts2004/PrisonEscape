@@ -150,6 +150,8 @@ public class Encounter
                 //Debug.Log("");
                 FightPlayer();
 
+                me.GetComponent<SpriteRenderer>().sprite = manager.fishfoodSprite;
+
                 break;
 
             case EncounterTypes.FREE_ME:

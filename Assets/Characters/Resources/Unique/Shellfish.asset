@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character_name: Shellfish Chef
   description: Placeholder text
-  level: 2
+  level: 1
   maxHP: 15
   attack: 6
   defence: 8

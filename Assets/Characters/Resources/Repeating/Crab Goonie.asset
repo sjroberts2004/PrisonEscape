@@ -25,7 +25,7 @@ MonoBehaviour:
   pay_me_enabled: 1
   free_me_enabled: 1
   bounty_enabled: 1
-  pay_me_price_food: 1
+  pay_me_price_food: 5
   free_me_price_O2: 1
   bounty_dialogue: '*aggressive snapping*'
   payme_dialogue: '*inquisitive snap*'

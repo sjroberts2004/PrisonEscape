@@ -23,9 +23,9 @@ MonoBehaviour:
 
 '
   level: 1
-  maxHP: 1
-  attack: 1
-  defence: 1
+  maxHP: 10
+  attack: 2
+  defence: 2
   accuracy: 1
   icon: {fileID: 1788633070, guid: f122e5b1b6e988f43becbf56fe8692c7, type: 3}
   character_sprite: {fileID: -262949721, guid: f122e5b1b6e988f43becbf56fe8692c7, type: 3}
