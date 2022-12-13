@@ -25,8 +25,8 @@ MonoBehaviour:
   pay_me_enabled: 1
   free_me_enabled: 1
   bounty_enabled: 1
-  pay_me_price_food: 1
-  free_me_price_O2: 1
+  pay_me_price_food: 10
+  free_me_price_O2: 10
   bounty_dialogue: You ate my children!
   payme_dialogue: Give me my children to eat!
   freeme_dialogue: Let me out and I'll give you my children!
