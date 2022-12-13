@@ -93,7 +93,8 @@ public class Encounter
                 }
 
                 price = _base.free_me_price_O2;
-                    name = _base.character_name + ": ";
+
+                name = _base.character_name + ": ";
 
                     SetEncounterSubText("Free This Prisoner?(" + price + " Oxygen)");
                     SetEncounterText(_base.freeme_dialogue);
@@ -113,11 +114,12 @@ public class Encounter
                 }
 
                 price = _base.pay_me_price_food;
-                    name = _base.character_name + ": ";
+
+                name = _base.character_name + ": ";
 
                     SetEncounterSubText("Recruit This Prisoner?(" + price + " Fish food)");
 
-                    SetEncounterText(me.name + _base.payme_dialogue);
+                    SetEncounterText(name + _base.payme_dialogue);
 
                 break;
 
