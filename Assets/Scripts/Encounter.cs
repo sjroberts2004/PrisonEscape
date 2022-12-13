@@ -63,7 +63,7 @@ public class Encounter
             case EncounterTypes.BOUNTY:
 
                 int val = (int)Random.Range(0, 10);
-                if (val > 3)
+                if (val > 5)
                 {
                     _base = manager.ChooseEncounterCharacter(type, true);
                 }
@@ -72,7 +72,7 @@ public class Encounter
                     _base = manager.ChooseEncounterCharacter(type, false);
                 }
 
-                name = _base.character_name;
+                name = _base.character_name + ": ";
                 encounterDialog = _base.bounty_dialogue;
 
                 SetEncounterSubText("Pay Your Bounty? (" + GameController.bounty + ")" );
@@ -93,7 +93,7 @@ public class Encounter
                 }
 
                 price = _base.free_me_price_O2;
-                    name = _base.character_name;
+                    name = _base.character_name + ": ";
 
                     SetEncounterSubText("Free This Prisoner?(" + price + " Oxygen)");
                     SetEncounterText(_base.freeme_dialogue);
@@ -113,7 +113,7 @@ public class Encounter
                 }
 
                 price = _base.pay_me_price_food;
-                    name = _base.character_name;
+                    name = _base.character_name + ": ";
 
                     SetEncounterSubText("Recruit This Prisoner?(" + price + " Fish food)");
 

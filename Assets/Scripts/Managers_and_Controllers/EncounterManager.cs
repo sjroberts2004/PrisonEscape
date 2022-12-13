@@ -111,7 +111,6 @@ public class EncounterManager : MonoBehaviour
         CharacterBase result;
         List<CharacterBase> sample;
         List<CharacterBase> sample2;
-        unique = false;
 
         if (unique)
         {
@@ -126,9 +125,9 @@ public class EncounterManager : MonoBehaviour
             {
 
                 // Gving an error find out why
-                Debug.Log(sample2.Count);
+                
                 int val = (int)Random.Range(0, sample2.Count-1);
-                Debug.Log(val);
+               
                 result = sample2[val];
 
                 // Since they are Unique
