@@ -31,7 +31,6 @@ public class MovementScript : MonoBehaviour
         root = position.x;
 
     }
-
     private void FixedUpdate()
     {
 
@@ -44,10 +43,9 @@ public class MovementScript : MonoBehaviour
             if (!facingRight) { Flip(); }
             position.x = position.x + movementSpeed;
 
-
         }
 
-        else if (Input.GetKey("left") && position.x > root )
+        else if (Input.GetKey("left") && position.x > 0 )
         {
           gameObject.GetComponent<SpriteRenderer>().sprite = moving;
           gameObject.GetComponent<Animator>().runtimeAnimatorController = movinganim;
@@ -56,17 +54,15 @@ public class MovementScript : MonoBehaviour
 
         }
         else{
+
           gameObject.GetComponent<SpriteRenderer>().sprite = idle;
           gameObject.GetComponent<Animator>().runtimeAnimatorController = idleanim;
+        
         }
-
-          
-
 
         transform.position = position;
 
       }
-
 
         if (frozen)
         {

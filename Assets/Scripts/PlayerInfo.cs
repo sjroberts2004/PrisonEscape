@@ -8,7 +8,6 @@ public class PlayerInfo : MonoBehaviour
     public int FishFood;
 
     CounterController CC;
-
     void Start()
     {
         CC = GameObject.Find("CounterCanvas").GetComponent<CounterController>();
