@@ -15,7 +15,7 @@ MonoBehaviour:
   character_name: Big Fish
   description: 
   level: 2
-  maxHP: 50
+  maxHP: 75
   attack: 25
   defence: 2
   accuracy: 85
@@ -27,6 +27,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 1
   free_me_price_O2: 1
-  bounty_dialogue: 
-  payme_dialogue: 
-  freeme_dialogue: 
+  bounty_dialogue: You ate my children!
+  payme_dialogue: Give me my children to eat!
+  freeme_dialogue: Let me out and I'll give you my children!

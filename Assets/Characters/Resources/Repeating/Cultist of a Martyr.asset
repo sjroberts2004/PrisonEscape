@@ -29,6 +29,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 1
   free_me_price_O2: 1
-  bounty_dialogue: 
-  payme_dialogue: 
-  freeme_dialogue: 
+  bounty_dialogue: You killed my lover, now you die!
+  payme_dialogue: 'Donations for lover''s funeral '
+  freeme_dialogue: Let me out, my lover awaits

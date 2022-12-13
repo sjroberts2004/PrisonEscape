@@ -31,6 +31,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 1
   free_me_price_O2: 1
-  bounty_dialogue: 
-  payme_dialogue: 
-  freeme_dialogue: 
+  bounty_dialogue: This is gonna sting...
+  payme_dialogue: Fork it over, baby
+  freeme_dialogue: HeLp!!
