@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class Character
 {
     // A gameobject to be put in the scene.
@@ -169,6 +170,12 @@ public class Character
         myTeam.reward += _base.pay_me_price_food;
 
         myTeam.RemoveCharacter(this);
+
+        if (_base.character_name == "Diver") {
+
+            SceneManager.LoadScene(0);
+
+        }
     
     }
 
