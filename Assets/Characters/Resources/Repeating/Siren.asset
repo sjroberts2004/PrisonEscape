@@ -29,6 +29,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 1
   free_me_price_O2: 1
-  bounty_dialogue: 
+  bounty_dialogue: '*singing* I''m blue da ba dee da ba dah'
   payme_dialogue: Let me sing for you
-  freeme_dialogue: 
+  freeme_dialogue: Hey. I just met you, and this is crazy...

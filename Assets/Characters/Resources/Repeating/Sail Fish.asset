@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   level: 2
   maxHP: 25
-  attack: 0
+  attack: 20
   defence: 1
   accuracy: 0
   icon: {fileID: 0}
@@ -27,6 +27,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 1
   free_me_price_O2: 1
-  bounty_dialogue: 
-  payme_dialogue: 
-  freeme_dialogue: 
+  bounty_dialogue: Halt! Face me in single combat!
+  payme_dialogue: Halt! Pay the toll
+  freeme_dialogue: Halt! I have been duped! be a chum, let me out

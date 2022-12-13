@@ -31,6 +31,6 @@ MonoBehaviour:
   bounty_enabled: 1
   pay_me_price_food: 5
   free_me_price_O2: 60
-  bounty_dialogue: Face my wrath!
-  payme_dialogue: 
-  freeme_dialogue: 
+  bounty_dialogue: Where am I?
+  payme_dialogue: Will work for fish food
+  freeme_dialogue: I'm blind, help!
