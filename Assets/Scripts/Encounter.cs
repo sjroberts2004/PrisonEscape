@@ -63,7 +63,7 @@ public class Encounter
             case EncounterTypes.BOUNTY:
 
                 int val = (int)Random.Range(0, 10);
-                if (val > 7)
+                if (val > 3)
                 {
                     _base = manager.ChooseEncounterCharacter(type, true);
                 }
@@ -103,7 +103,7 @@ public class Encounter
                 case EncounterTypes.PAY_ME:
 
                 int val3 = (int)Random.Range(0, 10);
-                if (val3 > 8)
+                if (val3 > 7)
                 {
                     _base = manager.ChooseEncounterCharacter(type, true);
                 }

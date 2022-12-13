@@ -170,7 +170,7 @@ public class EncounterManager : MonoBehaviour
 
         //free me, pay me, bounty, chest
 
-        int[] nums = new int[] { 0, 1, 1, 2, 2, };
+        int[] nums = new int[] { 0, 1, 2, 2, 2, 2, };
 
         int val = (int)Random.Range(0, nums.Length);
 
