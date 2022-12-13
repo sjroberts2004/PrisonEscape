@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovementScript : MonoBehaviour
 {
@@ -53,11 +54,14 @@ public class MovementScript : MonoBehaviour
             position.x = position.x + (movementSpeed * -1);
 
         }
+        else if (Input.GetKey("m")){
+          SceneManager.LoadScene("Main Screen");
+        }
         else{
 
           gameObject.GetComponent<SpriteRenderer>().sprite = idle;
           gameObject.GetComponent<Animator>().runtimeAnimatorController = idleanim;
-        
+
         }
 
         transform.position = position;

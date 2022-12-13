@@ -15,7 +15,7 @@ MonoBehaviour:
   character_name: Diver
   description: He be divinnng
   level: 1
-  maxHP: 50
+  maxHP: 500
   attack: 5
   defence: 5
   accuracy: 95
